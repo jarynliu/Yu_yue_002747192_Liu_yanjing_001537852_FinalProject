@@ -34,6 +34,15 @@ public class UserSignPage extends javax.swing.JFrame {
     
     public void Connect() 
     {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
@@ -84,6 +93,11 @@ public class UserSignPage extends javax.swing.JFrame {
         jtxtbreed.setText("you can just inpute letters");
 
         jbtnsignup.setText("Sign Up");
+        jbtnsignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnsignupActionPerformed(evt);
+            }
+        });
 
         jbtnsignin.setText("Sign In");
 
@@ -177,6 +191,12 @@ public class UserSignPage extends javax.swing.JFrame {
     private void jcbxroleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbxroleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbxroleActionPerformed
+
+    private void jbtnsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsignupActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jbtnsignupActionPerformed
 
     /**
      * @param args the command line arguments
