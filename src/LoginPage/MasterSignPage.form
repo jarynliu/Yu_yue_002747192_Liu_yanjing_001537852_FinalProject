@@ -40,20 +40,18 @@
                   <Component id="jLabel1" min="-2" pref="105" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jcbxrole" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jbtnsignup" min="-2" pref="78" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jbtnsignin" min="-2" pref="78" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jlblsign" min="-2" pref="171" max="-2" attributes="0"/>
-                      <Component id="jtxtname" pref="240" max="32767" attributes="0"/>
-                      <Component id="jtxtbreeder" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jtxtpassword" max="32767" attributes="0"/>
-                      <Component id="jtxtemail" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jbtnsignup" min="-2" pref="78" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jbtnsignin" min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jlblsign" min="-2" pref="171" max="-2" attributes="0"/>
+                  <Component id="jtxtname" pref="240" max="32767" attributes="0"/>
+                  <Component id="jtxtbreeder" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jtxtemail" max="32767" attributes="0"/>
+                  <Component id="jtxtpassword" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -74,12 +72,12 @@
                   <Component id="jlblpetbreeder" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jtxtbreeder" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jlblpassword" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtxtpassword" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlblpassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxtpassword" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jlblemail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jtxtemail" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -141,11 +139,6 @@
         <Property name="text" type="java.lang.String" value="you can just inpute letters"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtxtpassword">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="letters and numbers only"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="jtxtemail">
     </Component>
     <Component class="javax.swing.JButton" name="jbtnsignup">
@@ -178,6 +171,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Choose your Role:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jtxtpassword">
     </Component>
   </SubComponents>
 </Form>

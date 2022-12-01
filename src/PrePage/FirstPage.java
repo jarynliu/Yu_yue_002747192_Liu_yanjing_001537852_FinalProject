@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package LoginPage;
+package PrePage;
 
-import PrePage.MasterSignPage;
-import javax.swing.JFrame;
+import LoginPage.BussinessSignPage;
+import LoginPage.HospitalSignPage;
+import LoginPage.MasterSignPage;
+import LoginPage.StrayAnimalsSignPage;
 
 /**
  *
@@ -46,10 +48,25 @@ public class FirstPage extends javax.swing.JFrame {
         });
 
         jbtnhospital.setText("Hospital");
+        jbtnhospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnhospitalActionPerformed(evt);
+            }
+        });
 
         jbtnbussiness.setText("Bussiness");
+        jbtnbussiness.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnbussinessActionPerformed(evt);
+            }
+        });
 
         jbtnstray.setText("Stray Animals");
+        jbtnstray.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnstrayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,9 +118,31 @@ public class FirstPage extends javax.swing.JFrame {
 
     private void jbtnmasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnmasterActionPerformed
         // TODO add your handling code here:
+        dispose();
         MasterSignPage mastersignpage = new MasterSignPage();
         mastersignpage.setVisible(true);
     }//GEN-LAST:event_jbtnmasterActionPerformed
+
+    private void jbtnhospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnhospitalActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        HospitalSignPage hospitalsignpage = new HospitalSignPage();
+        hospitalsignpage.setVisible(true);
+    }//GEN-LAST:event_jbtnhospitalActionPerformed
+
+    private void jbtnbussinessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnbussinessActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        BussinessSignPage bussinesssignpage = new BussinessSignPage();
+        bussinesssignpage.setVisible(true);
+    }//GEN-LAST:event_jbtnbussinessActionPerformed
+
+    private void jbtnstrayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnstrayActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        StrayAnimalsSignPage strayanimalssignpage = new StrayAnimalsSignPage();
+        strayanimalssignpage.setVisible(true);
+    }//GEN-LAST:event_jbtnstrayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,12 +172,10 @@ public class FirstPage extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                FirstPage firstpage = new FirstPage();
-                firstpage.setTitle("Pet Community");
-                firstpage.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            FirstPage firstpage = new FirstPage();
+            firstpage.setTitle("Pet Community");
+            firstpage.setVisible(true);
         });
     }
 
