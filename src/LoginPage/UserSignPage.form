@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="126" max="32767" attributes="0"/>
+              <Component id="jlblcaution" min="-2" pref="554" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jlblpetbreeder" min="-2" pref="77" max="-2" attributes="0"/>
+                  <Component id="jlblname" min="-2" pref="69" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="jlblemail" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jlblpassword" alignment="0" pref="65" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jLabel1" min="-2" pref="105" max="-2" attributes="0"/>
+                  <Component id="jlblpettype" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jcbxrole" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jbtnsignup" min="-2" pref="78" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jbtnsignin" min="-2" pref="78" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jlblsign" min="-2" pref="171" max="-2" attributes="0"/>
+                      <Component id="jtxtname" pref="240" max="32767" attributes="0"/>
+                      <Component id="jtxtbreed" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jtxtemail" max="32767" attributes="0"/>
+                      <Component id="jtxtpassword" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              <Component id="jlblsign" min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlblname" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxtname" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlblpettype" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlblpetbreeder" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxtbreed" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlblpassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxtpassword" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlblemail" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxtemail" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jcbxrole" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jbtnsignup" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbtnsignin" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="104" max="32767" attributes="0"/>
+              <Component id="jlblcaution" min="-2" pref="41" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jlblcaution">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="If you have a pet, please select the onlymaster. If you are a guest, please select the guest."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlblsign">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sign in / Sign up"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlblpetbreeder">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pet Breed:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlblname">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Name:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlblpassword">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Password"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlblemail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Email:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jtxtname">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="you can just input the letters"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jtxtbreed">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="you can just inpute letters"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jtxtemail">
+    </Component>
+    <Component class="javax.swing.JButton" name="jbtnsignup">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sign Up"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbtnsignin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sign In"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jcbxrole">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="user"/>
+            <StringItem index="1" value="guest"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbxroleActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Choose your Role:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jtxtpassword">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlblpettype">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pet Type:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Cat"/>
+            <StringItem index="1" value="Dog"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+  </SubComponents>
+</Form>
