@@ -4,6 +4,7 @@
  */
 package LoginPage;
 
+import PrePage.FirstPage;
 import javax.swing.JFrame;
 
 /**
@@ -46,6 +47,7 @@ public class MasterSignPage extends javax.swing.JFrame {
         jcbxrole = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jtxtpassword = new javax.swing.JPasswordField();
+        jbtnhomepage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,14 +80,17 @@ public class MasterSignPage extends javax.swing.JFrame {
 
         jLabel1.setText("Choose your Role:");
 
+        jbtnhomepage.setText("HomePage");
+        jbtnhomepage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnhomepageActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
-                .addComponent(jlblcaution, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(120, 120, 120))
             .addGroup(layout.createSequentialGroup()
                 .addGap(187, 187, 187)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,11 +113,22 @@ public class MasterSignPage extends javax.swing.JFrame {
                     .addComponent(jtxtemail)
                     .addComponent(jtxtpassword))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(126, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jlblcaution, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(120, 120, 120))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jbtnhomepage, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addContainerGap()
+                .addComponent(jbtnhomepage)
+                .addGap(35, 35, 35)
                 .addComponent(jlblsign, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -148,6 +164,13 @@ public class MasterSignPage extends javax.swing.JFrame {
     private void jcbxroleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbxroleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbxroleActionPerformed
+
+    private void jbtnhomepageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnhomepageActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        FirstPage firstpage = new FirstPage();
+        firstpage.setVisible(true);
+    }//GEN-LAST:event_jbtnhomepageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,6 +210,7 @@ public class MasterSignPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jbtnhomepage;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JButton jbtnsignup;
     private javax.swing.JComboBox<String> jcbxrole;
