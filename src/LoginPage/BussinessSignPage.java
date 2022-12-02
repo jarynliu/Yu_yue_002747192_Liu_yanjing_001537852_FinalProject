@@ -4,6 +4,14 @@
  */
 package LoginPage;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pkuhore
@@ -15,6 +23,25 @@ public class BussinessSignPage extends javax.swing.JFrame {
      */
     public BussinessSignPage() {
         initComponents();
+        Connect();
+    }
+    
+    Connection con;
+    PreparedStatement pst;
+    
+    
+    public void Connect() 
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -32,7 +59,7 @@ public class BussinessSignPage extends javax.swing.JFrame {
         jlblpassword = new javax.swing.JLabel();
         jtxtpassword = new javax.swing.JPasswordField();
         jlblstore = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jtxtstorename = new javax.swing.JComboBox<>();
         jlblrole = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jbtnsignin = new javax.swing.JButton();
@@ -42,21 +69,26 @@ public class BussinessSignPage extends javax.swing.JFrame {
 
         jlbltitle.setText("Sign In / Sign Up");
 
-        jlblusername.setText("username :");
+        jlblusername.setText("Username :");
 
-        jlblpassword.setText("password :");
+        jlblpassword.setText("Password :");
 
-        jlblstore.setText("store :");
+        jlblstore.setText("Store Name:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "store1", "store2" }));
+        jtxtstorename.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "store1", "store2" }));
 
-        jlblrole.setText("role :");
+        jlblrole.setText("Role :");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "sales" }));
 
         jbtnsignin.setText("Sign In");
 
         jbtnsignup.setText("Sign Up");
+        jbtnsignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnsignupActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,22 +101,23 @@ public class BussinessSignPage extends javax.swing.JFrame {
                         .addComponent(jlbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlblusername, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                            .addComponent(jlblstore, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblrole, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtxtusername)
-                            .addComponent(jtxtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(jbtnsignin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(jbtnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jlblusername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jlblrole, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlblpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jlblstore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(65, 65, 65)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtxtusername)
+                                    .addComponent(jtxtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                                    .addComponent(jtxtstorename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbtnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62)
+                                .addComponent(jbtnsignin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(290, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -103,20 +136,52 @@ public class BussinessSignPage extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblstore)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtstorename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblrole)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(90, 90, 90)
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtnsignin)
-                    .addComponent(jbtnsignup))
-                .addContainerGap(138, Short.MAX_VALUE))
+                    .addComponent(jbtnsignup)
+                    .addComponent(jbtnsignin))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtnsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsignupActionPerformed
+        // TODO add your handling code here:
+        
+        String uname = jtxtusername.getText();
+        String password = jtxtpassword.getText();
+        String storename = jtxtstorename.getSelectedItem().toString();
+        String role = jComboBox2.getSelectedItem().toString();
+        
+        try {
+            pst = con.prepareStatement("insert into business(uname,password,storename,role)value(?,?,?,?)");
+            pst.setString(1, uname);
+            pst.setString(2, password);
+            pst.setString(3, storename);
+            pst.setString(4, role);
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Successfully Sign Up!");
+            
+            jtxtusername.setText("");
+            jtxtpassword.setText("");
+            jtxtstorename.setSelectedIndex(-1);
+            jComboBox2.setSelectedIndex(-1);
+            jtxtusername.requestFocus();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BussinessSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }//GEN-LAST:event_jbtnsignupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,7 +220,6 @@ public class BussinessSignPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JButton jbtnsignup;
@@ -165,6 +229,7 @@ public class BussinessSignPage extends javax.swing.JFrame {
     private javax.swing.JLabel jlbltitle;
     private javax.swing.JLabel jlblusername;
     private javax.swing.JPasswordField jtxtpassword;
+    private javax.swing.JComboBox<String> jtxtstorename;
     private javax.swing.JTextField jtxtusername;
     // End of variables declaration//GEN-END:variables
 }

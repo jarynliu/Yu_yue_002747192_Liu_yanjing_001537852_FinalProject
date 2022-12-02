@@ -24,6 +24,7 @@ public class UserSignPage extends javax.swing.JFrame {
      */
     public UserSignPage() {
         initComponents();
+        Connect();
         
         JFrame jf = new JFrame("userpage");
     }
@@ -35,7 +36,7 @@ public class UserSignPage extends javax.swing.JFrame {
     public void Connect() 
     {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
             
         } catch (ClassNotFoundException ex) {
@@ -71,8 +72,8 @@ public class UserSignPage extends javax.swing.JFrame {
         jcbxrole = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jtxtpassword = new javax.swing.JPasswordField();
-        jlblpettype = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jlblptype = new javax.swing.JLabel();
+        jtxtptype = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,9 +111,9 @@ public class UserSignPage extends javax.swing.JFrame {
 
         jLabel1.setText("Choose your Role:");
 
-        jlblpettype.setText("Pet Type:");
+        jlblptype.setText("Pet Type:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cat", "Dog" }));
+        jtxtptype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cat", "Dog" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,11 +131,11 @@ public class UserSignPage extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jlblemail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jlblpassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
-                    .addComponent(jlblpettype)
+                    .addComponent(jlblptype)
                     .addComponent(jLabel1))
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtptype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jcbxrole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
@@ -159,8 +160,8 @@ public class UserSignPage extends javax.swing.JFrame {
                     .addComponent(jtxtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblpettype)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlblptype)
+                    .addComponent(jtxtptype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblpetbreeder)
@@ -194,6 +195,40 @@ public class UserSignPage extends javax.swing.JFrame {
 
     private void jbtnsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsignupActionPerformed
         // TODO add your handling code here:
+        
+        String name = jtxtname.getText();
+        String ptype = jtxtptype.getSelectedItem().toString();
+        String pbreed = jtxtbreed.getText();
+        String password = jtxtpassword.getText();
+        String email = jtxtemail.getText();
+        String role = jcbxrole.getSelectedItem().toString();
+        
+        try {
+            pst = con.prepareStatement("insert into user(name,ptype,pbreed,password,email,role)value(?,?,?,?,?,?)");
+            pst.setString(1, name);
+            pst.setString(2, ptype);
+            pst.setString(3, pbreed);
+            pst.setString(4, password);
+            pst.setString(5, email);
+            pst.setString(6, role);
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Successfully Sign Up!");
+            
+            jtxtname.setText("");
+            jtxtptype.setSelectedIndex(-1);
+            jtxtbreed.setText("");
+            jtxtpassword.setText("");
+            jtxtemail.setText("");
+            jcbxrole.setSelectedIndex(-1);
+            jtxtname.requestFocus();
+                               
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         
         
     }//GEN-LAST:event_jbtnsignupActionPerformed
@@ -237,7 +272,6 @@ public class UserSignPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JButton jbtnsignup;
@@ -247,11 +281,12 @@ public class UserSignPage extends javax.swing.JFrame {
     private javax.swing.JLabel jlblname;
     private javax.swing.JLabel jlblpassword;
     private javax.swing.JLabel jlblpetbreeder;
-    private javax.swing.JLabel jlblpettype;
+    private javax.swing.JLabel jlblptype;
     private javax.swing.JLabel jlblsign;
     private javax.swing.JTextField jtxtbreed;
     private javax.swing.JTextField jtxtemail;
     private javax.swing.JTextField jtxtname;
     private javax.swing.JPasswordField jtxtpassword;
+    private javax.swing.JComboBox<String> jtxtptype;
     // End of variables declaration//GEN-END:variables
 }
