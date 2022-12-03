@@ -26,11 +26,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="160" max="32767" attributes="0"/>
-              <Component id="jlblcaution" min="-2" pref="554" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -51,36 +46,32 @@
                                           <Component id="jtxtname" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Component id="jtxtbday" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jtxtbday" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jtxtbreed" min="-2" pref="162" max="-2" attributes="0"/>
+                                                  <Component id="jtxtpassword" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
+                                                  <Component id="jtxtemail" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
+                          <Component id="jlblpetbreeder" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                          <Component id="jlblpassword" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                          <Component id="jlblemail" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jlblemail" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jlblpassword" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlblpetbreeder" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jtxtbreed" min="-2" pref="162" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jcbxrole" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jbtnsignup" min="-2" pref="78" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jbtnsignin" min="-2" pref="78" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jtxtemail" max="32767" attributes="0"/>
-                                      <Component id="jtxtpassword" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jcbxrole" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -89,7 +80,26 @@
                       <Component id="jbtnhomepage" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="340" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="158" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jbtnsignup" min="-2" pref="78" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="282" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jlblcaution" min="-2" pref="554" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jlblsignin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="jbtnsignin" min="-2" pref="78" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -99,54 +109,54 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jbtnhomepage" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-              <Component id="jlblsign" min="-2" pref="36" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jlblname" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtxtname" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jlblptype" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtxtptype" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jlblbirthday" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="jlblsign" min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jlblpetbreeder" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtxtbreed" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlblname" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxtname" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jlblptype" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtxtptype" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jlblpassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtxtpassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jlblemail" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtxtemail" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jcbxrole" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jbtnsignup" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jbtnsignin" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jlblcaution" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="jlblbirthday" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jtxtbday" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jtxtbday" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlblpetbreeder" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxtbreed" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlblpassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxtpassword" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlblemail" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxtemail" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcbxrole" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Component id="jbtnsignup" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="11" max="32767" attributes="0"/>
+              <Component id="jlblcaution" min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jlblsignin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbtnsignin" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -154,12 +164,12 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jlblcaution">
       <Properties>
-        <Property name="text" type="java.lang.String" value="If you have a pet, please select the onlymaster. If you are a guest, please select the guest."/>
+        <Property name="text" type="java.lang.String" value="If you have a pet, please select the user. If you are a guest, please select the guest."/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlblsign">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sign in / Sign up"/>
+        <Property name="text" type="java.lang.String" value="Sign Up Your Account"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlblpetbreeder">
@@ -174,7 +184,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlblpassword">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Password"/>
+        <Property name="text" type="java.lang.String" value="Password:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlblemail">
@@ -209,7 +219,7 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
             <StringItem index="0" value="user"/>
-            <StringItem index="1" value="guest"/>
+            <StringItem index="1" value="admin"/>
           </StringArray>
         </Property>
       </Properties>
@@ -259,6 +269,11 @@
       </Events>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="jtxtbday">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlblsignin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Already have an account? Please sign in here!"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

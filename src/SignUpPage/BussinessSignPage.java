@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package LoginPage;
+package SignUpPage;
 
 import PrePage.HomePage;
 import java.sql.Connection;
@@ -17,12 +17,12 @@ import javax.swing.JOptionPane;
  *
  * @author pkuhore
  */
-public class HospitalSignPage extends javax.swing.JFrame {
+public class BussinessSignPage extends javax.swing.JFrame {
 
     /**
-     * Creates new form HospitalSignPage
+     * Creates new form BussinessPage
      */
-    public HospitalSignPage() {
+    public BussinessSignPage() {
         initComponents();
         Connect();
     }
@@ -56,48 +56,34 @@ public class HospitalSignPage extends javax.swing.JFrame {
 
         jlbltitle = new javax.swing.JLabel();
         jlblusername = new javax.swing.JLabel();
-        jlblpassword = new javax.swing.JLabel();
         jtxtusername = new javax.swing.JTextField();
+        jlblpassword = new javax.swing.JLabel();
         jtxtpassword = new javax.swing.JPasswordField();
-        jtxthospitalname = new javax.swing.JTextField();
-        jtxthname = new javax.swing.JComboBox<>();
-        jtxtrole = new javax.swing.JTextField();
+        jlblstore = new javax.swing.JLabel();
+        jtxtstorename = new javax.swing.JComboBox<>();
+        jlblrole = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jbtnsignin = new javax.swing.JButton();
         jbtnsignup = new javax.swing.JButton();
-        jbthomepage = new javax.swing.JButton();
+        jbtnhomepage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("HospitalPage");
-        setBackground(new java.awt.Color(204, 204, 255));
 
-        jlbltitle.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        jlbltitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbltitle.setText("Sign in/Sign up");
+        jlbltitle.setText("Sign Up Your Account");
 
-        jlblusername.setText("User Name :");
+        jlblusername.setText("Username :");
 
         jlblpassword.setText("Password :");
 
-        jtxthospitalname.setText("Hospital Name :");
-        jtxthospitalname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxthospitalnameActionPerformed(evt);
-            }
-        });
+        jlblstore.setText("Store Name:");
 
-        jtxthname.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hos1", "Hos2", "Hos3" }));
+        jtxtstorename.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "store1", "store2" }));
 
-        jtxtrole.setText("Role:");
+        jlblrole.setText("Role :");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Nutritionist" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "sale" }));
 
         jbtnsignin.setText("Sign In");
-        jbtnsignin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnsigninActionPerformed(evt);
-            }
-        });
 
         jbtnsignup.setText("Sign Up");
         jbtnsignup.addActionListener(new java.awt.event.ActionListener() {
@@ -106,10 +92,10 @@ public class HospitalSignPage extends javax.swing.JFrame {
             }
         });
 
-        jbthomepage.setText("Back to Homepage");
-        jbthomepage.addActionListener(new java.awt.event.ActionListener() {
+        jbtnhomepage.setText("Back to Homepage");
+        jbtnhomepage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbthomepageActionPerformed(evt);
+                jbtnhomepageActionPerformed(evt);
             }
         });
 
@@ -120,90 +106,78 @@ public class HospitalSignPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addComponent(jlbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jlblusername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlblpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jtxthospitalname)
-                            .addComponent(jtxtrole))
-                        .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGap(161, 161, 161)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jlblusername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jlblrole, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlblpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jlblstore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(65, 65, 65)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtxtusername)
+                                    .addComponent(jtxtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                                    .addComponent(jtxtstorename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jbtnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbtnsignin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtxtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtxtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jtxthname, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addGap(62, 62, 62)
+                                .addComponent(jbtnsignin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jbthomepage)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                        .addComponent(jbtnhomepage))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(jlbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(290, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jbthomepage)
-                .addGap(32, 32, 32)
+                .addComponent(jbtnhomepage)
+                .addGap(37, 37, 37)
                 .addComponent(jlbltitle)
-                .addGap(49, 49, 49)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblusername)
                     .addComponent(jtxtusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblpassword)
                     .addComponent(jtxtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtxthospitalname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxthname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlblstore)
+                    .addComponent(jtxtstorename, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtxtrole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblrole)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtnsignin)
-                    .addComponent(jbtnsignup))
-                .addGap(116, 116, 116))
+                    .addComponent(jbtnsignup)
+                    .addComponent(jbtnsignin))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jtxthospitalnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxthospitalnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxthospitalnameActionPerformed
-
-    private void jbtnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsigninActionPerformed
-        // TODO add your handling code here:
-        
-        
-        
-        
-    }//GEN-LAST:event_jbtnsigninActionPerformed
 
     private void jbtnsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsignupActionPerformed
         // TODO add your handling code here:
         
         String uname = jtxtusername.getText();
         String password = jtxtpassword.getText();
-        String hname = jtxthname.getSelectedItem().toString();
+        String storename = jtxtstorename.getSelectedItem().toString();
         String role = jComboBox2.getSelectedItem().toString();
         
         try {
-            pst = con.prepareStatement("insert into hospital(uname,password,hname,role)value(?,?,?,?)");
+            pst = con.prepareStatement("insert into business(uname,password,storename,role)value(?,?,?,?)");
             pst.setString(1, uname);
             pst.setString(2, password);
-            pst.setString(3, hname);
+            pst.setString(3, storename);
             pst.setString(4, role);
             pst.executeUpdate();
             
@@ -211,27 +185,25 @@ public class HospitalSignPage extends javax.swing.JFrame {
             
             jtxtusername.setText("");
             jtxtpassword.setText("");
-            jtxthname.setSelectedIndex(-1);
+            jtxtstorename.setSelectedIndex(-1);
             jComboBox2.setSelectedIndex(-1);
             jtxtusername.requestFocus();
             
-            
         } catch (SQLException ex) {
-            Logger.getLogger(HospitalSignPage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BussinessSignPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         
         
         
     }//GEN-LAST:event_jbtnsignupActionPerformed
 
-    private void jbthomepageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbthomepageActionPerformed
+    private void jbtnhomepageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnhomepageActionPerformed
         // TODO add your handling code here:
         dispose();
         HomePage homepage = new HomePage();
         homepage.setTitle("Pet Community");
         homepage.setVisible(true);
-    }//GEN-LAST:event_jbthomepageActionPerformed
+    }//GEN-LAST:event_jbtnhomepageActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,36 +222,37 @@ public class HospitalSignPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HospitalSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BussinessSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HospitalSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BussinessSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HospitalSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BussinessSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HospitalSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BussinessSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HospitalSignPage().setVisible(true);
+                new BussinessSignPage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JButton jbthomepage;
+    private javax.swing.JButton jbtnhomepage;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JButton jbtnsignup;
     private javax.swing.JLabel jlblpassword;
+    private javax.swing.JLabel jlblrole;
+    private javax.swing.JLabel jlblstore;
     private javax.swing.JLabel jlbltitle;
     private javax.swing.JLabel jlblusername;
-    private javax.swing.JComboBox<String> jtxthname;
-    private javax.swing.JTextField jtxthospitalname;
     private javax.swing.JPasswordField jtxtpassword;
-    private javax.swing.JTextField jtxtrole;
+    private javax.swing.JComboBox<String> jtxtstorename;
     private javax.swing.JTextField jtxtusername;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package LoginPage;
+package SignUpPage;
 
 import PrePage.HomePage;
 import java.sql.Connection;
@@ -71,11 +71,11 @@ public class AnimalShelterSignPage extends javax.swing.JFrame {
 
         jlblrole.setText("Role :");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "user", "admin", "volunteer" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "shelter user", "admin", "volunteer" }));
 
         jbtnsignin.setText("Sign In");
 
-        jlbltitle.setText("Sign In / Sign Up");
+        jlbltitle.setText("Sign Up Your Account");
 
         jbtnsignup.setText("Sign Up");
         jbtnsignup.addActionListener(new java.awt.event.ActionListener() {
@@ -123,12 +123,9 @@ public class AnimalShelterSignPage extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jtxtusername)
                                 .addComponent(jtxtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(jlbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jlbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)))
@@ -139,9 +136,9 @@ public class AnimalShelterSignPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addGap(36, 36, 36)
+                .addGap(34, 34, 34)
                 .addComponent(jlbltitle)
-                .addGap(52, 52, 52)
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblusername)
                     .addComponent(jtxtusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

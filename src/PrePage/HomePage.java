@@ -4,10 +4,10 @@
  */
 package PrePage;
 
-import LoginPage.BussinessSignPage;
-import LoginPage.HospitalSignPage;
-import LoginPage.UserSignPage;
-import LoginPage.AnimalShelterSignPage;
+import SignUpPage.BussinessSignPage;
+import SignUpPage.HospitalSignPage;
+import SignUpPage.UserSignPage;
+import SignUpPage.AnimalShelterSignPage;
 
 /**
  *
