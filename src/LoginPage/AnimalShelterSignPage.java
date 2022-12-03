@@ -4,17 +4,45 @@
  */
 package LoginPage;
 
+import PrePage.HomePage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pkuhore
  */
-public class StrayAnimalsSignPage extends javax.swing.JFrame {
+public class AnimalShelterSignPage extends javax.swing.JFrame {
 
     /**
      * Creates new form StrayAnimalsPage
      */
-    public StrayAnimalsSignPage() {
+    public AnimalShelterSignPage() {
         initComponents();
+        Connect();
+    }
+    
+    Connection con;
+    PreparedStatement pst;
+    
+    
+    public void Connect() 
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -35,65 +63,85 @@ public class StrayAnimalsSignPage extends javax.swing.JFrame {
         jtxtusername = new javax.swing.JTextField();
         jlblpassword = new javax.swing.JLabel();
         jtxtpassword = new javax.swing.JPasswordField();
-        jlblorganization = new javax.swing.JLabel();
+        jlblshelter = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jlblrole.setText("role :");
+        jlblrole.setText("Role :");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "volunteer" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "user", "admin", "volunteer" }));
 
         jbtnsignin.setText("Sign In");
 
         jlbltitle.setText("Sign In / Sign Up");
 
         jbtnsignup.setText("Sign Up");
+        jbtnsignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnsignupActionPerformed(evt);
+            }
+        });
 
-        jlblusername.setText("username :");
+        jlblusername.setText("Username :");
 
-        jlblpassword.setText("password :");
+        jlblpassword.setText("Password :");
 
-        jlblorganization.setText("organization :");
+        jlblshelter.setText("Shelter Name :");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "org1", "org2" }));
+
+        jButton1.setText("Back to HomePage");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbtnsignin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(264, 264, 264))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(310, 310, 310)
-                        .addComponent(jlbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlblusername, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jlblorganization, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jlblshelter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jlblpassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jlblrole, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtxtusername)
-                            .addComponent(jtxtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbtnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jtxtusername)
+                                .addComponent(jtxtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(jbtnsignin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(jbtnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(283, Short.MAX_VALUE))
+                        .addGap(254, 254, 254)
+                        .addComponent(jlbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(36, 36, 36)
                 .addComponent(jlbltitle)
-                .addGap(51, 51, 51)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblusername)
                     .addComponent(jtxtusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -103,21 +151,61 @@ public class StrayAnimalsSignPage extends javax.swing.JFrame {
                     .addComponent(jtxtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblorganization)
+                    .addComponent(jlblshelter)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblrole)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(90, 90, 90)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnsignin)
                     .addComponent(jbtnsignup))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtnsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsignupActionPerformed
+        // TODO add your handling code here:
+        
+        String uname = jtxtusername.getText();
+        String password = jtxtpassword.getText();
+        String sheltername = jComboBox1.getSelectedItem().toString();
+        String role = jComboBox2.getSelectedItem().toString();
+        
+        try {
+            pst = con.prepareStatement("insert into shelter(uname,password,sheltername,role)value(?,?,?,?)");
+            pst.setString(1, uname);
+            pst.setString(2, password);
+            pst.setString(3, sheltername);
+            pst.setString(4, role);
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Successfully Sign Up!");
+            
+            jtxtusername.setText("");
+            jtxtpassword.setText("");
+            jComboBox1.setSelectedIndex(-1);
+            jComboBox2.setSelectedIndex(-1);
+            jtxtusername.requestFocus();
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AnimalShelterSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_jbtnsignupActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        HomePage homepage = new HomePage();
+        homepage.setTitle("Pet Community");
+        homepage.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,33 +224,36 @@ public class StrayAnimalsSignPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StrayAnimalsSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnimalShelterSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StrayAnimalsSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnimalShelterSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StrayAnimalsSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnimalShelterSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StrayAnimalsSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AnimalShelterSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StrayAnimalsSignPage().setVisible(true);
+                new AnimalShelterSignPage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JButton jbtnsignup;
-    private javax.swing.JLabel jlblorganization;
     private javax.swing.JLabel jlblpassword;
     private javax.swing.JLabel jlblrole;
+    private javax.swing.JLabel jlblshelter;
     private javax.swing.JLabel jlbltitle;
     private javax.swing.JLabel jlblusername;
     private javax.swing.JPasswordField jtxtpassword;

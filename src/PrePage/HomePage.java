@@ -6,20 +6,20 @@ package PrePage;
 
 import LoginPage.BussinessSignPage;
 import LoginPage.HospitalSignPage;
-import LoginPage.MasterSignPage;
-import LoginPage.StrayAnimalsSignPage;
+import LoginPage.UserSignPage;
+import LoginPage.AnimalShelterSignPage;
 
 /**
  *
  * @author pkuhore
  */
-public class FirstPage extends javax.swing.JFrame {
+public class HomePage extends javax.swing.JFrame {
     
 
     /**
      * Creates new form FirstPage
      */
-    public FirstPage() {
+    public HomePage() {
         initComponents();
     }
 
@@ -40,7 +40,7 @@ public class FirstPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jbtnmaster.setText("Master");
+        jbtnmaster.setText("User");
         jbtnmaster.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnmasterActionPerformed(evt);
@@ -119,7 +119,7 @@ public class FirstPage extends javax.swing.JFrame {
     private void jbtnmasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnmasterActionPerformed
         // TODO add your handling code here:
         dispose();
-        MasterSignPage mastersignpage = new MasterSignPage();
+        UserSignPage mastersignpage = new UserSignPage();
         mastersignpage.setVisible(true);
     }//GEN-LAST:event_jbtnmasterActionPerformed
 
@@ -140,7 +140,7 @@ public class FirstPage extends javax.swing.JFrame {
     private void jbtnstrayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnstrayActionPerformed
         // TODO add your handling code here:
         dispose();
-        StrayAnimalsSignPage strayanimalssignpage = new StrayAnimalsSignPage();
+        AnimalShelterSignPage strayanimalssignpage = new AnimalShelterSignPage();
         strayanimalssignpage.setVisible(true);
     }//GEN-LAST:event_jbtnstrayActionPerformed
 
@@ -161,19 +161,20 @@ public class FirstPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FirstPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            FirstPage firstpage = new FirstPage();
+            HomePage firstpage = new HomePage();
             firstpage.setTitle("Pet Community");
             firstpage.setVisible(true);
         });
@@ -186,8 +187,4 @@ public class FirstPage extends javax.swing.JFrame {
     private javax.swing.JButton jbtnmaster;
     private javax.swing.JButton jbtnstray;
     // End of variables declaration//GEN-END:variables
-
-    public void setVisble(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

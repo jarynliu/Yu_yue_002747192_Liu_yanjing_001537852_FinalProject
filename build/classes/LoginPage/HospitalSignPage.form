@@ -30,45 +30,49 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="266" max="-2" attributes="0"/>
+                      <Component id="jlbltitle" min="-2" pref="251" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jlblusername" pref="83" max="32767" attributes="0"/>
-                              <Component id="jlblpassword" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jlblusername" max="32767" attributes="0"/>
+                          <Component id="jlblpassword" max="32767" attributes="0"/>
                           <Component id="jtxthospitalname" alignment="0" max="32767" attributes="0"/>
                           <Component id="jtxtrole" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jtxtusername" min="-2" pref="260" max="-2" attributes="0"/>
-                          <Component id="jtxtpassword" min="-2" pref="260" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jComboBox2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jbtnsignup" min="-2" pref="78" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jbtnsignin" min="-2" pref="78" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jtxtusername" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Component id="jtxtpassword" min="-2" pref="260" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jComboBox2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtxthname" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="266" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jbtnsignin" min="-2" pref="78" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                              <Component id="jbtnsignup" min="-2" pref="78" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jlbltitle" min="-2" pref="251" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jbthomepage" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="177" max="32767" attributes="0"/>
+              <EmptySpace pref="173" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jbthomepage" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Component id="jlbltitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -83,7 +87,7 @@
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jtxthospitalname" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtxthname" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -112,7 +116,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlblusername">
       <Properties>
-        <Property name="text" type="java.lang.String" value="UserName :"/>
+        <Property name="text" type="java.lang.String" value="User Name :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlblpassword">
@@ -121,18 +125,18 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtxtusername">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="letters (and numbers) only"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jtxtpassword">
     </Component>
     <Component class="javax.swing.JTextField" name="jtxthospitalname">
       <Properties>
-        <Property name="text" type="java.lang.String" value="HospitalName :"/>
+        <Property name="text" type="java.lang.String" value="Hospital Name :"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxthospitalnameActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="jtxthname">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
@@ -156,7 +160,7 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
             <StringItem index="0" value="Admin"/>
-            <StringItem index="1" value="doctor"/>
+            <StringItem index="1" value="Nutritionist"/>
           </StringArray>
         </Property>
       </Properties>
@@ -168,11 +172,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Sign In"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnsigninActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbtnsignup">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sign Up"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnsignupActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbthomepage">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Back to Homepage"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbthomepageActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
