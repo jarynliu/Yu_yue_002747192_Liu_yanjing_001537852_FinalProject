@@ -5,6 +5,7 @@
 package SignUpPage;
 
 import PrePage.HomePage;
+import SignInPage.UserSignIn;
 import javax.swing.JFrame;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -60,6 +61,7 @@ public class UserSignPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollBar1 = new javax.swing.JScrollBar();
         jlblcaution = new javax.swing.JLabel();
         jlblsign = new javax.swing.JLabel();
         jlblpetbreeder = new javax.swing.JLabel();
@@ -298,6 +300,12 @@ public class UserSignPage extends javax.swing.JFrame {
 
     private void jbtnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsigninActionPerformed
         // TODO add your handling code here:
+        
+        dispose();
+        UserSignIn us = new UserSignIn();
+        us.setVisible(true);
+        
+        
     }//GEN-LAST:event_jbtnsigninActionPerformed
 
     private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
@@ -354,6 +362,7 @@ public class UserSignPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JButton jbtnhomepage;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JButton jbtnsignup;
