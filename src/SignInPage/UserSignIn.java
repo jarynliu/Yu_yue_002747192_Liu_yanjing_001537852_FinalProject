@@ -4,6 +4,17 @@
  */
 package SignInPage;
 
+import SignUpPage.UserSignPage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import userPages.UserRecipe;
+
 /**
  *
  * @author iris
@@ -15,7 +26,28 @@ public class UserSignIn extends javax.swing.JFrame {
      */
     public UserSignIn() {
         initComponents();
+        Connect();
     }
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    
+    public void Connect() 
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,6 +77,11 @@ public class UserSignIn extends javax.swing.JFrame {
         jlblpassword.setText("Password:");
 
         jbtnsignin.setText("Sign In");
+        jbtnsignin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnsigninActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Choose Your Role:");
 
@@ -100,6 +137,47 @@ public class UserSignIn extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsigninActionPerformed
+        // TODO add your handling code here:
+        
+        String name = jtxtuname.getText();
+        String password = jtxtpassword.getText();
+        String role = jComboBox1.getSelectedItem().toString();
+        
+        try {
+            pst = con.prepareStatement("select * from user where name= ? and password= ? and role= ?");
+            pst.setString(1, name);
+            pst.setString(2, password);
+            pst.setString(3, role);
+            
+            
+            rs = pst.executeQuery();
+            
+            if(rs.next())
+            {
+                int userid = rs.getInt("id");
+                this.setVisible(false);
+                new UserRecipe(userid, name, role).setVisible(true);
+            
+            }
+            
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Username and Password do not match");
+                jtxtuname.setText("");
+                jtxtpassword.setText("");
+                jComboBox1.setSelectedIndex(-1);
+                jtxtuname.requestFocus();
+ 
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jbtnsigninActionPerformed
 
     /**
      * @param args the command line arguments
