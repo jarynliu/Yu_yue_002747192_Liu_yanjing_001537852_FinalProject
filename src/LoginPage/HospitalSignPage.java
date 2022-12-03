@@ -4,6 +4,7 @@
  */
 package LoginPage;
 
+import PrePage.HomePage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -64,6 +65,7 @@ public class HospitalSignPage extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jbtnsignin = new javax.swing.JButton();
         jbtnsignup = new javax.swing.JButton();
+        jbthomepage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HospitalPage");
@@ -76,8 +78,6 @@ public class HospitalSignPage extends javax.swing.JFrame {
         jlblusername.setText("User Name :");
 
         jlblpassword.setText("Password :");
-
-        jtxtusername.setText("letters (and numbers) only");
 
         jtxthospitalname.setText("Hospital Name :");
         jtxthospitalname.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +103,13 @@ public class HospitalSignPage extends javax.swing.JFrame {
         jbtnsignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnsignupActionPerformed(evt);
+            }
+        });
+
+        jbthomepage.setText("Back to Homepage");
+        jbthomepage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbthomepageActionPerformed(evt);
             }
         });
 
@@ -133,13 +140,18 @@ public class HospitalSignPage extends javax.swing.JFrame {
                                 .addComponent(jtxtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jtxthname, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(jtxthname, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jbthomepage)))
                 .addContainerGap(173, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addContainerGap()
+                .addComponent(jbthomepage)
+                .addGap(32, 32, 32)
                 .addComponent(jlbltitle)
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -213,6 +225,14 @@ public class HospitalSignPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jbtnsignupActionPerformed
 
+    private void jbthomepageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbthomepageActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        HomePage homepage = new HomePage();
+        homepage.setTitle("Pet Community");
+        homepage.setVisible(true);
+    }//GEN-LAST:event_jbthomepageActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,6 +270,7 @@ public class HospitalSignPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton jbthomepage;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JButton jbtnsignup;
     private javax.swing.JLabel jlblpassword;

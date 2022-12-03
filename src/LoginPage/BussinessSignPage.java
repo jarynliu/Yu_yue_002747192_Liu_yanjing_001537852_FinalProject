@@ -4,6 +4,7 @@
  */
 package LoginPage;
 
+import PrePage.HomePage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -64,6 +65,7 @@ public class BussinessSignPage extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jbtnsignin = new javax.swing.JButton();
         jbtnsignup = new javax.swing.JButton();
+        jbtnhomepage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +89,13 @@ public class BussinessSignPage extends javax.swing.JFrame {
         jbtnsignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnsignupActionPerformed(evt);
+            }
+        });
+
+        jbtnhomepage.setText("Back to Homepage");
+        jbtnhomepage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnhomepageActionPerformed(evt);
             }
         });
 
@@ -117,13 +126,18 @@ public class BussinessSignPage extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jbtnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(62, 62, 62)
-                                .addComponent(jbtnsignin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jbtnsignin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jbtnhomepage)))
                 .addContainerGap(290, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addContainerGap()
+                .addComponent(jbtnhomepage)
+                .addGap(37, 37, 37)
                 .addComponent(jlbltitle)
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -183,6 +197,14 @@ public class BussinessSignPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jbtnsignupActionPerformed
 
+    private void jbtnhomepageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnhomepageActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        HomePage homepage = new HomePage();
+        homepage.setTitle("Pet Community");
+        homepage.setVisible(true);
+    }//GEN-LAST:event_jbtnhomepageActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -221,6 +243,7 @@ public class BussinessSignPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton jbtnhomepage;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JButton jbtnsignup;
     private javax.swing.JLabel jlblpassword;
