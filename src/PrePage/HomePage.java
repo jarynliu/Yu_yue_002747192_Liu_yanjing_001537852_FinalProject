@@ -4,10 +4,10 @@
  */
 package PrePage;
 
-import LoginPage.BussinessSignPage;
-import LoginPage.HospitalSignPage;
-import LoginPage.UserSignPage;
-import LoginPage.AnimalShelterSignPage;
+import SignUpPage.BusinessSignPage;
+import SignUpPage.HospitalSignPage;
+import SignUpPage.UserSignPage;
+import SignUpPage.AnimalShelterSignPage;
 
 /**
  *
@@ -54,14 +54,14 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jbtnbussiness.setText("Bussiness");
+        jbtnbussiness.setText("Business");
         jbtnbussiness.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnbussinessActionPerformed(evt);
             }
         });
 
-        jbtnstray.setText("Stray Animals");
+        jbtnstray.setText("Animal Shelter");
         jbtnstray.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnstrayActionPerformed(evt);
@@ -84,7 +84,7 @@ public class HomePage extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(230, 230, 230)
                         .addComponent(jbtnstray)))
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,6 +120,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         UserSignPage mastersignpage = new UserSignPage();
+        mastersignpage.setTitle("User Sign");
         mastersignpage.setVisible(true);
     }//GEN-LAST:event_jbtnmasterActionPerformed
 
@@ -127,13 +128,15 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         HospitalSignPage hospitalsignpage = new HospitalSignPage();
+        hospitalsignpage.setTitle("Hospital Sign");
         hospitalsignpage.setVisible(true);
     }//GEN-LAST:event_jbtnhospitalActionPerformed
 
     private void jbtnbussinessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnbussinessActionPerformed
         // TODO add your handling code here:
         dispose();
-        BussinessSignPage bussinesssignpage = new BussinessSignPage();
+        BusinessSignPage bussinesssignpage = new BusinessSignPage();
+        bussinesssignpage.setTitle("Bussiness Sign");
         bussinesssignpage.setVisible(true);
     }//GEN-LAST:event_jbtnbussinessActionPerformed
 
@@ -141,6 +144,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         AnimalShelterSignPage strayanimalssignpage = new AnimalShelterSignPage();
+        strayanimalssignpage.setTitle("Shelter Sign");
         strayanimalssignpage.setVisible(true);
     }//GEN-LAST:event_jbtnstrayActionPerformed
 
