@@ -5,6 +5,7 @@
 package SignInPage;
 
 import HospitalPage.NutriRecipe;
+import SignUpPage.HospitalSignPage;
 import SignUpPage.UserSignPage;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,6 +68,7 @@ public class HospitalSignIn extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jbtnback = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +93,13 @@ public class HospitalSignIn extends javax.swing.JFrame {
         jLabel3.setText("Hospital Name:");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hos1", "Hos2" }));
+
+        jbtnback.setText("Back");
+        jbtnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnbackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,7 +127,9 @@ public class HospitalSignIn extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jbtnsignin)
-                .addGap(92, 92, 92))
+                .addGap(18, 18, 18)
+                .addComponent(jbtnback)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +153,9 @@ public class HospitalSignIn extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addComponent(jbtnsignin)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnsignin)
+                    .addComponent(jbtnback))
                 .addGap(15, 15, 15))
         );
 
@@ -195,6 +208,15 @@ public class HospitalSignIn extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jbtnsigninActionPerformed
 
+    private void jbtnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnbackActionPerformed
+        // TODO add your handling code here:
+        
+        dispose();
+        HospitalSignPage hs = new HospitalSignPage();
+        hs.setVisible(true);
+        
+    }//GEN-LAST:event_jbtnbackActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -237,6 +259,7 @@ public class HospitalSignIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jbtnback;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JLabel jlblpassword;
     private javax.swing.JLabel jlblusername;
