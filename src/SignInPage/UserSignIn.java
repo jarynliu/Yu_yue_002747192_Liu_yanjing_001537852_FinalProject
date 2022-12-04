@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import userPages.UserRecipe;
+import UserPage.UserRecipe;
 
 /**
  *

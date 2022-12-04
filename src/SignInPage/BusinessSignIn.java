@@ -4,6 +4,17 @@
  */
 package SignInPage;
 
+import BusinessPage.Product;
+import SignUpPage.UserSignPage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author iris
@@ -15,6 +26,26 @@ public class BusinessSignIn extends javax.swing.JFrame {
      */
     public BusinessSignIn() {
         initComponents();
+        Connect();
+    }
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    
+    public void Connect() 
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -120,6 +151,46 @@ public class BusinessSignIn extends javax.swing.JFrame {
 
     private void jbtnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsigninActionPerformed
         // TODO add your handling code here:
+        
+        String uname = jtxtuname.getText();
+        String password = jtxtpassword.getText();
+        String storename = jComboBox2.getSelectedItem().toString();
+        String role = jComboBox1.getSelectedItem().toString();
+        
+        try {
+            pst = con.prepareStatement("select * from business where uname= ? and password= ? and storename= ? and role= ?");
+            pst.setString(1, uname);
+            pst.setString(2, password);
+            pst.setString(3, storename);
+            pst.setString(4, role);
+            
+            
+            rs = pst.executeQuery();
+            
+            if(rs.next())
+            {
+                int busid = rs.getInt("id");
+                this.setVisible(false);
+                new Product(busid, uname, role).setVisible(true);
+            
+            }
+            
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Username and Password do not match");
+                jtxtuname.setText("");
+                jtxtpassword.setText("");
+                jComboBox2.setSelectedIndex(-1);
+                jComboBox1.setSelectedIndex(-1);
+                jtxtuname.requestFocus();
+ 
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
     }//GEN-LAST:event_jbtnsigninActionPerformed
 
