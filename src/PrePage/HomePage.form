@@ -57,7 +57,11 @@
                           <Component id="jbtnstray" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+<<<<<<< HEAD
                   <EmptySpace pref="233" max="32767" attributes="0"/>
+=======
+                  <EmptySpace pref="230" max="32767" attributes="0"/>
+>>>>>>> c8a7e6631432ae30c92e18363303c10a6b8e6159
               </Group>
           </Group>
         </DimensionLayout>
@@ -106,7 +110,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbtnstray">
           <Properties>
+<<<<<<< HEAD
             <Property name="text" type="java.lang.String" value="Stray Animals"/>
+=======
+            <Property name="text" type="java.lang.String" value="Animal Shelter"/>
+>>>>>>> c8a7e6631432ae30c92e18363303c10a6b8e6159
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnstrayActionPerformed"/>

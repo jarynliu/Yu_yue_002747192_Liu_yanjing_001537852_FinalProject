@@ -4,10 +4,10 @@
  */
 package PrePage;
 
-import LoginPage.BussinessSignPage;
-import LoginPage.HospitalSignPage;
-import LoginPage.UserSignPage;
-import LoginPage.AnimalShelterSignPage;
+import SignUpPage.BussinessSignPage;
+import SignUpPage.HospitalSignPage;
+import SignUpPage.UserSignPage;
+import SignUpPage.AnimalShelterSignPage;
 
 /**
  *
@@ -61,7 +61,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jbtnstray.setText("Stray Animals");
+        jbtnstray.setText("Animal Shelter");
         jbtnstray.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnstrayActionPerformed(evt);
@@ -84,7 +84,7 @@ public class HomePage extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(230, 230, 230)
                         .addComponent(jbtnstray)))
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -8,9 +8,12 @@
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> c8a7e6631432ae30c92e18363303c10a6b8e6159
 <project name="Final_Project" default="default" basedir=".">
     <description>Builds, tests, and runs the project Final Project.</description>
     <import file="nbproject/build-impl.xml"/>
@@ -64,7 +67,10 @@
 
         <target name="run" depends="Final_Project-impl.jar">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> c8a7e6631432ae30c92e18363303c10a6b8e6159
 =======
 <project name="FinalProject" default="default" basedir=".">
     <description>Builds, tests, and runs the project FinalProject.</description>
@@ -119,7 +125,10 @@
 
         <target name="run" depends="FinalProject-impl.jar">
 >>>>>>> origin/Yue
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> c8a7e6631432ae30c92e18363303c10a6b8e6159
             <exec dir="bin" executable="launcher.exe">
                 <arg file="${dist.jar}"/>
             </exec>
