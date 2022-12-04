@@ -195,7 +195,7 @@ public class BussinessSignPage extends javax.swing.JFrame {
             
 /////////////////////////////////////////////////////////////DataValidation/////////////////////////////////////////////////////////////////////////////////////////////////////
             
-            String sql = "select * from hospital where uname = ?";
+            String sql = "select * from business where uname = ?";
             unameList = con.prepareStatement(sql);
             unameList.setString(1, uname);
             ResultSet rs = unameList.executeQuery();

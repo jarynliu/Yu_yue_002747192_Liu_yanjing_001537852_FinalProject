@@ -194,7 +194,7 @@ public class AnimalShelterSignPage extends javax.swing.JFrame {
             
 ///////////////////////////////////////////////DataValidationg/////////////////////////////////////////////////////////////////////////////////////////////////            
             
-            String sql = "select * from hospital where uname = ?";
+            String sql = "select * from shelter where uname = ?";
             unameList = con.prepareStatement(sql);
             unameList.setString(1, uname);
             ResultSet rs = unameList.executeQuery();

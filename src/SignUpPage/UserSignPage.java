@@ -275,7 +275,7 @@ public class UserSignPage extends javax.swing.JFrame {
         try {
             pst = con.prepareStatement("insert into user(name,ptype,birthday,pbreed,password,email,role)value(?,?,?,?,?,?,?)");
 ///////////////////////////////////////////////////////////DataValidation///////////////////////////////////////////////////////////////////////////////////            
-            String sql = "select * from hospital where uname = ?";
+            String sql = "select * from user where name = ?";
             unameList = con.prepareStatement(sql);
             unameList.setString(1, name);
             ResultSet rs = unameList.executeQuery();

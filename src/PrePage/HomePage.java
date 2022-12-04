@@ -120,6 +120,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         UserSignPage mastersignpage = new UserSignPage();
+        mastersignpage.setTitle("User Sign");
         mastersignpage.setVisible(true);
     }//GEN-LAST:event_jbtnmasterActionPerformed
 
@@ -127,6 +128,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         HospitalSignPage hospitalsignpage = new HospitalSignPage();
+        hospitalsignpage.setTitle("Hospital Sign");
         hospitalsignpage.setVisible(true);
     }//GEN-LAST:event_jbtnhospitalActionPerformed
 
@@ -134,6 +136,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         BussinessSignPage bussinesssignpage = new BussinessSignPage();
+        bussinesssignpage.setTitle("Bussiness Sign");
         bussinesssignpage.setVisible(true);
     }//GEN-LAST:event_jbtnbussinessActionPerformed
 
@@ -141,6 +144,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         AnimalShelterSignPage strayanimalssignpage = new AnimalShelterSignPage();
+        strayanimalssignpage.setTitle("Shelter Sign");
         strayanimalssignpage.setVisible(true);
     }//GEN-LAST:event_jbtnstrayActionPerformed
 
