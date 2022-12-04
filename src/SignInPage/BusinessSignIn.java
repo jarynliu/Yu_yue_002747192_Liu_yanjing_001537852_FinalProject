@@ -47,6 +47,11 @@ public class BusinessSignIn extends javax.swing.JFrame {
         jlblpassword.setText("Password:");
 
         jbtnsignin.setText("Sign In");
+        jbtnsignin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnsigninActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Choose Your Role:");
 
@@ -112,6 +117,11 @@ public class BusinessSignIn extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsigninActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jbtnsigninActionPerformed
 
     /**
      * @param args the command line arguments

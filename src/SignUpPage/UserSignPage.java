@@ -6,14 +6,18 @@ package SignUpPage;
 
 import PrePage.HomePage;
 import SignInPage.UserSignIn;
+import com.mysql.cj.protocol.Resultset;
 import javax.swing.JFrame;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,6 +38,7 @@ public class UserSignPage extends javax.swing.JFrame {
     
     Connection con;
     PreparedStatement pst;
+    PreparedStatement unameList;
     
     
     public void Connect() 
@@ -269,23 +274,73 @@ public class UserSignPage extends javax.swing.JFrame {
         
         try {
             pst = con.prepareStatement("insert into user(name,ptype,birthday,pbreed,password,email,role)value(?,?,?,?,?,?,?)");
-            pst.setString(1, name);
+///////////////////////////////////////////////////////////DataValidation///////////////////////////////////////////////////////////////////////////////////            
+            String sql = "select * from hospital where uname = ?";
+            unameList = con.prepareStatement(sql);
+            unameList.setString(1, name);
+            ResultSet rs = unameList.executeQuery();
+            
+            
+             if (name == null || name.trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Please Input Name.");
+                return;}
+            else if (!rs.next()){
+            } else {
+                JOptionPane.showMessageDialog(this, "The Name is Occupied.Please Change one.");
+                return;
+            }pst.setString(1, name);
+            
+             if (birthday == null || birthday.trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Please Input Birthday.");
+                return;
+            }pst.setString(3, birthday); 
+            
+            if (pbreed == null || pbreed.trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Please Input Pet Breed.");
+                return;
+            }pst.setString(4, pbreed); 
+       
+            if (password == null || password.trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Please Input Password.");
+                return;
+            }pst.setString(5, password);  
+            
+            
+            
+            if (email == null || email.trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Please Input Email.");
+                return;
+            }
+            boolean flag;
+            try {
+                String check = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+                Pattern regex = Pattern.compile(check);
+                Matcher matcher = regex.matcher(email);
+                flag = matcher.matches();
+            } catch (Exception e) {
+                flag = false;
+            }
+            if (!flag) {
+                JOptionPane.showMessageDialog(this, "Please Input Right Email.");
+                return;
+            }pst.setString(6, email);
+            
+//////////////////////////////////////////////////////////DataValidation//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////            
+       
+            
+            
             pst.setString(2, ptype);
-            pst.setString(3, birthday);
-            pst.setString(4, pbreed);
-            pst.setString(5, password);
-            pst.setString(6, email);
             pst.setString(7, role);
             pst.executeUpdate();
             
             JOptionPane.showMessageDialog(this, "Successfully Sign Up!");
             
             jtxtname.setText("");
-            jtxtptype.setSelectedIndex(-1);
+            jtxtptype.setSelectedIndex(0);
             jtxtbreed.setText("");
             jtxtpassword.setText("");
             jtxtemail.setText("");
-            jcbxrole.setSelectedIndex(-1);
+            jcbxrole.setSelectedIndex(0);
             jtxtname.requestFocus();
                                
             

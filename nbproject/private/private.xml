@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/LoginPage/UserSignPage.java</file>
-            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/LoginPage/BussinessSignPage.java</file>
-            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/PrePage/FirstPage.java</file>
-=======
-            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/LoginPage/FirstPage.java</file>
-            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/PrePage/MasterSignPage.java</file>
->>>>>>> c8a7e6631432ae30c92e18363303c10a6b8e6159
+            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/SignUpPage/AnimalShelterSignPage.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/SignInPage/ShelterSignIn.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/SignUpPage/UserSignPage.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/SignInPage/UserSignIn.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/PrePage/HomePage.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/SignInPage/BusinessSignIn.java</file>
         </group>
     </open-files>
 </project-private>

@@ -6,9 +6,11 @@ package SignUpPage;
 
 import PrePage.HomePage;
 import SignInPage.BusinessSignIn;
+import com.mysql.cj.protocol.Resultset;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +32,7 @@ public class BussinessSignPage extends javax.swing.JFrame {
     
     Connection con;
     PreparedStatement pst;
+    PreparedStatement unameList;
     
     
     public void Connect() 
@@ -189,8 +192,30 @@ public class BussinessSignPage extends javax.swing.JFrame {
         
         try {
             pst = con.prepareStatement("insert into business(uname,password,storename,role)value(?,?,?,?)");
-            pst.setString(1, uname);
-            pst.setString(2, password);
+            
+/////////////////////////////////////////////////////////////DataValidation/////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            String sql = "select * from hospital where uname = ?";
+            unameList = con.prepareStatement(sql);
+            unameList.setString(1, uname);
+            ResultSet rs = unameList.executeQuery();
+                        
+            if (uname == null || uname.trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Please Input Name.");
+                return;}
+            else if (!rs.next()){
+            } else {
+                JOptionPane.showMessageDialog(this, "The Name is Occupied.Please Change one.");
+                return;
+            }pst.setString(1, uname);
+            
+            if (password == null || password.trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Please Input Password.");
+                return;
+            }pst.setString(2, password);
+            
+ ///////////////////////////////////////////////////////////DataValidation//////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
             pst.setString(3, storename);
             pst.setString(4, role);
             pst.executeUpdate();
@@ -199,8 +224,8 @@ public class BussinessSignPage extends javax.swing.JFrame {
             
             jtxtusername.setText("");
             jtxtpassword.setText("");
-            jtxtstorename.setSelectedIndex(-1);
-            jComboBox2.setSelectedIndex(-1);
+            jtxtstorename.setSelectedIndex(0);
+            jComboBox2.setSelectedIndex(0);
             jtxtusername.requestFocus();
             
         } catch (SQLException ex) {
