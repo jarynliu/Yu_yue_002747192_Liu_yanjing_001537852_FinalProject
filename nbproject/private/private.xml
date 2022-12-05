@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/SignUpPage/AnimalShelterSignPage.java</file>
-            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/SignInPage/ShelterSignIn.java</file>
             <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/SignUpPage/UserSignPage.java</file>
             <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/SignInPage/UserSignIn.java</file>
-            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/PrePage/HomePage.java</file>
-            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/SignInPage/BusinessSignIn.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/ShelterPages/StrayAnimals.java</file>
+            <file>file:/D:/Documents/NetBeansProjects/Final%20Project/src/ShelterPages/VolunteerPage.java</file>
         </group>
     </open-files>
 </project-private>
