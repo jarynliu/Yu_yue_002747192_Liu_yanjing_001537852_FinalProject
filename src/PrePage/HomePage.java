@@ -8,6 +8,7 @@ import SignUpPage.BusinessSignPage;
 import SignUpPage.HospitalSignPage;
 import SignUpPage.UserSignPage;
 import SignUpPage.AnimalShelterSignPage;
+import java.awt.Toolkit;
 
 /**
  *
@@ -21,6 +22,7 @@ public class HomePage extends javax.swing.JFrame {
      */
     public HomePage() {
         initComponents();
+        
     }
 
     /**

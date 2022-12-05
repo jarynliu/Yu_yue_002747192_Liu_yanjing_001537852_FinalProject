@@ -2,37 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-<<<<<<< HEAD:src/ShelterPages/PetInformationPage.java
 package ShelterPages;
 
 import javax.swing.JFrame;
-=======
-package HospitalPage;
->>>>>>> bbf7e3348909c4db5e7b6b51fb6c3f4148b47547:src/HospitalPage/NutriRecipe.java
 
 /**
  *
- * @author iris
+ * @author pkuhore
  */
-<<<<<<< HEAD:src/ShelterPages/PetInformationPage.java
 public class PetInformationPage extends javax.swing.JFrame {
 
     /**
      * Creates new form PetInformationPage
      */
     public PetInformationPage() {
-=======
-public class NutriRecipe extends javax.swing.JFrame {
-
-    /**
-     * Creates new form NutriRecipe
-     */
-    public NutriRecipe() {
-        initComponents();
-    }
-    
-    public NutriRecipe(int id, String uname, String role) {
->>>>>>> bbf7e3348909c4db5e7b6b51fb6c3f4148b47547:src/HospitalPage/NutriRecipe.java
         initComponents();
     }
 
@@ -45,7 +28,6 @@ public class NutriRecipe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< HEAD:src/ShelterPages/PetInformationPage.java
         jbtnappoinment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,20 +38,12 @@ public class NutriRecipe extends javax.swing.JFrame {
                 jbtnappoinmentActionPerformed(evt);
             }
         });
-=======
-        jLabel1 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Review Food Recipe");
->>>>>>> bbf7e3348909c4db5e7b6b51fb6c3f4148b47547:src/HospitalPage/NutriRecipe.java
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD:src/ShelterPages/PetInformationPage.java
                 .addContainerGap()
                 .addComponent(jbtnappoinment)
                 .addContainerGap(627, Short.MAX_VALUE))
@@ -80,18 +54,6 @@ public class NutriRecipe extends javax.swing.JFrame {
                 .addContainerGap(547, Short.MAX_VALUE)
                 .addComponent(jbtnappoinment)
                 .addGap(30, 30, 30))
-=======
-                .addGap(263, 263, 263)
-                .addComponent(jLabel1)
-                .addContainerGap(244, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addContainerGap(392, Short.MAX_VALUE))
->>>>>>> bbf7e3348909c4db5e7b6b51fb6c3f4148b47547:src/HospitalPage/NutriRecipe.java
         );
 
         pack();
@@ -120,7 +82,6 @@ public class NutriRecipe extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-<<<<<<< HEAD:src/ShelterPages/PetInformationPage.java
             java.util.logging.Logger.getLogger(PetInformationPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(PetInformationPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -128,35 +89,18 @@ public class NutriRecipe extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PetInformationPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PetInformationPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-=======
-            java.util.logging.Logger.getLogger(NutriRecipe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NutriRecipe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NutriRecipe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NutriRecipe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
->>>>>>> bbf7e3348909c4db5e7b6b51fb6c3f4148b47547:src/HospitalPage/NutriRecipe.java
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-<<<<<<< HEAD:src/ShelterPages/PetInformationPage.java
                 new PetInformationPage().setVisible(true);
-=======
-                new NutriRecipe().setVisible(true);
->>>>>>> bbf7e3348909c4db5e7b6b51fb6c3f4148b47547:src/HospitalPage/NutriRecipe.java
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD:src/ShelterPages/PetInformationPage.java
     private javax.swing.JButton jbtnappoinment;
-=======
-    private javax.swing.JLabel jLabel1;
->>>>>>> bbf7e3348909c4db5e7b6b51fb6c3f4148b47547:src/HospitalPage/NutriRecipe.java
     // End of variables declaration//GEN-END:variables
 }
