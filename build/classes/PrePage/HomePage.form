@@ -57,7 +57,7 @@
                           <Component id="jbtnstray" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="233" max="32767" attributes="0"/>
+                  <EmptySpace pref="230" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -98,7 +98,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbtnbussiness">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Bussiness"/>
+            <Property name="text" type="java.lang.String" value="Business"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnbussinessActionPerformed"/>
@@ -106,7 +106,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbtnstray">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Stray Animals"/>
+            <Property name="text" type="java.lang.String" value="Animal Shelter"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnstrayActionPerformed"/>
