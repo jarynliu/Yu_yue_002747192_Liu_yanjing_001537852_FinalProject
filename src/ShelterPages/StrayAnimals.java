@@ -17,8 +17,9 @@ class StrayAnimals {
     private int age;
     private Date time_arrive;
     private String spay,disabled,vaccination,pettype;
+    private byte[] picture;
     
-    public StrayAnimals(int sno, String name, String gender, int age, Date time_arrive, String spay, String disabled, String vaccination, String pettype)
+    public StrayAnimals(int sno, String name, String gender, int age, Date time_arrive, String spay, String disabled, String vaccination, String pettype, byte[] image)
     {
         this.sno = sno;
         this.name = name;
@@ -29,7 +30,7 @@ class StrayAnimals {
         this.disabled = disabled;
         this.vaccination = vaccination;
         this.pettype = pettype;
-        
+        this.picture = image;
     }
 
     public int getSno() {
@@ -66,6 +67,10 @@ class StrayAnimals {
 
     public String getPettype() {
         return pettype;
+    }
+
+    public byte[] getPicture() {
+        return picture;
     }
     
     
