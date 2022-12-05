@@ -4,7 +4,7 @@
  */
 package PrePage;
 
-import SignUpPage.BussinessSignPage;
+import SignUpPage.BusinessSignPage;
 import SignUpPage.HospitalSignPage;
 import SignUpPage.UserSignPage;
 import SignUpPage.AnimalShelterSignPage;
@@ -54,7 +54,7 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jbtnbussiness.setText("Bussiness");
+        jbtnbussiness.setText("Business");
         jbtnbussiness.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnbussinessActionPerformed(evt);
@@ -135,7 +135,7 @@ public class HomePage extends javax.swing.JFrame {
     private void jbtnbussinessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnbussinessActionPerformed
         // TODO add your handling code here:
         dispose();
-        BussinessSignPage bussinesssignpage = new BussinessSignPage();
+        BusinessSignPage bussinesssignpage = new BusinessSignPage();
         bussinesssignpage.setTitle("Bussiness Sign");
         bussinesssignpage.setVisible(true);
     }//GEN-LAST:event_jbtnbussinessActionPerformed

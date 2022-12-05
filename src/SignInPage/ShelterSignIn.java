@@ -4,6 +4,18 @@
  */
 package SignInPage;
 
+
+import SignUpPage.AnimalShelterSignPage;
+import SignUpPage.UserSignPage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author iris
@@ -15,6 +27,26 @@ public class ShelterSignIn extends javax.swing.JFrame {
      */
     public ShelterSignIn() {
         initComponents();
+        Connect();
+    }
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    
+    public void Connect() 
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -36,6 +68,7 @@ public class ShelterSignIn extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jlblsname = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jbtnback = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +80,11 @@ public class ShelterSignIn extends javax.swing.JFrame {
         jlblpassword.setText("Password:");
 
         jbtnsignin.setText("Sign In");
+        jbtnsignin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnsigninActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Choose Your Role:");
 
@@ -55,6 +93,13 @@ public class ShelterSignIn extends javax.swing.JFrame {
         jlblsname.setText("Shelter Name:");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "org1", "org2" }));
+
+        jbtnback.setText("Back");
+        jbtnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnbackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,7 +127,9 @@ public class ShelterSignIn extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jbtnsignin)
-                .addGap(92, 92, 92))
+                .addGap(27, 27, 27)
+                .addComponent(jbtnback)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,13 +152,32 @@ public class ShelterSignIn extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(jbtnsignin)
-                .addGap(15, 15, 15))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnsignin)
+                    .addComponent(jbtnback))
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsigninActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        
+    }//GEN-LAST:event_jbtnsigninActionPerformed
+
+    private void jbtnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnbackActionPerformed
+        // TODO add your handling code here:
+        
+        dispose();
+        AnimalShelterSignPage as = new AnimalShelterSignPage();
+        as.setVisible(true);
+        
+    }//GEN-LAST:event_jbtnbackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +222,7 @@ public class ShelterSignIn extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jbtnback;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JLabel jlblpassword;
     private javax.swing.JLabel jlblsname;

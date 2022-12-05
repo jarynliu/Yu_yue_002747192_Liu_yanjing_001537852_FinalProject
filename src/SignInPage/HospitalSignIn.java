@@ -4,6 +4,18 @@
  */
 package SignInPage;
 
+import HospitalPage.NutriRecipe;
+import SignUpPage.HospitalSignPage;
+import SignUpPage.UserSignPage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author iris
@@ -15,6 +27,26 @@ public class HospitalSignIn extends javax.swing.JFrame {
      */
     public HospitalSignIn() {
         initComponents();
+        Connect();
+    }
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    
+    public void Connect() 
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -34,6 +66,9 @@ public class HospitalSignIn extends javax.swing.JFrame {
         jbtnsignin = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jbtnback = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,10 +80,26 @@ public class HospitalSignIn extends javax.swing.JFrame {
         jlblpassword.setText("Password:");
 
         jbtnsignin.setText("Sign In");
+        jbtnsignin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnsigninActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Choose Your Role:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "nutritionist" }));
+
+        jLabel3.setText("Hospital Name:");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hos1", "Hos2" }));
+
+        jbtnback.setText("Back");
+        jbtnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnbackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,12 +112,14 @@ public class HospitalSignIn extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlblpassword)
                             .addComponent(jlblusername)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
                         .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtxtpassword)
                             .addComponent(jtxtuname)
-                            .addComponent(jComboBox1, 0, 144, Short.MAX_VALUE)))
+                            .addComponent(jComboBox1, 0, 144, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(237, 237, 237)
                         .addComponent(jLabel1)))
@@ -74,7 +127,9 @@ public class HospitalSignIn extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jbtnsignin)
-                .addGap(92, 92, 92))
+                .addGap(18, 18, 18)
+                .addComponent(jbtnback)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,17 +144,78 @@ public class HospitalSignIn extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblpassword)
                     .addComponent(jtxtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(jbtnsignin)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnsignin)
+                    .addComponent(jbtnback))
                 .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsigninActionPerformed
+        // TODO add your handling code here:
+        
+        String uname = jtxtuname.getText();
+        String password = jtxtpassword.getText();
+        String hname = jComboBox2.getSelectedItem().toString();
+        String role = jComboBox1.getSelectedItem().toString();
+        
+        try {
+            pst = con.prepareStatement("select * from hospital where uname= ? and password= ? and hname= ? and role= ?");
+            pst.setString(1, uname);
+            pst.setString(2, password);
+            pst.setString(3, hname);
+            pst.setString(4, role);
+            
+            
+            rs = pst.executeQuery();
+            
+            if(rs.next())
+            {
+                int nid = rs.getInt("id");
+                this.setVisible(false);
+                new NutriRecipe(nid, uname, role).setVisible(true);
+            
+            }
+            
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Username and Password do not match");
+                jtxtuname.setText("");
+                jtxtpassword.setText("");
+                jComboBox2.setSelectedIndex(-1);
+                jComboBox1.setSelectedIndex(-1);
+                jtxtuname.requestFocus();
+ 
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }//GEN-LAST:event_jbtnsigninActionPerformed
+
+    private void jbtnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnbackActionPerformed
+        // TODO add your handling code here:
+        
+        dispose();
+        HospitalSignPage hs = new HospitalSignPage();
+        hs.setVisible(true);
+        
+    }//GEN-LAST:event_jbtnbackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,8 +255,11 @@ public class HospitalSignIn extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jbtnback;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JLabel jlblpassword;
     private javax.swing.JLabel jlblusername;
