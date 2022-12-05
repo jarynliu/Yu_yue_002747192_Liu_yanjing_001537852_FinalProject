@@ -4,7 +4,7 @@
  */
 package ShelterPages;
 
-import TextFieldTool.JTextFieldHintListener;
+import Tool.JTextFieldHintListener;
 import javax.swing.JFrame;
 
 /**
