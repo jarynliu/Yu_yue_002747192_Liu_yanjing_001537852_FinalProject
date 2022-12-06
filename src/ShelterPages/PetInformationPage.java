@@ -140,7 +140,13 @@ public class PetInformationPage extends javax.swing.JFrame {
         }
     
     }
+    
+    public PetInformationPage(int id, String uname, String role)
+    {
+        initComponents();
+    }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
