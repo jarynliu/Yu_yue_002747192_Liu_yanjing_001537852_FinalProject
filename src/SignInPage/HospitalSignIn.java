@@ -7,6 +7,8 @@ package SignInPage;
 import HospitalPage.NutriRecipe;
 import SignUpPage.HospitalSignPage;
 import SignUpPage.UserSignPage;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,6 +29,9 @@ public class HospitalSignIn extends javax.swing.JFrame {
      */
     public HospitalSignIn() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         Connect();
     }
     
@@ -214,6 +219,7 @@ public class HospitalSignIn extends javax.swing.JFrame {
         dispose();
         HospitalSignPage hs = new HospitalSignPage();
         hs.setVisible(true);
+        hs.setTitle("HospitalSignIn");
         
     }//GEN-LAST:event_jbtnbackActionPerformed
 

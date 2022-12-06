@@ -7,6 +7,8 @@ package SignUpPage;
 import PrePage.HomePage;
 import SignInPage.ShelterSignIn;
 import com.mysql.cj.protocol.Resultset;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,6 +29,9 @@ public class AnimalShelterSignPage extends javax.swing.JFrame {
      */
     public AnimalShelterSignPage() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         Connect();
     }
     
@@ -249,6 +254,7 @@ public class AnimalShelterSignPage extends javax.swing.JFrame {
         dispose();
         ShelterSignIn ss = new ShelterSignIn();
         ss.setVisible(true);
+        ss.setTitle("ShelterSignIn");
 
         
     }//GEN-LAST:event_jbtnsigninActionPerformed

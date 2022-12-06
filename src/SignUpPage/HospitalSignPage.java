@@ -7,6 +7,8 @@ package SignUpPage;
 import PrePage.HomePage;
 import SignInPage.HospitalSignIn;
 import com.mysql.cj.protocol.Resultset;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,6 +30,9 @@ public class HospitalSignPage extends javax.swing.JFrame {
     public HospitalSignPage() {
         initComponents();
         Connect();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
     }
     
     Connection con;
@@ -205,6 +210,7 @@ public class HospitalSignPage extends javax.swing.JFrame {
         dispose();
         HospitalSignIn hs = new HospitalSignIn();
         hs.setVisible(true);
+        hs.setTitle("HospitalSignIn");
 
         
     }//GEN-LAST:event_jbtnsigninActionPerformed
