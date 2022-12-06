@@ -374,10 +374,11 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
             //show_strayanimals();
             JOptionPane.showMessageDialog(null, "Successful!!!");
             
-             this.toBack();
-            PetInformationPage petinfo = new PetInformationPage();
-            petinfo.setVisible(true);
-            petinfo.toFront();
+//            this.toBack();
+//            PetInformationPage petinfo = new PetInformationPage();
+//            petinfo.setVisible(true);
+//            petinfo.toFront();
+            new PetInformationPage().setVisible(true);
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);

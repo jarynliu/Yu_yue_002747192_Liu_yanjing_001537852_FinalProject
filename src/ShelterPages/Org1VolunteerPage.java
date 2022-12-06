@@ -54,6 +54,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         show_strayanimals();
+        show_appointment();
     }
     
     public ArrayList<StrayAnimals> strayanimalsList(){
@@ -82,10 +83,36 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         
     }
     
+     public ArrayList<Appointment> appointmentList(){
+        ArrayList<Appointment> appointmentList = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
+            String query1 = "SELECT * FROM appointment";
+            Statement st = con.createStatement();
+            ResultSet rs =st.executeQuery(query1);
+            
+            Appointment appointment;
+            
+            while(rs.next()){
+            
+                appointment = new Appointment(rs.getInt("ano"),rs.getString("name"),rs.getString("id"),rs.getString("gender"),rs.getInt("age"),rs.getString("haveorhadpet"),rs.getString("numberofpet"),rs.getString("pettypenow"),rs.getString("phonenumber"),rs.getString("homeaddress"),rs.getString("shelterpetname"));
+                appointmentList.add(appointment);
+            
+            }
+            
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e);
+        }
+        
+        return appointmentList;
+        
+    }
+    
     public void show_strayanimals(){
     
         ArrayList<StrayAnimals> list = strayanimalsList();
-        DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
+        DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
         Object[] row = new Object[9];
         for (int i=0; i<list.size();i++){
         
@@ -101,6 +128,31 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             model.addRow(row);
         }
     
+        
+    }
+    
+     public void show_appointment(){
+    
+        ArrayList<Appointment> list = appointmentList();
+        DefaultTableModel model = (DefaultTableModel)jtb_display_appointment.getModel();
+        Object[] row = new Object[11];
+        for (int i=0; i<list.size();i++){
+        
+            row[0] = list.get(i).getAno();
+            row[1] = list.get(i).getName();
+            row[2] = list.get(i).getId();
+            row[3] = list.get(i).getGender();
+            row[4] = list.get(i).getAge();
+            row[5] = list.get(i).getHaveorhadpet();
+            row[6] = list.get(i).getNumberofpet();
+            row[7] = list.get(i).getPettypenow();
+            row[8]= list.get(i).getPhonenumber();
+            row[9]= list.get(i).getHomeaddress();
+            row[10]= list.get(i).getShelterpetname();
+            model.addRow(row);
+        }
+    
+        
     }
     
 
@@ -117,6 +169,9 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
+        buttonGroup7 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -151,6 +206,38 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         jtxtsearch3 = new javax.swing.JTextField();
         jlblsearch3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jtb_display_appointment = new javax.swing.JTable();
+        jlblname = new javax.swing.JLabel();
+        jlblid = new javax.swing.JLabel();
+        jlblgender = new javax.swing.JLabel();
+        jlblage = new javax.swing.JLabel();
+        jlblhaveorhad = new javax.swing.JLabel();
+        jlblnumberofpet = new javax.swing.JLabel();
+        jlblpettypenow = new javax.swing.JLabel();
+        jlblphone = new javax.swing.JLabel();
+        jlbladdress = new javax.swing.JLabel();
+        jlblshelterpetname = new javax.swing.JLabel();
+        jtxtid = new javax.swing.JTextField();
+        jtxtname = new javax.swing.JTextField();
+        jtxtage = new javax.swing.JTextField();
+        jtxtphone = new javax.swing.JTextField();
+        jtxtaddress = new javax.swing.JTextField();
+        jtxtshelterpetname = new javax.swing.JTextField();
+        jbtnfemale = new javax.swing.JRadioButton();
+        jbtnmale = new javax.swing.JRadioButton();
+        jbtnnotsay = new javax.swing.JRadioButton();
+        jbtnyes = new javax.swing.JRadioButton();
+        jbtnno = new javax.swing.JRadioButton();
+        jbtn0 = new javax.swing.JRadioButton();
+        jbtn1 = new javax.swing.JRadioButton();
+        jbtn2 = new javax.swing.JRadioButton();
+        jbtn3 = new javax.swing.JRadioButton();
+        jcbdog = new javax.swing.JCheckBox();
+        jcbcat = new javax.swing.JCheckBox();
+        jcbothers = new javax.swing.JCheckBox();
+        jlblsearch = new javax.swing.JLabel();
+        jtxtsearch = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -387,8 +474,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
                                 .addGap(81, 81, 81))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jlblimage3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addComponent(jlblimage3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(12, 12, 12)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jbtndelete3)
@@ -416,20 +502,215 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pet Information", jPanel5);
+
+        jtb_display_appointment.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ano", "name", "id", "gender", "age", "have or had a pet", "number of pet", "pet type now", "phone number", "home address", "shelter pet name"
+            }
+        ));
+        jtb_display_appointment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtb_display_appointmentMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(jtb_display_appointment);
+
+        jlblname.setText("Name :");
+
+        jlblid.setText("ID :");
+
+        jlblgender.setText("Gender :");
+
+        jlblage.setText("Age :");
+
+        jlblhaveorhad.setText("Have or Had a Pet :");
+
+        jlblnumberofpet.setText("Number of Pet :");
+
+        jlblpettypenow.setText("Pet Type Now :");
+
+        jlblphone.setText("Phone Number:");
+
+        jlbladdress.setText("Home Address :");
+
+        jlblshelterpetname.setText("Shelter Pet Name :");
+
+        jtxtname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtnameActionPerformed(evt);
+            }
+        });
+
+        buttonGroup5.add(jbtnfemale);
+        jbtnfemale.setText("Female");
+
+        buttonGroup5.add(jbtnmale);
+        jbtnmale.setText("Male");
+
+        buttonGroup5.add(jbtnnotsay);
+        jbtnnotsay.setText("Prefer not to Say");
+
+        buttonGroup6.add(jbtnyes);
+        jbtnyes.setText("Yes");
+
+        buttonGroup6.add(jbtnno);
+        jbtnno.setText("No");
+
+        buttonGroup7.add(jbtn0);
+        jbtn0.setText("0");
+
+        buttonGroup7.add(jbtn1);
+        jbtn1.setText("1");
+
+        buttonGroup7.add(jbtn2);
+        jbtn2.setText("2");
+
+        buttonGroup7.add(jbtn3);
+        jbtn3.setText("More than 2");
+
+        jcbdog.setText("Dog");
+
+        jcbcat.setText("Cat");
+
+        jcbothers.setText("Others");
+
+        jlblsearch.setText("Search :");
+
+        jtxtsearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtxtsearchKeyPressed1(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1269, Short.MAX_VALUE)
+            .addComponent(jScrollPane5)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlblage, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblid, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblname, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblgender, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblhaveorhad, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(jlblnumberofpet, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jlbladdress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                        .addComponent(jlblphone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlblpettypenow, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jlblshelterpetname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxtphone, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxtid, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtname, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtage, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jbtnfemale)
+                                .addGap(27, 27, 27)
+                                .addComponent(jbtnmale)
+                                .addGap(34, 34, 34)
+                                .addComponent(jbtnnotsay))
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addComponent(jcbdog)
+                                    .addGap(40, 40, 40)
+                                    .addComponent(jcbcat)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jcbothers))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jbtnyes)
+                                        .addGroup(jPanel6Layout.createSequentialGroup()
+                                            .addComponent(jbtn0)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jbtn1)))
+                                    .addGap(34, 34, 34)
+                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel6Layout.createSequentialGroup()
+                                            .addComponent(jbtn2)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jbtn3))
+                                        .addComponent(jbtnno))))
+                            .addComponent(jtxtshelterpetname, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(117, 117, 117)
+                        .addComponent(jlblsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jtxtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblname)
+                            .addComponent(jtxtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblid)
+                            .addComponent(jtxtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblgender)
+                            .addComponent(jbtnfemale)
+                            .addComponent(jbtnmale)
+                            .addComponent(jbtnnotsay))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblage)
+                            .addComponent(jtxtage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblhaveorhad)
+                            .addComponent(jbtnyes)
+                            .addComponent(jbtnno))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblnumberofpet)
+                            .addComponent(jbtn0)
+                            .addComponent(jbtn1)
+                            .addComponent(jbtn2)
+                            .addComponent(jbtn3))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblpettypenow)
+                            .addComponent(jcbdog))
+                        .addGap(18, 18, 18)
+                        .addComponent(jlblphone))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jcbcat)
+                            .addComponent(jcbothers))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxtphone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlbladdress)
+                    .addComponent(jtxtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlblshelterpetname)
+                    .addComponent(jtxtshelterpetname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblsearch)
+                    .addComponent(jtxtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Appointments", jPanel6);
@@ -450,9 +731,9 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
 
     private void jtxtsearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtsearchKeyPressed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
+        DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        jtb_display_strayanimals.setRowSorter(tr);
+        jtb_display_strayanimals3.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(jtxtsearch.getText().trim()));
     }//GEN-LAST:event_jtxtsearchKeyPressed
 
@@ -463,8 +744,8 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
         filename = f.getAbsolutePath();
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(jlblimage.getWidth(),jlblimage.getHeight(),Image.SCALE_SMOOTH));
-        jlblimage.setIcon(imageIcon);
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(jlblimage3.getWidth(),jlblimage3.getHeight(),Image.SCALE_SMOOTH));
+        jlblimage3.setIcon(imageIcon);
 
         try{
 
@@ -494,12 +775,12 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-                int row = jtb_display_strayanimals.getSelectedRow();
-                String value = (jtb_display_strayanimals.getModel().getValueAt(row, 0).toString());
+                int row = jtb_display_strayanimals3.getSelectedRow();
+                String value = (jtb_display_strayanimals3.getModel().getValueAt(row, 0).toString());
                 String query = "DELETE FROM strayanimals where sno="+value;
                 PreparedStatement pst = con.prepareStatement(query);
                 pst.executeUpdate();
-                DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
+                DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
                 model.setRowCount(0);
                 show_strayanimals();
                 JOptionPane.showMessageDialog(null, "Deleted Successfully!");
@@ -513,14 +794,14 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
     private void jbtnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnupdateActionPerformed
 
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-        String time_arrive = dateformat.format(jdctimearrive.getDate());
+        String time_arrive = dateformat.format(jdctimearrive3.getDate());
 
         // TODO add your handling code here:
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-            int row = jtb_display_strayanimals.getSelectedRow();
-            String value = (jtb_display_strayanimals.getModel().getValueAt(row, 0).toString());
+            int row = jtb_display_strayanimals3.getSelectedRow();
+            String value = (jtb_display_strayanimals3.getModel().getValueAt(row, 0).toString());
             String query = "UPDATE strayanimals SET name = ?,gender=?,age=?,time_arrive=?,spay=?,disabled=?,vaccination=?,pettype=? ,images = ? where sno="+value;
             PreparedStatement pst = con.prepareStatement(query);
             pst.setString(1, jtxtname.getText());
@@ -543,28 +824,28 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             }
             pst.setString(5, spay);
 
-            if(jbtndyes.isSelected()){
+            if(jbtndyes3.isSelected()){
                 disabled = "Yes";
             }
-            if(jbtndno.isSelected()){
+            if(jbtndno3.isSelected()){
                 disabled = "No";
             }
             pst.setString(6, disabled);
 
-            if(jbtnvyes.isSelected()){
+            if(jbtnvyes3.isSelected()){
                 vaccination = "Yes";
             }
-            if(jbtnvno.isSelected()){
+            if(jbtnvno3.isSelected()){
                 vaccination = "No";
             }
             pst.setString(7,vaccination);
 
-            pst.setString(8,jtxtpettype.getText());
+            pst.setString(8,jtxtpettype3.getText());
 
             pst.setBytes(9,strayanimals_image);
 
             pst.executeUpdate();
-            DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
+            DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
             model.setRowCount(0);
             show_strayanimals();
             JOptionPane.showMessageDialog(null, "Updated Successfully!");
@@ -576,21 +857,22 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
 
     private void jtb_display_strayanimalsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtb_display_strayanimalsMouseClicked
         // TODO add your handling code here:
-        int i = jtb_display_strayanimals.getSelectedRow();
-        TableModel model = jtb_display_strayanimals.getModel();
-        jtxtname.setText(model.getValueAt(i,1).toString());
+        int i = jtb_display_strayanimals3.getSelectedRow();
+        TableModel model = jtb_display_strayanimals3.getModel();
+        jtxtname3.setText(model.getValueAt(i,1).toString());
         String sex = model.getValueAt(i, 2).toString();
         if (sex.equals("Female")){
 
-            jbtnfemale.setSelected(true);
+            jbtnfemale3.setSelected(true);
 
         }
         else{
 
-            jbtnmale.setSelected(true);
+            jbtnmale3.setSelected(true);
 
         }
-        jtxtage.setText(model.getValueAt(i, 3).toString());
+        
+        jtxtage3.setText(model.getValueAt(i, 3).toString());
 
         String dateValue2 =model.getValueAt(i, 4).toString();
         Date date = null;
@@ -599,7 +881,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jdctimearrive.setDate(date);
+        jdctimearrive3.setDate(date);
 
         String spayy = model.getValueAt(i, 5).toString();
         if (spayy.equals("Yes")){
@@ -615,29 +897,29 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         String disabledd = model.getValueAt(i, 6).toString();
         if (disabledd.equals("Yes")){
 
-            jbtndyes.setSelected(true);
+            jbtndyes3.setSelected(true);
 
         }
         else{
 
-            jbtndno.setSelected(true);
+            jbtndno3.setSelected(true);
 
         }
         String vaccinationn = model.getValueAt(i, 7).toString();
         if (vaccinationn.equals("Yes")){
 
-            jbtnvyes.setSelected(true);
+            jbtnvyes3.setSelected(true);
 
         }
         else{
 
-            jbtnvno.setSelected(true);
+            jbtnvno3.setSelected(true);
 
         }
-        jtxtpettype.setText(model.getValueAt(i, 8).toString());
+        jtxtpettype3.setText(model.getValueAt(i, 8).toString());
         byte[] img = (strayanimalsList().get(i).getPicture());
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(jlblimage.getWidth(),jlblimage.getHeight(),Image.SCALE_SMOOTH));
-        jlblimage.setIcon(imageIcon);
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(jlblimage3.getWidth(),jlblimage3.getHeight(),Image.SCALE_SMOOTH));
+        jlblimage3.setIcon(imageIcon);
     }//GEN-LAST:event_jtb_display_strayanimalsMouseClicked
 
     private void jbtnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnresetActionPerformed
@@ -649,15 +931,15 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
 
             String dateValue ="1900-10-10";
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-            jdctimearrive.setDate(date);
+            jdctimearrive3.setDate(date);
         } catch (ParseException ex) {
             Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
         }
         buttonGroup2.clearSelection();
         buttonGroup3.clearSelection();
         buttonGroup4.clearSelection();
-        jtxtpettype.setText("");
-        jlblimage.setIcon(null);
+        jtxtpettype3.setText("");
+        jlblimage3.setIcon(null);
 
     }//GEN-LAST:event_jbtnresetActionPerformed
 
@@ -665,7 +947,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-        String time_arrive = dateformat.format(jdctimearrive.getDate());
+        String time_arrive = dateformat.format(jdctimearrive3.getDate());
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -692,28 +974,28 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             }
             pst.setString(5, spay);
 
-            if(jbtndyes.isSelected()){
+            if(jbtndyes3.isSelected()){
                 disabled = "Yes";
             }
-            if(jbtndno.isSelected()){
+            if(jbtndno3.isSelected()){
                 disabled = "No";
             }
             pst.setString(6, disabled);
 
-            if(jbtnvyes.isSelected()){
+            if(jbtnvyes3.isSelected()){
                 vaccination = "Yes";
             }
-            if(jbtnvno.isSelected()){
+            if(jbtnvno3.isSelected()){
                 vaccination = "No";
             }
             pst.setString(7,vaccination);
 
-            pst.setString(8,jtxtpettype.getText());
+            pst.setString(8,jtxtpettype3.getText());
 
             pst.setBytes(9,strayanimals_image);
 
             pst.executeUpdate();
-            DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
+            DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
             model.setRowCount(0);
             show_strayanimals();
             JOptionPane.showMessageDialog(null, "Inserted Successfully!");
@@ -723,6 +1005,126 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e);
         }
     }//GEN-LAST:event_jbtnsaveActionPerformed
+
+    private void jtxtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtnameActionPerformed
+
+    private void jtb_display_appointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtb_display_appointmentMouseClicked
+        // TODO add your handling code here:
+        int i = jtb_display_appointment.getSelectedRow();
+        TableModel model = jtb_display_appointment.getModel();
+        jtxtname.setText(model.getValueAt(i,1).toString());
+        jtxtid.setText(model.getValueAt(i,2).toString());
+        String sex = model.getValueAt(i, 3).toString();
+        if (sex.equals("Female")){
+
+            jbtnfemale.setSelected(true);
+
+        }
+        if (sex.equals("Prefer not to say")){
+
+            jbtnnotsay.setSelected(true);
+
+        }
+        else{
+
+            jbtnmale.setSelected(true);
+
+        }
+        jtxtage.setText(model.getValueAt(i, 4).toString());
+
+        
+
+        String haveorhadpet = model.getValueAt(i, 5).toString();
+        if (haveorhadpet.equals("Yes")){
+
+            jbtnyes.setSelected(true);
+
+        }
+        else{
+
+            jbtnno.setSelected(true);
+
+        }
+        String numberofpet = model.getValueAt(i, 6).toString();
+        if (numberofpet.equals("0")){
+
+            jbtn0.setSelected(true);
+
+        }
+        if (numberofpet.equals("1")){
+
+            jbtn1.setSelected(true);
+
+        }
+        if (numberofpet.equals("2")){
+
+            jbtn2.setSelected(true);
+
+        }
+        else{
+
+            jbtn3.setSelected(true);
+
+        }
+        
+        String pettypenow = model.getValueAt(i, 7).toString();
+            switch(pettypenow){
+            
+                case "Dog " :
+                    jcbdog.setSelected(true);
+                    jcbcat.setSelected(false);
+                    jcbothers.setSelected(false);
+                    break;
+                case "Cat " :
+                    jcbdog.setSelected(false);
+                    jcbcat.setSelected(true);
+                    jcbothers.setSelected(false);
+                    break;
+                case "Others(If you have no pet, just choose this.) " :
+                    jcbdog.setSelected(false);
+                    jcbcat.setSelected(false);
+                    jcbothers.setSelected(true);
+                    break;
+                case "Dog Cat " :
+                    jcbdog.setSelected(true);
+                    jcbcat.setSelected(true);
+                    jcbothers.setSelected(false);
+                    break;
+               case "Dog Others(If you have no pet, just choose this.) " :
+                    jcbdog.setSelected(true);
+                    jcbcat.setSelected(false);
+                    jcbothers.setSelected(true);
+                    break;
+               case "Cat Others(If you have no pet, just choose this.) " :
+                    jcbdog.setSelected(false);
+                    jcbcat.setSelected(true);
+                    jcbothers.setSelected(true);
+                    break;
+               default :
+                    jcbdog.setSelected(true);
+                    jcbcat.setSelected(true);
+                    jcbothers.setSelected(true);
+                    break;
+         
+            }
+        
+      
+        jtxtphone.setText(model.getValueAt(i,8).toString());
+        jtxtaddress.setText(model.getValueAt(i,9).toString());
+        jtxtshelterpetname.setText(model.getValueAt(i,10).toString());
+        
+        
+    }//GEN-LAST:event_jtb_display_appointmentMouseClicked
+
+    private void jtxtsearchKeyPressed1(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtsearchKeyPressed1
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)jtb_display_appointment.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        jtb_display_appointment.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(jtxtsearch.getText().trim()));
+    }//GEN-LAST:event_jtxtsearchKeyPressed1
 
     /**
      * @param args the command line arguments
@@ -767,132 +1169,74 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
+    private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JButton jbtndelete;
-    private javax.swing.JButton jbtndelete1;
-    private javax.swing.JButton jbtndelete2;
+    private javax.swing.JRadioButton jbtn0;
+    private javax.swing.JRadioButton jbtn1;
+    private javax.swing.JRadioButton jbtn2;
+    private javax.swing.JRadioButton jbtn3;
     private javax.swing.JButton jbtndelete3;
-    private javax.swing.JRadioButton jbtndno;
-    private javax.swing.JRadioButton jbtndno1;
-    private javax.swing.JRadioButton jbtndno2;
     private javax.swing.JRadioButton jbtndno3;
-    private javax.swing.JRadioButton jbtndyes;
-    private javax.swing.JRadioButton jbtndyes1;
-    private javax.swing.JRadioButton jbtndyes2;
     private javax.swing.JRadioButton jbtndyes3;
     private javax.swing.JRadioButton jbtnfemale;
-    private javax.swing.JRadioButton jbtnfemale1;
-    private javax.swing.JRadioButton jbtnfemale2;
     private javax.swing.JRadioButton jbtnfemale3;
-    private javax.swing.JButton jbtnimage;
-    private javax.swing.JButton jbtnimage1;
-    private javax.swing.JButton jbtnimage2;
     private javax.swing.JButton jbtnimage3;
     private javax.swing.JRadioButton jbtnmale;
-    private javax.swing.JRadioButton jbtnmale1;
-    private javax.swing.JRadioButton jbtnmale2;
     private javax.swing.JRadioButton jbtnmale3;
     private javax.swing.JRadioButton jbtnno;
-    private javax.swing.JRadioButton jbtnno1;
-    private javax.swing.JRadioButton jbtnno2;
     private javax.swing.JRadioButton jbtnno3;
-    private javax.swing.JButton jbtnreset;
-    private javax.swing.JButton jbtnreset1;
-    private javax.swing.JButton jbtnreset2;
+    private javax.swing.JRadioButton jbtnnotsay;
     private javax.swing.JButton jbtnreset3;
-    private javax.swing.JButton jbtnsave;
-    private javax.swing.JButton jbtnsave1;
-    private javax.swing.JButton jbtnsave2;
     private javax.swing.JButton jbtnsave3;
-    private javax.swing.JButton jbtnupdate;
-    private javax.swing.JButton jbtnupdate1;
-    private javax.swing.JButton jbtnupdate2;
     private javax.swing.JButton jbtnupdate3;
-    private javax.swing.JRadioButton jbtnvno;
-    private javax.swing.JRadioButton jbtnvno1;
-    private javax.swing.JRadioButton jbtnvno2;
     private javax.swing.JRadioButton jbtnvno3;
-    private javax.swing.JRadioButton jbtnvyes;
-    private javax.swing.JRadioButton jbtnvyes1;
-    private javax.swing.JRadioButton jbtnvyes2;
     private javax.swing.JRadioButton jbtnvyes3;
     private javax.swing.JRadioButton jbtnyes;
-    private javax.swing.JRadioButton jbtnyes1;
-    private javax.swing.JRadioButton jbtnyes2;
     private javax.swing.JRadioButton jbtnyes3;
-    private com.toedter.calendar.JDateChooser jdctimearrive;
-    private com.toedter.calendar.JDateChooser jdctimearrive1;
-    private com.toedter.calendar.JDateChooser jdctimearrive2;
+    private javax.swing.JCheckBox jcbcat;
+    private javax.swing.JCheckBox jcbdog;
+    private javax.swing.JCheckBox jcbothers;
     private com.toedter.calendar.JDateChooser jdctimearrive3;
+    private javax.swing.JLabel jlbladdress;
     private javax.swing.JLabel jlblage;
-    private javax.swing.JLabel jlblage1;
-    private javax.swing.JLabel jlblage2;
     private javax.swing.JLabel jlblage3;
-    private javax.swing.JLabel jlbldisabled;
-    private javax.swing.JLabel jlbldisabled1;
-    private javax.swing.JLabel jlbldisabled2;
     private javax.swing.JLabel jlbldisabled3;
     private javax.swing.JLabel jlblgender;
-    private javax.swing.JLabel jlblgender1;
-    private javax.swing.JLabel jlblgender2;
     private javax.swing.JLabel jlblgender3;
-    private javax.swing.JLabel jlblimage;
-    private javax.swing.JLabel jlblimage1;
-    private javax.swing.JLabel jlblimage2;
+    private javax.swing.JLabel jlblhaveorhad;
+    private javax.swing.JLabel jlblid;
     private javax.swing.JLabel jlblimage3;
     private javax.swing.JLabel jlblname;
-    private javax.swing.JLabel jlblname1;
-    private javax.swing.JLabel jlblname2;
     private javax.swing.JLabel jlblname3;
-    private javax.swing.JLabel jlblpettype;
-    private javax.swing.JLabel jlblpettype1;
-    private javax.swing.JLabel jlblpettype2;
+    private javax.swing.JLabel jlblnumberofpet;
     private javax.swing.JLabel jlblpettype3;
+    private javax.swing.JLabel jlblpettypenow;
+    private javax.swing.JLabel jlblphone;
     private javax.swing.JLabel jlblsearch;
-    private javax.swing.JLabel jlblsearch1;
-    private javax.swing.JLabel jlblsearch2;
     private javax.swing.JLabel jlblsearch3;
-    private javax.swing.JLabel jlblspay;
-    private javax.swing.JLabel jlblspay1;
-    private javax.swing.JLabel jlblspay2;
+    private javax.swing.JLabel jlblshelterpetname;
     private javax.swing.JLabel jlblspay3;
-    private javax.swing.JLabel jlbltimearrive;
-    private javax.swing.JLabel jlbltimearrive1;
-    private javax.swing.JLabel jlbltimearrive2;
     private javax.swing.JLabel jlbltimearrive3;
-    private javax.swing.JLabel jlblvacci;
-    private javax.swing.JLabel jlblvacci1;
-    private javax.swing.JLabel jlblvacci2;
     private javax.swing.JLabel jlblvacci3;
-    private javax.swing.JTable jtb_display_strayanimals;
-    private javax.swing.JTable jtb_display_strayanimals1;
-    private javax.swing.JTable jtb_display_strayanimals2;
+    private javax.swing.JTable jtb_display_appointment;
     private javax.swing.JTable jtb_display_strayanimals3;
+    private javax.swing.JTextField jtxtaddress;
     private javax.swing.JTextField jtxtage;
-    private javax.swing.JTextField jtxtage1;
-    private javax.swing.JTextField jtxtage2;
     private javax.swing.JTextField jtxtage3;
+    private javax.swing.JTextField jtxtid;
     private javax.swing.JTextField jtxtname;
-    private javax.swing.JTextField jtxtname1;
-    private javax.swing.JTextField jtxtname2;
     private javax.swing.JTextField jtxtname3;
-    private javax.swing.JTextField jtxtpettype;
-    private javax.swing.JTextField jtxtpettype1;
-    private javax.swing.JTextField jtxtpettype2;
     private javax.swing.JTextField jtxtpettype3;
+    private javax.swing.JTextField jtxtphone;
     private javax.swing.JTextField jtxtsearch;
-    private javax.swing.JTextField jtxtsearch1;
-    private javax.swing.JTextField jtxtsearch2;
     private javax.swing.JTextField jtxtsearch3;
+    private javax.swing.JTextField jtxtshelterpetname;
     // End of variables declaration//GEN-END:variables
 }
