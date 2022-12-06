@@ -31,7 +31,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -61,49 +65,50 @@
                               <Component id="jlblphone" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
                               <Component id="jlbladdress" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
                               <Component id="jlblhadpets" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
+                              <Component id="jlblname" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="jlblshelterpetname" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jtxtaddress" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtxtphone" alignment="1" min="-2" pref="398" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jckbdog" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jbthowmany0" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jtxtaddress" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtxtphone" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jckbdog" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jbthowmany0" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jckbcat" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jckbothers" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jckbcat" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jckbothers" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jbthowmany1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jbthowmany2" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jbthadpetsno" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jbtnhowmany3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jbthowmany1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jbthowmany2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jbtnhadpetsno" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jbthowmany3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="jbtnhadpetsyes" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jtxtname" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtxtage" alignment="0" min="-2" pref="398" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jbtnfemale" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jbtnmale" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jbtnnot2say" min="-2" pref="125" max="-2" attributes="0"/>
-                                  </Group>
+                              <Component id="jbtnhadpetsyes" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtxtid" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtxtage" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jbtnfemale" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jbtnmale" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jbtnnot2say" min="-2" pref="125" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jbtnsubmit" alignment="1" min="-2" pref="78" max="-2" attributes="0"/>
+                              <Component id="jtxtname" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtxtshelterpetname" alignment="0" pref="398" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -115,7 +120,7 @@
                           <Component id="jlblinfo" min="-2" pref="440" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="150" max="32767" attributes="0"/>
+                  <EmptySpace pref="30" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -123,60 +128,74 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                  <Component id="jlbltitle" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jlblid" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxtname" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jlblgender" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jbtnfemale" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jbtnmale" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jbtnnot2say" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jlbltitle" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jlblname" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtxtname" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jlblid" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtxtid" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jlblgender" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jbtnfemale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jbtnmale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jbtnnot2say" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jlblage" min="-2" pref="17" max="-2" attributes="0"/>
+                              <Component id="jtxtage" min="-2" pref="23" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jlblhadpets" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbtnhadpetsyes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbtnhadpetsno" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jlblhowmany" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbthowmany0" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbthowmany1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbthowmany2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jbthowmany3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jlblpettype" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jckbdog" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jckbcat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jckbothers" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jlblphone" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtxtphone" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jlbladdress" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtxtaddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="jlblshelterpetname" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jtxtshelterpetname" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace pref="98" max="32767" attributes="0"/>
+                  <Component id="jbtnsubmit" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jlblage" min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="jtxtage" min="-2" pref="23" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlblhadpets" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbtnhadpetsyes" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbthadpetsno" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlblhowmany" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbthowmany0" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbthowmany1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbthowmany2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jbtnhowmany3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jlblpettype" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jckbdog" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jckbcat" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jckbothers" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlblphone" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxtphone" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jlbladdress" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxtaddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="70" max="32767" attributes="0"/>
                   <Component id="jlblinfo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -186,10 +205,10 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jlblid">
           <Properties>
-            <Property name="text" type="java.lang.String" value="UserID :"/>
+            <Property name="text" type="java.lang.String" value="ID :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtname">
+        <Component class="javax.swing.JTextField" name="jtxtid">
         </Component>
         <Component class="javax.swing.JLabel" name="jlblgender">
           <Properties>
@@ -233,7 +252,7 @@
             <Property name="text" type="java.lang.String" value="Yes"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jbthadpetsno">
+        <Component class="javax.swing.JRadioButton" name="jbtnhadpetsno">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup2"/>
@@ -270,7 +289,7 @@
             <Property name="text" type="java.lang.String" value="2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jbtnhowmany3">
+        <Component class="javax.swing.JRadioButton" name="jbthowmany3">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup3"/>
@@ -335,6 +354,28 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="If you want to adopt a pet, you need to submit the informations above."/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jbtnsubmit">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Submit"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnsubmitActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlblname">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Name:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtxtname">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlblshelterpetname">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Shelter Pet Name:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtxtshelterpetname">
         </Component>
       </SubComponents>
     </Container>

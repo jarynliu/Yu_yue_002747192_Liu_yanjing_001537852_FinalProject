@@ -7,6 +7,7 @@ package ShelterPages;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,7 @@ public class PetInformationPage extends javax.swing.JFrame {
     /**
      * Creates new form PetInformationPage
      */
+    int clicked = 0;
     public PetInformationPage() {
         initComponents();
         Toolkit toolkit = getToolkit();
@@ -34,6 +36,7 @@ public class PetInformationPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jbtnappoinment = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,6 +47,13 @@ public class PetInformationPage extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Make an appointment again!");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -51,13 +61,17 @@ public class PetInformationPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jbtnappoinment)
-                .addContainerGap(627, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(jButton1)
+                .addContainerGap(383, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(547, Short.MAX_VALUE)
-                .addComponent(jbtnappoinment)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnappoinment)
+                    .addComponent(jButton1))
                 .addGap(30, 30, 30))
         );
 
@@ -66,9 +80,29 @@ public class PetInformationPage extends javax.swing.JFrame {
 
     private void jbtnappoinmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnappoinmentActionPerformed
         // TODO add your handling code here:
+        if(clicked<1){
+        this.toBack();
         AdoptorInformationPage adpinfo = new AdoptorInformationPage();
         adpinfo.setVisible(true);
+        adpinfo.toFront();
+        clicked = 2;}
+        System.out.print(clicked);
+        if(clicked>0){
+            this.toBack();
+
+            setVisible(false);
+            new AdoptorInformationPage().toFront();
+            new AdoptorInformationPage().setState(java.awt.Frame.NORMAL);    
+        }
     }//GEN-LAST:event_jbtnappoinmentActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.toBack();
+        setVisible(false);
+        new AdoptorInformationPage().toFront();
+        new AdoptorInformationPage().setState(java.awt.Frame.NORMAL);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,6 +140,7 @@ public class PetInformationPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jbtnappoinment;
     // End of variables declaration//GEN-END:variables
 }
