@@ -5,6 +5,7 @@
 package SignInPage;
 
 
+import ShelterPages.PetInformationPage;
 import SignUpPage.AnimalShelterSignPage;
 import SignUpPage.UserSignPage;
 import java.awt.Dimension;
@@ -170,8 +171,45 @@ public class ShelterSignIn extends javax.swing.JFrame {
     private void jbtnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsigninActionPerformed
         // TODO add your handling code here:
         
+        String uname = jtxtuname.getText();
+        String password = jtxtpassword.getText();
+        String sheltername = jComboBox2.getSelectedItem().toString();
+        String role = jComboBox1.getSelectedItem().toString();
         
-        
+        try {
+            pst = con.prepareStatement("select * from shelter where uname= ? and password= ? and sheltername= ? and role= ?");
+            pst.setString(1, uname);
+            pst.setString(2, password);
+            pst.setString(3, sheltername);
+            pst.setString(4, role);
+            
+            
+            rs = pst.executeQuery();
+            
+            if(rs.next())
+            {
+                int shelterid = rs.getInt("id");
+                this.setVisible(false);
+                new PetInformationPage(shelterid, uname, role).setVisible(true);
+            
+            }
+            
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Username and Password do not match");
+                jtxtuname.setText("");
+                jtxtpassword.setText("");
+                jComboBox2.setSelectedIndex(-1);
+                jComboBox1.setSelectedIndex(-1);
+                jtxtuname.requestFocus();
+ 
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         
     }//GEN-LAST:event_jbtnsigninActionPerformed
 
