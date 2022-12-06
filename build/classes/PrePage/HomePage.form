@@ -78,7 +78,7 @@
         <Component class="javax.swing.JLabel" name="jlbluser">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\pkuho\Desktop\1.jpg"/>
+              <Image iconType="3" name="/images/1.jpg"/>
             </Property>
           </Properties>
           <Events>
@@ -88,7 +88,7 @@
         <Component class="javax.swing.JLabel" name="jlblhospital">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\pkuho\Desktop\1.jpg"/>
+              <Image iconType="3" name="/images/1.jpg"/>
             </Property>
           </Properties>
           <Events>
@@ -98,7 +98,7 @@
         <Component class="javax.swing.JLabel" name="jlblbusiness">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\pkuho\Desktop\1.jpg"/>
+              <Image iconType="3" name="/images/1.jpg"/>
             </Property>
           </Properties>
           <Events>
@@ -108,7 +108,7 @@
         <Component class="javax.swing.JLabel" name="jlblanimalshelter">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\pkuho\Desktop\1.jpg"/>
+              <Image iconType="3" name="/images/1.jpg"/>
             </Property>
           </Properties>
           <Events>

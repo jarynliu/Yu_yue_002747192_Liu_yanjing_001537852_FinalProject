@@ -46,28 +46,28 @@ public class HomePage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jlbluser.setIcon(new javax.swing.ImageIcon("C:\\Users\\pkuho\\Desktop\\1.jpg")); // NOI18N
+        jlbluser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.jpg"))); // NOI18N
         jlbluser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlbluserMouseClicked(evt);
             }
         });
 
-        jlblhospital.setIcon(new javax.swing.ImageIcon("C:\\Users\\pkuho\\Desktop\\1.jpg")); // NOI18N
+        jlblhospital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.jpg"))); // NOI18N
         jlblhospital.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlblhospitalMouseClicked(evt);
             }
         });
 
-        jlblbusiness.setIcon(new javax.swing.ImageIcon("C:\\Users\\pkuho\\Desktop\\1.jpg")); // NOI18N
+        jlblbusiness.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.jpg"))); // NOI18N
         jlblbusiness.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlblbusinessMouseClicked(evt);
             }
         });
 
-        jlblanimalshelter.setIcon(new javax.swing.ImageIcon("C:\\Users\\pkuho\\Desktop\\1.jpg")); // NOI18N
+        jlblanimalshelter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.jpg"))); // NOI18N
         jlblanimalshelter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlblanimalshelterMouseClicked(evt);
