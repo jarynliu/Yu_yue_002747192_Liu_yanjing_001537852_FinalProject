@@ -311,6 +311,10 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxtaddress">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextField()"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jtxtaddress.addFocusListener(new JTextFieldHintListener(jtxtaddress, &quot;There is a home interview if you adopt a pet from our shelter.&quot;));"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jlblage">
           <Properties>

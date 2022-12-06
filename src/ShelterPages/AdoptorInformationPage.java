@@ -114,14 +114,14 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
 
         jlbladdress.setText("Home Adress :");
 
+        jtxtaddress.addFocusListener(new JTextFieldHintListener(jtxtaddress, "There is a home interview if you adopt a pet from our shelter."));
+
         jlblage.setText("Age :");
 
         jlbltitle.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 36)); // NOI18N
         jlbltitle.setText("Additional Information");
 
         jlblinfo.setText("If you want to adopt a pet, you need to submit the informations above.");
-
-        jtxtaddress.addFocusListener(new JTextFieldHintListener(jtxtaddress, "There is a home interview if you adopt a pet from our shelter."));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
