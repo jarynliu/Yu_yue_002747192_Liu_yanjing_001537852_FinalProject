@@ -6,7 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -23,19 +23,71 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="192" max="32767" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="57" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jScrollPane1" min="-2" pref="882" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="lblsearch" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="txtsearch" min="-2" pref="554" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                      <Component id="btnadd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="btnupdate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="btndelete" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="btnexit" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="477" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="376" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="45" max="32767" attributes="0"/>
+                      <Component id="jPanel1" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblsearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtsearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnadd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnupdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btndelete" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnexit" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,8 +95,396 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Upload Your Pet Food Recipe"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="24" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Pet Food Recipe"/>
       </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lblsup" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblfruit" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblseed" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblveg" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblpname" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblmeat" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblage" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblptype" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblbone" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblliver" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblorgan" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtpname" max="32767" attributes="0"/>
+                              <Component id="txtage" max="32767" attributes="0"/>
+                              <Component id="txtmeat" max="32767" attributes="0"/>
+                              <Component id="txtbone" max="32767" attributes="0"/>
+                              <Component id="txtliver" max="32767" attributes="0"/>
+                              <Component id="txtorgan" max="32767" attributes="0"/>
+                              <Component id="txtveg" max="32767" attributes="0"/>
+                              <Component id="txtseed" max="32767" attributes="0"/>
+                              <Component id="txtfruit" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="btndog" min="-2" pref="69" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btncat" pref="63" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="cbkale" alignment="0" pref="89" max="32767" attributes="0"/>
+                              <Component id="cbfishoil" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbve" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbvb" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="cbzinc" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="cbman" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblpname" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtpname" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblage" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtage" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblptype" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btndog" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btncat" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblmeat" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtmeat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblbone" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtbone" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblliver" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtliver" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblorgan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtorgan" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblveg" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtveg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblseed" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtseed" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblfruit" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtfruit" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblsup" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbfishoil" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbve" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cbkale" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbvb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="cbzinc" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbman" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblpname">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pet Name:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblage">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pet Age:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblptype">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pet Type:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblmeat">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Muscle Meat:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblbone">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Raw Bone:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblliver">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Liver:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblorgan">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Secreting Organs:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblveg">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vegetables:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblseed">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Seeds or Nuts:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblfruit">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Fruit:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtpname">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtage">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtmeat">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtbone">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtliver">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtorgan">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtveg">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtseed">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtfruit">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="btndog">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Dog"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="btncat">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cat"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblsup">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Supplement:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cbfishoil">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Fish Oil"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cbve">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vitamin E"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cbkale">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Kale/Iodine"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cbvb">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vitamin B"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cbzinc">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zinc"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cbman">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Manganese"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="btnadd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Upload"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnupdate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btndelete">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Delete"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnexit">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Exit"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="jTable1">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="11" rowCount="4">
+                <Column editable="true" title="Recipe No" type="java.lang.String"/>
+                <Column editable="true" title="Pet Age" type="java.lang.Integer"/>
+                <Column editable="true" title="Pet Type" type="java.lang.String"/>
+                <Column editable="true" title="Muscle Meat" type="java.lang.String"/>
+                <Column editable="true" title="Raw Bone" type="java.lang.String"/>
+                <Column editable="true" title="Liver" type="java.lang.String"/>
+                <Column editable="true" title="Other Organs" type="java.lang.String"/>
+                <Column editable="true" title="Vegetables" type="java.lang.String"/>
+                <Column editable="true" title="Seeds" type="java.lang.String"/>
+                <Column editable="true" title="Fruit" type="java.lang.String"/>
+                <Column editable="true" title="Supplement" type="java.lang.String"/>
+              </Table>
+            </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+              </TableColumnModel>
+            </Property>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="lblsearch">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Helvetica Neue" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Search:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtsearch">
     </Component>
   </SubComponents>
 </Form>

@@ -25,7 +25,13 @@ public class PetInformationPage extends javax.swing.JFrame {
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
     }
+    
+    public PetInformationPage(int id, String uname, String role)
+    {
+        initComponents();
+    }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

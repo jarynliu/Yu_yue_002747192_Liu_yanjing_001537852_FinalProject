@@ -4,7 +4,7 @@
  */
 package SignInPage;
 
-import HospitalPage.NutriRecipe;
+import NutriPage.NutriRecipe;
 import SignUpPage.HospitalSignPage;
 import SignUpPage.UserSignPage;
 import java.awt.Dimension;
