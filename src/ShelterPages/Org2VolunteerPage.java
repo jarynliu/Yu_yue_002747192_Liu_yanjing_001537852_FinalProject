@@ -4,7 +4,6 @@
  */
 package ShelterPages;
 
-
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -34,10 +33,10 @@ import javax.swing.table.TableRowSorter;
  *
  * @author pkuhore
  */
-public class VolunteerPage extends javax.swing.JFrame {
+public class Org2VolunteerPage extends javax.swing.JFrame {
 
     /**
-     * Creates new form VolunteerPage
+     * Creates new form Org2VolunteerPage
      */
     
     String gender;
@@ -47,8 +46,7 @@ public class VolunteerPage extends javax.swing.JFrame {
     String filename = null;
     byte[] strayanimals_image = null;
     
-    
-    public VolunteerPage() {
+    public Org2VolunteerPage() {
         initComponents();
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
@@ -61,7 +59,7 @@ public class VolunteerPage extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-            String query1 = "SELECT * FROM strayanimals";
+            String query1 = "SELECT * FROM strayanimals2";
             Statement st = con.createStatement();
             ResultSet rs =st.executeQuery(query1);
             
@@ -102,7 +100,6 @@ public class VolunteerPage extends javax.swing.JFrame {
         }
     
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -117,6 +114,8 @@ public class VolunteerPage extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jppetinfo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jlblname = new javax.swing.JLabel();
         jtxtname = new javax.swing.JTextField();
@@ -148,6 +147,7 @@ public class VolunteerPage extends javax.swing.JFrame {
         jbtnimage = new javax.swing.JButton();
         jtxtsearch = new javax.swing.JTextField();
         jlblsearch = new javax.swing.JLabel();
+        jpappointments = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -234,6 +234,8 @@ public class VolunteerPage extends javax.swing.JFrame {
             }
         });
 
+        jlblimage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         jbtnimage.setText("Browse");
         jbtnimage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,65 +257,73 @@ public class VolunteerPage extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(69, 69, 69)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jlblname)
-                                .addComponent(jlblgender))
-                            .addGap(30, 30, 30)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jbtnfemale)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jbtnmale))
-                                .addComponent(jtxtname)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jlblpettype, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addComponent(jlblage, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jlblspay, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jlbltimearrive)
-                                                .addComponent(jlbldisabled, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jlblvacci))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(40, 40, 40)
-                                                .addComponent(jbtnimage, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtxtage)
-                                .addComponent(jdctimearrive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jbtnyes)
-                                        .addComponent(jbtndyes)
-                                        .addComponent(jbtnvyes))
-                                    .addGap(39, 39, 39)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jbtnvno)
-                                        .addComponent(jbtndno)
-                                        .addComponent(jbtnno))
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(jtxtpettype))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jbtnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlblname)
+                                    .addComponent(jlblgender))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jbtnfemale)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jbtnmale))
+                                    .addComponent(jtxtname)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jbtnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbtnupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jbtndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(jbtnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlblpettype, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(35, 35, 35)
+                                    .addComponent(jlblage, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jlblspay, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jlbltimearrive)
+                                            .addComponent(jlbldisabled, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jlblvacci))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGap(40, 40, 40)
+                                            .addComponent(jbtnimage, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(18, 18, 18)
-                        .addComponent(jbtnupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jbtndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jbtnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jtxtage)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jdctimearrive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jbtnyes)
+                                    .addComponent(jbtndyes)
+                                    .addComponent(jbtnvyes))
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jbtnvno)
+                                    .addComponent(jbtndno)
+                                    .addComponent(jbtnno))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 354, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jtxtpettype)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jlblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -373,32 +383,60 @@ public class VolunteerPage extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jlblpettype)
                                 .addComponent(jtxtpettype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(47, 47, 47)
-                                    .addComponent(jlblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(135, 135, 135)
                                     .addComponent(jbtnimage)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jbtnsave)
-                                        .addComponent(jbtnupdate)))
+                                    .addGap(81, 81, 81))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jlblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jbtnsave)
+                                    .addComponent(jbtnupdate))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGap(12, 12, 12)
                                     .addComponent(jbtndelete))))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        javax.swing.GroupLayout jppetinfoLayout = new javax.swing.GroupLayout(jppetinfo);
+        jppetinfo.setLayout(jppetinfoLayout);
+        jppetinfoLayout.setHorizontalGroup(
+            jppetinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jppetinfoLayout.setVerticalGroup(
+            jppetinfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 666, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Pet Information", jppetinfo);
+
+        javax.swing.GroupLayout jpappointmentsLayout = new javax.swing.GroupLayout(jpappointments);
+        jpappointments.setLayout(jpappointmentsLayout);
+        jpappointmentsLayout.setHorizontalGroup(
+            jpappointmentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1387, Short.MAX_VALUE)
+        );
+        jpappointmentsLayout.setVerticalGroup(
+            jpappointmentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 666, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Appointments", jpappointments);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -406,15 +444,14 @@ public class VolunteerPage extends javax.swing.JFrame {
 
     private void jbtnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsaveActionPerformed
         // TODO add your handling code here:
-        
+
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
         String time_arrive = dateformat.format(jdctimearrive.getDate());
-        
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", ""); 
-            String query = "insert into strayanimals(name,gender,age,time_arrive,spay,disabled,vaccination,pettype,images)values(?,?,?,?,?,?,?,?,?)";
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
+            String query = "insert into strayanimals2(name,gender,age,time_arrive,spay,disabled,vaccination,pettype,images)values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(query);
             pst.setString(1, jtxtname.getText());
             if(jbtnfemale.isSelected()){
@@ -425,9 +462,9 @@ public class VolunteerPage extends javax.swing.JFrame {
             }
             pst.setString(2, gender);
             pst.setInt(3,Integer.parseInt(jtxtage.getText()));  //这里的数据验证要判断integer
-            
+
             pst.setString(4, time_arrive);
-            
+
             if(jbtnyes.isSelected()){
                 spay = "Yes";
             }
@@ -435,7 +472,7 @@ public class VolunteerPage extends javax.swing.JFrame {
                 spay = "No";
             }
             pst.setString(5, spay);
-            
+
             if(jbtndyes.isSelected()){
                 disabled = "Yes";
             }
@@ -443,7 +480,7 @@ public class VolunteerPage extends javax.swing.JFrame {
                 disabled = "No";
             }
             pst.setString(6, disabled);
-            
+
             if(jbtnvyes.isSelected()){
                 vaccination = "Yes";
             }
@@ -451,22 +488,19 @@ public class VolunteerPage extends javax.swing.JFrame {
                 vaccination = "No";
             }
             pst.setString(7,vaccination);
-            
+
             pst.setString(8,jtxtpettype.getText());
-            
+
             pst.setBytes(9,strayanimals_image);
-            
+
             pst.executeUpdate();
             DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
             model.setRowCount(0);
             show_strayanimals();
             JOptionPane.showMessageDialog(null, "Inserted Successfully!");
-            
-            
-            
-            
+
         }
-         catch (Exception e) {
+        catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);
         }
     }//GEN-LAST:event_jbtnsaveActionPerformed
@@ -477,20 +511,19 @@ public class VolunteerPage extends javax.swing.JFrame {
             jtxtname.setText("");
             buttonGroup1.clearSelection();
             jtxtage.setText("");
-            
+
             String dateValue ="1900-10-10";
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
             jdctimearrive.setDate(date);
         } catch (ParseException ex) {
-            Logger.getLogger(VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-             buttonGroup2.clearSelection();
-             buttonGroup3.clearSelection();
-             buttonGroup4.clearSelection();
-             jtxtpettype.setText("");
-             jlblimage.setIcon(null);
-        
-        
+        buttonGroup2.clearSelection();
+        buttonGroup3.clearSelection();
+        buttonGroup4.clearSelection();
+        jtxtpettype.setText("");
+        jlblimage.setIcon(null);
+
     }//GEN-LAST:event_jbtnresetActionPerformed
 
     private void jtb_display_strayanimalsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtb_display_strayanimalsMouseClicked
@@ -499,60 +532,60 @@ public class VolunteerPage extends javax.swing.JFrame {
         TableModel model = jtb_display_strayanimals.getModel();
         jtxtname.setText(model.getValueAt(i,1).toString());
         String sex = model.getValueAt(i, 2).toString();
-            if (sex.equals("Female")){
-            
-                jbtnfemale.setSelected(true);
-                
-            }
-            else{
-            
-                jbtnmale.setSelected(true);
-            
-            }
+        if (sex.equals("Female")){
+
+            jbtnfemale.setSelected(true);
+
+        }
+        else{
+
+            jbtnmale.setSelected(true);
+
+        }
         jtxtage.setText(model.getValueAt(i, 3).toString());
-        
+
         String dateValue2 =model.getValueAt(i, 4).toString();
         Date date = null;
         try {
             date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue2);
         } catch (ParseException ex) {
-            Logger.getLogger(VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
         }
         jdctimearrive.setDate(date);
-        
+
         String spayy = model.getValueAt(i, 5).toString();
-            if (spayy.equals("Yes")){
-            
-                jbtnyes.setSelected(true);
-                
-            }
-            else{
-            
-                jbtnno.setSelected(true);
-            
-            }
+        if (spayy.equals("Yes")){
+
+            jbtnyes.setSelected(true);
+
+        }
+        else{
+
+            jbtnno.setSelected(true);
+
+        }
         String disabledd = model.getValueAt(i, 6).toString();
-            if (disabledd.equals("Yes")){
-            
-                jbtndyes.setSelected(true);
-                
-            }
-            else{
-            
-                jbtndno.setSelected(true);
-            
-            }
+        if (disabledd.equals("Yes")){
+
+            jbtndyes.setSelected(true);
+
+        }
+        else{
+
+            jbtndno.setSelected(true);
+
+        }
         String vaccinationn = model.getValueAt(i, 7).toString();
-            if (vaccinationn.equals("Yes")){
-            
-                jbtnvyes.setSelected(true);
-                
-            }
-            else{
-            
-                jbtnvno.setSelected(true);
-            
-            }
+        if (vaccinationn.equals("Yes")){
+
+            jbtnvyes.setSelected(true);
+
+        }
+        else{
+
+            jbtnvno.setSelected(true);
+
+        }
         jtxtpettype.setText(model.getValueAt(i, 8).toString());
         byte[] img = (strayanimalsList().get(i).getPicture());
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(jlblimage.getWidth(),jlblimage.getHeight(),Image.SCALE_SMOOTH));
@@ -560,7 +593,7 @@ public class VolunteerPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jtb_display_strayanimalsMouseClicked
 
     private void jbtnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnupdateActionPerformed
-        
+
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
         String time_arrive = dateformat.format(jdctimearrive.getDate());
 
@@ -570,7 +603,7 @@ public class VolunteerPage extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
             int row = jtb_display_strayanimals.getSelectedRow();
             String value = (jtb_display_strayanimals.getModel().getValueAt(row, 0).toString());
-            String query = "UPDATE strayanimals SET name = ?,gender=?,age=?,time_arrive=?,spay=?,disabled=?,vaccination=?,pettype=? ,images = ? where sno="+value;
+            String query = "UPDATE strayanimals2 SET name = ?,gender=?,age=?,time_arrive=?,spay=?,disabled=?,vaccination=?,pettype=? ,images = ? where sno="+value;
             PreparedStatement pst = con.prepareStatement(query);
             pst.setString(1, jtxtname.getText());
             if(jbtnfemale.isSelected()){
@@ -581,9 +614,9 @@ public class VolunteerPage extends javax.swing.JFrame {
             }
             pst.setString(2, gender);
             pst.setInt(3,Integer.parseInt(jtxtage.getText()));  //这里的数据验证要判断integer
-            
+
             pst.setString(4, time_arrive);
-            
+
             if(jbtnyes.isSelected()){
                 spay = "Yes";
             }
@@ -591,7 +624,7 @@ public class VolunteerPage extends javax.swing.JFrame {
                 spay = "No";
             }
             pst.setString(5, spay);
-            
+
             if(jbtndyes.isSelected()){
                 disabled = "Yes";
             }
@@ -599,7 +632,7 @@ public class VolunteerPage extends javax.swing.JFrame {
                 disabled = "No";
             }
             pst.setString(6, disabled);
-            
+
             if(jbtnvyes.isSelected()){
                 vaccination = "Yes";
             }
@@ -607,11 +640,11 @@ public class VolunteerPage extends javax.swing.JFrame {
                 vaccination = "No";
             }
             pst.setString(7,vaccination);
-            
+
             pst.setString(8,jtxtpettype.getText());
-            
+
             pst.setBytes(9,strayanimals_image);
-            
+
             pst.executeUpdate();
             DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
             model.setRowCount(0);
@@ -627,53 +660,53 @@ public class VolunteerPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete it ?", "Delete",JOptionPane.YES_NO_OPTION);
         if(opt==0){
-         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-            int row = jtb_display_strayanimals.getSelectedRow();
-            String value = (jtb_display_strayanimals.getModel().getValueAt(row, 0).toString());
-            String query = "DELETE FROM strayanimals where sno="+value;
-            PreparedStatement pst = con.prepareStatement(query);
-            pst.executeUpdate();
-            DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
-            model.setRowCount(0);
-            show_strayanimals();
-            JOptionPane.showMessageDialog(null, "Deleted Successfully!");
-         }
-         catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e);
-        }
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
+                int row = jtb_display_strayanimals.getSelectedRow();
+                String value = (jtb_display_strayanimals.getModel().getValueAt(row, 0).toString());
+                String query = "DELETE FROM strayanimals2 where sno="+value;
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.executeUpdate();
+                DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
+                model.setRowCount(0);
+                show_strayanimals();
+                JOptionPane.showMessageDialog(null, "Deleted Successfully!");
+            }
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(null,e);
+            }
         }
     }//GEN-LAST:event_jbtndeleteActionPerformed
 
     private void jbtnimageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnimageActionPerformed
         // TODO add your handling code here:
-        
+
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
         filename = f.getAbsolutePath();
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(filename).getImage().getScaledInstance(jlblimage.getWidth(),jlblimage.getHeight(),Image.SCALE_SMOOTH));
         jlblimage.setIcon(imageIcon);
-        
+
         try{
-        
+
             File image = new File(filename);
             FileInputStream fis = new FileInputStream(image);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             byte[] buf = new byte[1024];
             for (int readNum; (readNum = fis.read(buf))!=-1;){
-            
+
                 bos.write(buf,0,readNum);
-            
+
             }
             strayanimals_image = bos.toByteArray();
-        
+
         }
         catch(Exception e){
-        
+
             JOptionPane.showMessageDialog(null,e);
-        
+
         }
     }//GEN-LAST:event_jbtnimageActionPerformed
 
@@ -702,25 +735,23 @@ public class VolunteerPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VolunteerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Org2VolunteerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VolunteerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Org2VolunteerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VolunteerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Org2VolunteerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VolunteerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Org2VolunteerPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VolunteerPage().setVisible(true);
+                new Org2VolunteerPage().setVisible(true);
             }
         });
     }
-    
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -729,6 +760,7 @@ public class VolunteerPage extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jbtndelete;
     private javax.swing.JRadioButton jbtndno;
     private javax.swing.JRadioButton jbtndyes;
@@ -753,6 +785,8 @@ public class VolunteerPage extends javax.swing.JFrame {
     private javax.swing.JLabel jlblspay;
     private javax.swing.JLabel jlbltimearrive;
     private javax.swing.JLabel jlblvacci;
+    private javax.swing.JPanel jpappointments;
+    private javax.swing.JPanel jppetinfo;
     private javax.swing.JTable jtb_display_strayanimals;
     private javax.swing.JTextField jtxtage;
     private javax.swing.JTextField jtxtname;
