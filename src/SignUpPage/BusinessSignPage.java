@@ -7,6 +7,8 @@ package SignUpPage;
 import PrePage.HomePage;
 import SignInPage.BusinessSignIn;
 import com.mysql.cj.protocol.Resultset;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,6 +29,9 @@ public class BusinessSignPage extends javax.swing.JFrame {
      */
     public BusinessSignPage() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         Connect();
     }
     
@@ -250,6 +255,7 @@ public class BusinessSignPage extends javax.swing.JFrame {
         dispose();
         BusinessSignIn bs = new BusinessSignIn();
         bs.setVisible(true);
+        bs.setTitle("BusinessSignIn");
         
         
     }//GEN-LAST:event_jbtnsigninActionPerformed

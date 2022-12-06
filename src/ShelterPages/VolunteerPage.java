@@ -5,7 +5,9 @@
 package ShelterPages;
 
 
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -48,6 +50,9 @@ public class VolunteerPage extends javax.swing.JFrame {
     
     public VolunteerPage() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         show_strayanimals();
     }
     

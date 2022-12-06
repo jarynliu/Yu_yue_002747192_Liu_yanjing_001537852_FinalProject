@@ -7,6 +7,8 @@ package SignInPage;
 
 import SignUpPage.AnimalShelterSignPage;
 import SignUpPage.UserSignPage;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,6 +29,9 @@ public class ShelterSignIn extends javax.swing.JFrame {
      */
     public ShelterSignIn() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         Connect();
     }
     
@@ -176,6 +181,7 @@ public class ShelterSignIn extends javax.swing.JFrame {
         dispose();
         AnimalShelterSignPage as = new AnimalShelterSignPage();
         as.setVisible(true);
+        as.setTitle("ShelterSignIn");
         
     }//GEN-LAST:event_jbtnbackActionPerformed
 

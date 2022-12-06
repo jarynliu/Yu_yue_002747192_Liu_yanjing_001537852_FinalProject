@@ -7,6 +7,8 @@ package SignUpPage;
 import PrePage.HomePage;
 import SignInPage.UserSignIn;
 import com.mysql.cj.protocol.Resultset;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -34,8 +36,9 @@ public class UserSignPage extends javax.swing.JFrame {
     public UserSignPage() {
         initComponents();
         Connect();
-        
-        JFrame jf = new JFrame("userpage");
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
     }
     
     Connection con;
@@ -358,6 +361,7 @@ public class UserSignPage extends javax.swing.JFrame {
         dispose();
         UserSignIn us = new UserSignIn();
         us.setVisible(true);
+        us.setTitle("UserSignIn");
         
         
     }//GEN-LAST:event_jbtnsigninActionPerformed

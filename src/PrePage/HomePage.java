@@ -8,6 +8,7 @@ import SignUpPage.BusinessSignPage;
 import SignUpPage.HospitalSignPage;
 import SignUpPage.UserSignPage;
 import SignUpPage.AnimalShelterSignPage;
+import java.awt.Dimension;
 import java.awt.Toolkit;
 
 /**
@@ -22,7 +23,9 @@ public class HomePage extends javax.swing.JFrame {
      */
     public HomePage() {
         initComponents();
-        
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
     }
 
     /**
@@ -122,7 +125,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         UserSignPage mastersignpage = new UserSignPage();
-        mastersignpage.setTitle("User Sign");
+        mastersignpage.setTitle("User Signup");
         mastersignpage.setVisible(true);
     }//GEN-LAST:event_jbtnmasterActionPerformed
 
@@ -130,7 +133,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         HospitalSignPage hospitalsignpage = new HospitalSignPage();
-        hospitalsignpage.setTitle("Hospital Sign");
+        hospitalsignpage.setTitle("Hospital Signup");
         hospitalsignpage.setVisible(true);
     }//GEN-LAST:event_jbtnhospitalActionPerformed
 
@@ -138,7 +141,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         BusinessSignPage bussinesssignpage = new BusinessSignPage();
-        bussinesssignpage.setTitle("Bussiness Sign");
+        bussinesssignpage.setTitle("Bussiness Signup");
         bussinesssignpage.setVisible(true);
     }//GEN-LAST:event_jbtnbussinessActionPerformed
 
@@ -146,7 +149,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
         AnimalShelterSignPage strayanimalssignpage = new AnimalShelterSignPage();
-        strayanimalssignpage.setTitle("Shelter Sign");
+        strayanimalssignpage.setTitle("Shelter Signup");
         strayanimalssignpage.setVisible(true);
     }//GEN-LAST:event_jbtnstrayActionPerformed
 
