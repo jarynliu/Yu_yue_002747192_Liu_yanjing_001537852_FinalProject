@@ -978,6 +978,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
 
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
         String time_arrive = dateformat.format(jdctimearrive3.getDate());
+        
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -985,21 +986,21 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             String query = "insert into strayanimals(name,gender,age,time_arrive,spay,disabled,vaccination,pettype,images)values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(query);
             pst.setString(1, jtxtname.getText());
-            if(jbtnfemale.isSelected()){
+            if(jbtnfemale3.isSelected()){
                 gender = "Female";
             }
-            if(jbtnmale.isSelected()){
+            if(jbtnmale3.isSelected()){
                 gender = "Male";
             }
             pst.setString(2, gender);
-            pst.setInt(3,Integer.parseInt(jtxtage.getText()));  //这里的数据验证要判断integer
+             pst.setInt(3,Integer.parseInt(jtxtage3.getText()));  //这里的数据验证要判断integer
 
             pst.setString(4, time_arrive);
 
-            if(jbtnyes.isSelected()){
+            if(jbtnyes3.isSelected()){
                 spay = "Yes";
             }
-            if(jbtnno.isSelected()){
+            if(jbtnno3.isSelected()){
                 spay = "No";
             }
             pst.setString(5, spay);
@@ -1019,6 +1020,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
                 vaccination = "No";
             }
             pst.setString(7,vaccination);
+           
 
             pst.setString(8,jtxtpettype3.getText());
 
@@ -1031,8 +1033,8 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Inserted Successfully!");
 
         }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e);
+        catch (Exception ex) {
+            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbtnsaveActionPerformed
 
