@@ -20,9 +20,12 @@ is divided into following sections:
 
         -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> c8a7e6631432ae30c92e18363303c10a6b8e6159
 <project xmlns:if="ant:if" xmlns:j2seproject1="http://www.netbeans.org/ns/j2se-project/1" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxrpc="http://www.netbeans.org/ns/j2se-project/jax-rpc" xmlns:unless="ant:unless" basedir=".." default="default" name="Final_Project-impl">
     <fail message="Please build using Ant 1.8.0 or higher.">
         <condition>
@@ -1734,7 +1737,10 @@ is divided into following sections:
     <target if="already.built.clean.${basedir}" name="-warn-already-built-clean">
         <echo level="warn" message="Cycle detected: Final Project was already built"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> c8a7e6631432ae30c92e18363303c10a6b8e6159
 =======
 <project xmlns:if="ant:if" xmlns:j2seproject1="http://www.netbeans.org/ns/j2se-project/1" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxrpc="http://www.netbeans.org/ns/j2se-project/jax-rpc" xmlns:unless="ant:unless" basedir=".." default="default" name="FinalProject-impl">
     <fail message="Please build using Ant 1.8.0 or higher.">
@@ -3447,7 +3453,10 @@ is divided into following sections:
     <target if="already.built.clean.${basedir}" name="-warn-already-built-clean">
         <echo level="warn" message="Cycle detected: FinalProject was already built"/>
 >>>>>>> origin/Yue
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> c8a7e6631432ae30c92e18363303c10a6b8e6159
     </target>
     <target depends="init,-deps-clean-init" name="deps-clean" unless="no.deps">
         <mkdir dir="${build.dir}"/>
