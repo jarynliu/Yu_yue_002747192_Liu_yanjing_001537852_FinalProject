@@ -11,6 +11,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Tool.JTextFieldHintListener;
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,6 +30,7 @@ public class UserRecipe extends javax.swing.JFrame {
      */
     public UserRecipe() {
         initComponents();
+        Connect();
     }
     
     public UserRecipe(int id, String name, String role) {
@@ -31,6 +39,8 @@ public class UserRecipe extends javax.swing.JFrame {
     
     Connection con;
     PreparedStatement pst;
+    ResultSet rs;
+    
     
     public void Connect() 
     {
@@ -46,6 +56,59 @@ public class UserRecipe extends javax.swing.JFrame {
         
     }
     
+    
+    public void recipe_table ()
+    {
+        try {
+            pst = con.prepareStatement("select * from recipe");
+            rs = pst.executeQuery();
+        
+            ResultSetMetaData Rsm = (ResultSetMetaData)rs.getMetaData();
+            int c;
+             c = Rsm.getColumnCount();
+            
+            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+            model.setRowCount(0);
+            
+            while(rs.next()) 
+            {
+                Vector v2 = new Vector();
+                
+                for(int i = 1; i <= c; i++) 
+                
+                {
+                    v2.add(rs.getString("pname"));
+                    v2.add(rs.getString("page"));
+                    v2.add(rs.getString("ptype"));
+                    v2.add(rs.getString("meat"));
+                    v2.add(rs.getString("bone"));
+                    v2.add(rs.getString("liver"));
+                    v2.add(rs.getString("organ"));
+                    v2.add(rs.getString("veg"));
+                    v2.add(rs.getString("seed"));
+                    v2.add(rs.getString("fruit"));
+                    v2.add(rs.getString("supplement"));
+ 
+                }
+                
+                model.addRow(v2);
+            
+            
+            
+            
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRecipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +119,7 @@ public class UserRecipe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblpname = new javax.swing.JLabel();
@@ -77,15 +141,12 @@ public class UserRecipe extends javax.swing.JFrame {
         txtveg = new javax.swing.JTextField();
         txtseed = new javax.swing.JTextField();
         txtfruit = new javax.swing.JTextField();
-        btndog = new javax.swing.JRadioButton();
-        btncat = new javax.swing.JRadioButton();
+        rdbdog = new javax.swing.JRadioButton();
+        rdbcat = new javax.swing.JRadioButton();
         lblsup = new javax.swing.JLabel();
-        cbfishoil = new javax.swing.JCheckBox();
-        cbve = new javax.swing.JCheckBox();
         cbkale = new javax.swing.JCheckBox();
         cbvb = new javax.swing.JCheckBox();
         cbzinc = new javax.swing.JCheckBox();
-        cbman = new javax.swing.JCheckBox();
         btnadd = new javax.swing.JButton();
         btnupdate = new javax.swing.JButton();
         btndelete = new javax.swing.JButton();
@@ -94,6 +155,8 @@ public class UserRecipe extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         lblsearch = new javax.swing.JLabel();
         txtsearch = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtcomment = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,23 +183,19 @@ public class UserRecipe extends javax.swing.JFrame {
 
         lblfruit.setText("Fruit:");
 
-        btndog.setText("Dog");
+        buttonGroup1.add(rdbdog);
+        rdbdog.setText("Dog");
 
-        btncat.setText("Cat");
+        buttonGroup1.add(rdbcat);
+        rdbcat.setText("Cat");
 
         lblsup.setText("Supplement:");
-
-        cbfishoil.setText("Fish Oil");
-
-        cbve.setText("Vitamin E");
 
         cbkale.setText("Kale/Iodine");
 
         cbvb.setText("Vitamin B");
 
         cbzinc.setText("Zinc");
-
-        cbman.setText("Manganese");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,36 +222,27 @@ public class UserRecipe extends javax.swing.JFrame {
                             .addComponent(lblorgan))))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtpname)
+                        .addComponent(txtage)
+                        .addComponent(txtmeat)
+                        .addComponent(txtbone)
+                        .addComponent(txtliver)
+                        .addComponent(txtorgan)
+                        .addComponent(txtveg)
+                        .addComponent(txtseed)
+                        .addComponent(txtfruit)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(rdbdog, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(rdbcat, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtpname)
-                            .addComponent(txtage)
-                            .addComponent(txtmeat)
-                            .addComponent(txtbone)
-                            .addComponent(txtliver)
-                            .addComponent(txtorgan)
-                            .addComponent(txtveg)
-                            .addComponent(txtseed)
-                            .addComponent(txtfruit)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btndog, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btncat, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbkale, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                            .addComponent(cbfishoil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cbkale)
+                        .addGap(8, 8, 8)
+                        .addComponent(cbvb)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbve)
-                            .addComponent(cbvb))
-                        .addGap(44, 44, 44))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cbzinc)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbman)
-                        .addGap(33, 33, 33))))
+                        .addComponent(cbzinc)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,8 +259,8 @@ public class UserRecipe extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblptype)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btndog)
-                        .addComponent(btncat)))
+                        .addComponent(rdbdog)
+                        .addComponent(rdbcat)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblmeat)
@@ -242,20 +292,18 @@ public class UserRecipe extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblsup)
-                    .addComponent(cbfishoil)
-                    .addComponent(cbve))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbkale)
-                    .addComponent(cbvb))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbzinc)
-                    .addComponent(cbman))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(cbvb)
+                    .addComponent(cbzinc))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         btnadd.setText("Upload");
+        btnadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaddActionPerformed(evt);
+            }
+        });
 
         btnupdate.setText("Update");
 
@@ -271,7 +319,7 @@ public class UserRecipe extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Recipe No", "Pet Age", "Pet Type", "Muscle Meat", "Raw Bone", "Liver", "Other Organs", "Vegetables", "Seeds", "Fruit", "Supplement"
+                "Pet Name", "Pet Age", "Pet Type", "Muscle Meat", "Raw Bone", "Liver", "Other Organs", "Vegetables", "Seeds", "Fruit", "Supplement"
             }
         ) {
             Class[] types = new Class [] {
@@ -287,67 +335,166 @@ public class UserRecipe extends javax.swing.JFrame {
         lblsearch.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblsearch.setText("Search:");
 
+        jLabel2.setText("Comment:");
+
+        txtcomment.addFocusListener(new JTextFieldHintListener(txtcomment, "Review Pending..."));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblsearch)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(237, 237, 237)))
-                .addGap(18, 18, 18))
+                        .addGap(26, 26, 26)
+                        .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(211, 211, 211)
+                        .addComponent(jLabel2)
+                        .addGap(47, 47, 47)
+                        .addComponent(txtcomment, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 924, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(16, 16, 16))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
+                        .addGap(56, 56, 56)
                         .addComponent(btnadd)
-                        .addGap(47, 47, 47)
+                        .addGap(44, 44, 44)
                         .addComponent(btnupdate)
-                        .addGap(37, 37, 37)
+                        .addGap(47, 47, 47)
                         .addComponent(btndelete)
-                        .addGap(43, 43, 43)
+                        .addGap(41, 41, 41)
                         .addComponent(btnexit))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(477, 477, 477)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(746, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(45, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnadd)
+                            .addComponent(btnupdate)
+                            .addComponent(btndelete)
+                            .addComponent(btnexit))
+                        .addGap(24, 24, 24))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblsearch)
                             .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnadd)
-                    .addComponent(btnupdate)
-                    .addComponent(btndelete)
-                    .addComponent(btnexit))
-                .addGap(11, 11, 11))
+                        .addGap(33, 33, 33)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtcomment, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(131, 131, 131))))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    String ptype;
+    String supplement;
+
+    private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
+        // TODO add your handling code here:
+        
+        String pname = txtpname.getText();
+        int page = Integer.parseInt(txtage.getText());
+        
+        
+        if(rdbdog.isSelected())
+        {
+            ptype="Dog";
+        }
+        else if(rdbcat.isSelected())
+        {
+            ptype="Cat";
+        }
+        
+        String meat = txtmeat.getText();
+        String bone = txtbone.getText();
+        String liver = txtliver.getText();
+        String organ = txtorgan.getText();
+        String veg = txtveg.getText();
+        String seed = txtseed.getText();
+        String fruit = txtfruit.getText();
+        
+        
+        if(cbkale.isSelected())
+        {
+            supplement+=cbkale.getText()+" ";
+        }
+        if(cbvb.isSelected())
+        {
+            supplement+=cbvb.getText()+" ";
+        }
+        if(cbzinc.isSelected())
+        {
+            supplement+=cbzinc.getText()+" ";
+        }
+        
+        try {
+            pst = con.prepareStatement("insert into recipe (pname,page,ptype,meat,bone,liver,organ,veg,seed,fruit,supplement)values(?,?,?,?,?,?,?,?,?,?,?)");
+            
+            pst.setString(1, pname);
+            pst.setInt(2, page);
+            pst.setString(3, ptype);
+            pst.setString(4, meat);
+            pst.setString(5, bone);
+            pst.setString(6, liver);
+            pst.setString(7, organ);
+            pst.setString(8, veg);
+            pst.setString(9, seed);
+            pst.setString(10, fruit);
+            pst.setString(11, supplement);
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Upload Successfully!");
+            
+            txtpname.setText("");
+            txtage.setText("");
+            buttonGroup1.clearSelection();
+            txtmeat.setText("");
+            txtbone.setText("");
+            txtliver.setText("");
+            txtorgan.setText("");
+            txtveg.setText("");
+            txtorgan.setText("");
+            txtseed.setText("");
+            txtfruit.setText("");
+            cbkale.setSelected(false);
+            cbvb.setSelected(false);
+            cbzinc.setSelected(false);            
+            txtpname.requestFocus();
+            
+            recipe_table ();
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRecipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_btnaddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -387,18 +534,15 @@ public class UserRecipe extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnadd;
-    private javax.swing.JRadioButton btncat;
     private javax.swing.JButton btndelete;
-    private javax.swing.JRadioButton btndog;
     private javax.swing.JButton btnexit;
     private javax.swing.JButton btnupdate;
-    private javax.swing.JCheckBox cbfishoil;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox cbkale;
-    private javax.swing.JCheckBox cbman;
     private javax.swing.JCheckBox cbvb;
-    private javax.swing.JCheckBox cbve;
     private javax.swing.JCheckBox cbzinc;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -414,8 +558,11 @@ public class UserRecipe extends javax.swing.JFrame {
     private javax.swing.JLabel lblseed;
     private javax.swing.JLabel lblsup;
     private javax.swing.JLabel lblveg;
+    private javax.swing.JRadioButton rdbcat;
+    private javax.swing.JRadioButton rdbdog;
     private javax.swing.JTextField txtage;
     private javax.swing.JTextField txtbone;
+    private javax.swing.JTextField txtcomment;
     private javax.swing.JTextField txtfruit;
     private javax.swing.JTextField txtliver;
     private javax.swing.JTextField txtmeat;
