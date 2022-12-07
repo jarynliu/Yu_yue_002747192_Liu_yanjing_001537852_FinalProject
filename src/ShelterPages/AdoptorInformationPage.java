@@ -95,6 +95,8 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
         jtxtname = new javax.swing.JTextField();
         jlblshelterpetname = new javax.swing.JLabel();
         jtxtshelterpetname = new javax.swing.JTextField();
+        jlblorg = new javax.swing.JLabel();
+        jtxtorg = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,6 +167,8 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
 
         jlblshelterpetname.setText("Shelter Pet Name:");
 
+        jlblorg.setText("Organization:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -184,7 +188,8 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
                             .addComponent(jlbladdress, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlblhadpets, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlblname, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblshelterpetname, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jlblshelterpetname, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlblorg, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtxtaddress)
@@ -218,7 +223,8 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
                                 .addComponent(jbtnnot2say, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jbtnsubmit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtxtname)
-                            .addComponent(jtxtshelterpetname, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)))
+                            .addComponent(jtxtshelterpetname, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                            .addComponent(jtxtorg)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(202, 202, 202)
                         .addComponent(jlbltitle))
@@ -283,7 +289,11 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(jlblshelterpetname))
                     .addComponent(jtxtshelterpetname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlblorg)
+                    .addComponent(jtxtorg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(jbtnsubmit)
                 .addGap(18, 18, 18)
                 .addComponent(jlblinfo)
@@ -301,7 +311,9 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -312,7 +324,7 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-            String query = "insert into appointment(name,id,gender,age,haveorhadpet,numberofpet,pettypenow,phonenumber,homeaddress,shelterpetname)values(?,?,?,?,?,?,?,?,?,?)";
+            String query = "insert into appointment(name,id,gender,age,haveorhadpet,numberofpet,pettypenow,phonenumber,homeaddress,shelterpetname,organization)values(?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(query);
             
             pst.setString(1, jtxtname.getText());
@@ -367,6 +379,7 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
             pst.setString(8, jtxtphone.getText());
             pst.setString(9, jtxtaddress.getText());
             pst.setString(10, jtxtshelterpetname.getText());
+            pst.setString(11, jtxtorg.getText());
             
             pst.executeUpdate();
             //DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
@@ -374,10 +387,11 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
             //show_strayanimals();
             JOptionPane.showMessageDialog(null, "Successful!!!");
             
-             this.toBack();
-            PetInformationPage petinfo = new PetInformationPage();
-            petinfo.setVisible(true);
-            petinfo.toFront();
+//            this.toBack();
+//            PetInformationPage petinfo = new PetInformationPage();
+//            petinfo.setVisible(true);
+//            petinfo.toFront();
+            new PetInformationPage().setVisible(true);
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);
@@ -448,6 +462,7 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
     private javax.swing.JLabel jlblid;
     private javax.swing.JLabel jlblinfo;
     private javax.swing.JLabel jlblname;
+    private javax.swing.JLabel jlblorg;
     private javax.swing.JLabel jlblpettype;
     private javax.swing.JLabel jlblphone;
     private javax.swing.JLabel jlblshelterpetname;
@@ -456,6 +471,7 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtage;
     private javax.swing.JTextField jtxtid;
     private javax.swing.JTextField jtxtname;
+    private javax.swing.JTextField jtxtorg;
     private javax.swing.JTextField jtxtphone;
     private javax.swing.JTextField jtxtshelterpetname;
     // End of variables declaration//GEN-END:variables
