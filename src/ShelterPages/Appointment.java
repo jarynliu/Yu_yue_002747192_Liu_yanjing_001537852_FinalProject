@@ -12,9 +12,9 @@ class Appointment {
     
     private int ano;
     private int age;
-    private String name,id,gender,haveorhadpet,numberofpet,pettypenow,phonenumber,homeaddress,shelterpetname;
+    private String name,id,gender,haveorhadpet,numberofpet,pettypenow,phonenumber,homeaddress,shelterpetname,organization,appointmentstatus;
     
-    public Appointment(int ano, String name, String id,String gender, int age,String haveorhadpet, String numberofpet, String pettypenow, String phonenumber, String homeaddress, String shelterpetname)
+    public Appointment(int ano, String name, String id,String gender, int age,String haveorhadpet, String numberofpet, String pettypenow, String phonenumber, String homeaddress, String shelterpetname, String organization,String appointmentstatus)
     {
         this.ano = ano;
         this.name = name;
@@ -27,6 +27,17 @@ class Appointment {
         this.phonenumber = phonenumber;
         this.homeaddress = homeaddress;
         this.shelterpetname = shelterpetname;
+        this.organization = organization;
+        this.appointmentstatus = appointmentstatus;
+
+    }
+
+    public String getAppointmentstatus() {
+        return appointmentstatus;
+    }
+
+    public String getOrganization() {
+        return organization;
     }
 
     public int getAno() {

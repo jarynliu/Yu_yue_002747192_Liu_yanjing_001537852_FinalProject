@@ -40,7 +40,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -67,6 +70,7 @@
                               <Component id="jlblhadpets" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
                               <Component id="jlblname" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="jlblshelterpetname" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                              <Component id="jlblorg" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -109,6 +113,7 @@
                               <Component id="jbtnsubmit" alignment="1" min="-2" pref="78" max="-2" attributes="0"/>
                               <Component id="jtxtname" alignment="0" max="32767" attributes="0"/>
                               <Component id="jtxtshelterpetname" alignment="0" pref="398" max="32767" attributes="0"/>
+                              <Component id="jtxtorg" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -193,7 +198,12 @@
                       </Group>
                       <Component id="jtxtshelterpetname" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="98" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlblorg" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtxtorg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="65" max="32767" attributes="0"/>
                   <Component id="jbtnsubmit" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jlblinfo" min="-2" max="-2" attributes="0"/>
@@ -376,6 +386,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxtshelterpetname">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlblorg">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Organization:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtxtorg">
         </Component>
       </SubComponents>
     </Container>

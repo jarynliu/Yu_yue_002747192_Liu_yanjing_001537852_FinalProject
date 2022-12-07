@@ -68,7 +68,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             
             while(rs.next()){
             
-                strayanimals = new StrayAnimals(rs.getInt("sno"),rs.getString("name"),rs.getString("gender"),rs.getInt("age"),rs.getDate("time_arrive"),rs.getString("spay"),rs.getString("disabled"),rs.getString("vaccination"),rs.getString("pettype"),rs.getBytes("images"));
+                strayanimals = new StrayAnimals(rs.getInt("sno"),rs.getString("name"),rs.getString("gender"),rs.getInt("age"),rs.getDate("time_arrive"),rs.getString("spay"),rs.getString("disabled"),rs.getString("vaccination"),rs.getString("organization"),rs.getString("pettype"),rs.getBytes("images"));
                 strayanimalsList.add(strayanimals);
             
             }
@@ -94,7 +94,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             
             while(rs.next()){
             
-                appointment = new Appointment(rs.getInt("ano"),rs.getString("name"),rs.getString("id"),rs.getString("gender"),rs.getInt("age"),rs.getString("haveorhadpet"),rs.getString("numberofpet"),rs.getString("pettypenow"),rs.getString("phonenumber"),rs.getString("homeaddress"),rs.getString("shelterpetname"));
+                appointment = new Appointment(rs.getInt("ano"),rs.getString("name"),rs.getString("id"),rs.getString("gender"),rs.getInt("age"),rs.getString("haveorhadpet"),rs.getString("numberofpet"),rs.getString("pettypenow"),rs.getString("phonenumber"),rs.getString("homeaddress"),rs.getString("shelterpetname"),rs.getString("organization"),rs.getString("appointmentstatus"));
                 appointmentList.add(appointment);
             
             }
@@ -111,7 +111,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
     
         ArrayList<StrayAnimals> list = strayanimalsList();
         DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
-        Object[] row = new Object[9];
+        Object[] row = new Object[10];
         for (int i=0; i<list.size();i++){
         
             row[0] = list.get(i).getSno();
@@ -122,7 +122,8 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             row[5] = list.get(i).getSpay();
             row[6] = list.get(i).getDisabled();
             row[7] = list.get(i).getVaccination();
-            row[8]= list.get(i).getPettype();
+            row[8]= list.get(i).getOrganization();
+            row[9]= list.get(i).getPettype();
             model.addRow(row);
         }
     
@@ -132,7 +133,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
     
         ArrayList<Appointment> list = appointmentList();
         DefaultTableModel model = (DefaultTableModel)jtb_display_appointment.getModel();
-        Object[] row = new Object[11];
+        Object[] row = new Object[13];
         for (int i=0; i<list.size();i++){
         
             row[0] = list.get(i).getAno();
@@ -146,6 +147,8 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             row[8]= list.get(i).getPhonenumber();
             row[9]= list.get(i).getHomeaddress();
             row[10]= list.get(i).getShelterpetname();
+            row[11]= list.get(i).getOrganization();
+            row[12]= list.get(i).getAppointmentstatus();
             model.addRow(row);
         }
     
@@ -234,6 +237,9 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         jtxtsearch1 = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         jtb_display_appointment = new javax.swing.JTable();
+        jtxtstatus = new javax.swing.JTextField();
+        jlblstatus = new javax.swing.JLabel();
+        jbtnstatus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -296,7 +302,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sno", "Name", "Gender", "Age", "TimeArrive", "Spay", "Disabled", "Vaccination", "Pettype"
+                "Sno", "Name", "Gender", "Age", "TimeArrive", "Spay", "Disabled", "Vaccination", "Organization", "Pettype"
             }
         ));
         jtb_display_strayanimals.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -366,7 +372,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
                                 .addComponent(jbtndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(43, 43, 43)
                                 .addComponent(jbtnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jlblpettype, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -403,17 +409,20 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
                                             .addComponent(jbtnno))
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(jtxtpettype))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 352, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jlblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
                         .addComponent(jlblsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(jtxtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(jtxtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(319, 319, 319))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -568,7 +577,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ano", "name", "id", "gender", "age", "have or had a pet", "number of pet", "pet type now", "phone number", "home address", "shelter pet name"
+                "ano", "name", "id", "gender", "age", "have or had a pet", "number of pet", "pet type now", "phone number", "home address", "shelter pet name", "Organization", "Status"
             }
         ));
         jtb_display_appointment.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -577,6 +586,15 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             }
         });
         jScrollPane5.setViewportView(jtb_display_appointment);
+
+        jlblstatus.setText("Status: ");
+
+        jbtnstatus.setText("Submit");
+        jbtnstatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnstatusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpappointmentsLayout = new javax.swing.GroupLayout(jpappointments);
         jpappointments.setLayout(jpappointmentsLayout);
@@ -609,7 +627,6 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
                                 .addComponent(jbtnmale1)
                                 .addGap(18, 18, 18)
                                 .addComponent(jbtnnotsay))
-                            .addComponent(jtxtage1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtxtshelterpetname, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtxtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtxtphone, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -631,8 +648,16 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
                                                 .addComponent(jbtn2)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jbtn3))
-                                            .addComponent(jcbothers))))))
-                        .addGap(0, 880, Short.MAX_VALUE)))
+                                            .addComponent(jcbothers)))))
+                            .addGroup(jpappointmentsLayout.createSequentialGroup()
+                                .addComponent(jtxtage1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(134, 134, 134)
+                                .addComponent(jlblstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(jtxtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(80, 80, 80)
+                                .addComponent(jbtnstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 301, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jpappointmentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpappointmentsLayout.createSequentialGroup()
@@ -664,7 +689,11 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpappointmentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlblage1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jtxtage1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpappointmentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jtxtage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtxtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlblstatus)
+                        .addComponent(jbtnstatus)))
                 .addGap(18, 18, 18)
                 .addGroup(jpappointmentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpappointmentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -868,7 +897,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             jbtnvno.setSelected(true);
 
         }
-        jtxtpettype.setText(model.getValueAt(i, 8).toString());
+        jtxtpettype.setText(model.getValueAt(i, 9).toString());
         byte[] img = (strayanimalsList().get(i).getPicture());
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(jlblimage.getWidth(),jlblimage.getHeight(),Image.SCALE_SMOOTH));
         jlblimage.setIcon(imageIcon);
@@ -1113,8 +1142,33 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         jtxtphone.setText(model.getValueAt(i,8).toString());
         jtxtaddress.setText(model.getValueAt(i,9).toString());
         jtxtshelterpetname.setText(model.getValueAt(i,10).toString());
+        jtxtstatus.setText(model.getValueAt(i,12).toString());
 
     }//GEN-LAST:event_jtb_display_appointmentMouseClicked
+
+    private void jbtnstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnstatusActionPerformed
+        // TODO add your handling code here:
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
+            int row = jtb_display_appointment.getSelectedRow();
+            String value = (jtb_display_appointment.getModel().getValueAt(row, 0).toString());
+            String query = "UPDATE appointment SET appointmentstatus=? where ano="+value;
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, jtxtstatus.getText());
+
+            pst.executeUpdate();
+            DefaultTableModel model = (DefaultTableModel)jtb_display_appointment.getModel();
+            model.setRowCount(0);
+            show_appointment();
+            JOptionPane.showMessageDialog(null, "Status Changed");
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e);
+        }
+        
+    }//GEN-LAST:event_jbtnstatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1180,6 +1234,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
     private javax.swing.JRadioButton jbtnnotsay;
     private javax.swing.JButton jbtnreset;
     private javax.swing.JButton jbtnsave;
+    private javax.swing.JButton jbtnstatus;
     private javax.swing.JButton jbtnupdate;
     private javax.swing.JRadioButton jbtnvno;
     private javax.swing.JRadioButton jbtnvyes;
@@ -1208,6 +1263,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
     private javax.swing.JLabel jlblsearch1;
     private javax.swing.JLabel jlblshelterpetname;
     private javax.swing.JLabel jlblspay;
+    private javax.swing.JLabel jlblstatus;
     private javax.swing.JLabel jlbltimearrive;
     private javax.swing.JLabel jlblvacci;
     private javax.swing.JPanel jpappointments;
@@ -1225,5 +1281,6 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtsearch;
     private javax.swing.JTextField jtxtsearch1;
     private javax.swing.JTextField jtxtshelterpetname;
+    private javax.swing.JTextField jtxtstatus;
     // End of variables declaration//GEN-END:variables
 }

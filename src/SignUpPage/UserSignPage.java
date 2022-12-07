@@ -281,7 +281,7 @@ public class UserSignPage extends javax.swing.JFrame {
             unameList = con.prepareStatement(sql);
             unameList.setString(1, name);
             ResultSet rs = unameList.executeQuery();
-            
+   
             
              if (name == null || name.trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Please Input Name.");

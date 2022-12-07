@@ -59,7 +59,7 @@ public class PetInformationPage extends javax.swing.JFrame {
             
             while(rs.next()){
             
-                petinformation = new PetInformation(rs.getInt("sno"),rs.getString("name"),rs.getString("gender"),rs.getInt("age"),rs.getDate("time_arrive"),rs.getString("spay"),rs.getString("disabled"),rs.getString("vaccination"),rs.getString("pettype"),rs.getBytes("images"));
+                petinformation = new PetInformation(rs.getInt("sno"),rs.getString("name"),rs.getString("gender"),rs.getInt("age"),rs.getDate("time_arrive"),rs.getString("spay"),rs.getString("disabled"),rs.getString("vaccination"),rs.getString("organization"),rs.getString("pettype"),rs.getBytes("images"));
                 petinformationList.add(petinformation);
             
             }
@@ -86,7 +86,7 @@ public class PetInformationPage extends javax.swing.JFrame {
             
             while(rs.next()){
             
-                strayanimals = new StrayAnimals(rs.getInt("sno"),rs.getString("name"),rs.getString("gender"),rs.getInt("age"),rs.getDate("time_arrive"),rs.getString("spay"),rs.getString("disabled"),rs.getString("vaccination"),rs.getString("pettype"),rs.getBytes("images"));
+                strayanimals = new StrayAnimals(rs.getInt("sno"),rs.getString("name"),rs.getString("gender"),rs.getInt("age"),rs.getDate("time_arrive"),rs.getString("spay"),rs.getString("disabled"),rs.getString("vaccination"),rs.getString("organization"),rs.getString("pettype"),rs.getBytes("images"));
                 strayanimalsList.add(strayanimals);
             
             }
@@ -103,7 +103,7 @@ public class PetInformationPage extends javax.swing.JFrame {
     
         ArrayList<StrayAnimals> list = strayanimalsList();
         DefaultTableModel model = (DefaultTableModel)jtb_display_petinformation2.getModel();
-        Object[] row = new Object[9];
+        Object[] row = new Object[10];
         for (int i=0; i<list.size();i++){
         
             row[0] = list.get(i).getSno();
@@ -114,7 +114,8 @@ public class PetInformationPage extends javax.swing.JFrame {
             row[5] = list.get(i).getSpay();
             row[6] = list.get(i).getDisabled();
             row[7] = list.get(i).getVaccination();
-            row[8]= list.get(i).getPettype();
+            row[8]= list.get(i).getOrganization();
+            row[9]= list.get(i).getPettype();
             model.addRow(row);
         }
     
@@ -124,7 +125,7 @@ public class PetInformationPage extends javax.swing.JFrame {
     
         ArrayList<PetInformation> list = petinformationList();
         DefaultTableModel model = (DefaultTableModel)jtb_display_petinformation1.getModel();
-        Object[] row = new Object[9];
+        Object[] row = new Object[10];
         for (int i=0; i<list.size();i++){
         
             row[0] = list.get(i).getSno();
@@ -135,7 +136,8 @@ public class PetInformationPage extends javax.swing.JFrame {
             row[5] = list.get(i).getSpay();
             row[6] = list.get(i).getDisabled();
             row[7] = list.get(i).getVaccination();
-            row[8]= list.get(i).getPettype();
+            row[8]= list.get(i).getOrganization();
+            row[9]= list.get(i).getPettype();
             model.addRow(row);
         }
     
@@ -191,6 +193,7 @@ public class PetInformationPage extends javax.swing.JFrame {
         jlblsearch2 = new javax.swing.JLabel();
         jtxtsearch2 = new javax.swing.JTextField();
         jbtnappoinment = new javax.swing.JButton();
+        jbtnviewappointment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -239,7 +242,7 @@ public class PetInformationPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sno", "Name", "Gender", "Age", "TimeArrive", "Spay", "Disabled", "Vaccination", "Pettype"
+                "Sno", "Name", "Gender", "Age", "TimeArrive", "Spay", "Disabled", "Vaccination", "Organization", "Pettype"
             }
         ));
         jtb_display_petinformation2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -264,7 +267,7 @@ public class PetInformationPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sno", "Name", "Gender", "Age", "TimeArrive", "Spay", "Disabled", "Vaccination", "Pettype"
+                "Sno", "Name", "Gender", "Age", "TimeArrive", "Spay", "Disabled", "Vaccination", "Organization", "Pettype"
             }
         ));
         jtb_display_petinformation1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -289,93 +292,98 @@ public class PetInformationPage extends javax.swing.JFrame {
             }
         });
 
+        jbtnviewappointment.setText("View my Appointment");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbtnviewappointment))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlblpettype3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(35, 35, 35)
-                                    .addComponent(jlblage3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jlblspay3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jlbltimearrive3)
-                                        .addComponent(jlbldisabled3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jlblvacci3)))))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jtxtage3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jdctimearrive3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jbtnyes3)
-                                    .addComponent(jbtndyes3)
-                                    .addComponent(jbtnvyes3))
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jbtnvno3)
-                                    .addComponent(jbtndno3)
-                                    .addComponent(jbtnno3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jtxtpettype3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jlblimage3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlblname3)
-                            .addComponent(jlblgender3))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jbtnfemale3)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jlblpettype3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGap(35, 35, 35)
+                                            .addComponent(jlblage3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addContainerGap()
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jlblspay3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jlbltimearrive3)
+                                                .addComponent(jlbldisabled3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jlblvacci3)))))
                                 .addGap(18, 18, 18)
-                                .addComponent(jbtnmale3))
-                            .addComponent(jtxtname3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jtxtage3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jdctimearrive3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jbtnyes3)
+                                            .addComponent(jbtndyes3)
+                                            .addComponent(jbtnvyes3))
+                                        .addGap(39, 39, 39)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jbtnvno3)
+                                            .addComponent(jbtndno3)
+                                            .addComponent(jbtnno3))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jtxtpettype3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jlblimage3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
+                                .addGap(69, 69, 69)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlblname3)
+                                    .addComponent(jlblgender3))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jbtnfemale3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jbtnmale3))
+                                    .addComponent(jtxtname3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
                                 .addComponent(jlblsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jtxtsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jtxtsearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(366, 366, 366)
-                        .addComponent(jlblsearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jbtnappoinment)))
-                .addGap(18, 18, 18)
-                .addComponent(jtxtsearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(366, 366, 366)
+                                .addComponent(jlblsearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jbtnappoinment)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jtxtsearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 350, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(32, 32, 32)
+                .addComponent(jbtnviewappointment)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -441,7 +449,7 @@ public class PetInformationPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -538,7 +546,7 @@ public class PetInformationPage extends javax.swing.JFrame {
             jbtnvno3.setSelected(true);
 
         }
-        jtxtpettype3.setText(model.getValueAt(i, 8).toString());
+        jtxtpettype3.setText(model.getValueAt(i, 9).toString());
         byte[] img = (strayanimalsList().get(i).getPicture());
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(jlblimage3.getWidth(),jlblimage3.getHeight(),Image.SCALE_SMOOTH));
         jlblimage3.setIcon(imageIcon);
@@ -631,7 +639,7 @@ public class PetInformationPage extends javax.swing.JFrame {
             jbtnvno3.setSelected(true);
 
         }
-        jtxtpettype3.setText(model.getValueAt(i, 8).toString());
+        jtxtpettype3.setText(model.getValueAt(i, 9).toString());
         byte[] img = (petinformationList().get(i).getPicture());
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(jlblimage3.getWidth(),jlblimage3.getHeight(),Image.SCALE_SMOOTH));
         jlblimage3.setIcon(imageIcon);
@@ -694,6 +702,7 @@ public class PetInformationPage extends javax.swing.JFrame {
     private javax.swing.JRadioButton jbtnfemale3;
     private javax.swing.JRadioButton jbtnmale3;
     private javax.swing.JRadioButton jbtnno3;
+    private javax.swing.JButton jbtnviewappointment;
     private javax.swing.JRadioButton jbtnvno3;
     private javax.swing.JRadioButton jbtnvyes3;
     private javax.swing.JRadioButton jbtnyes3;
