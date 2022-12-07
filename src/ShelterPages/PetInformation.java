@@ -16,10 +16,10 @@ class PetInformation {
     private String name,gender;
     private int age;
     private Date time_arrive;
-    private String spay,disabled,vaccination,pettype;
+    private String spay,disabled,vaccination,organization,pettype;
     private byte[] picture;
     
-    public PetInformation(int sno, String name, String gender, int age, Date time_arrive, String spay, String disabled, String vaccination, String pettype, byte[] image)
+    public PetInformation(int sno, String name, String gender, int age, Date time_arrive, String spay, String disabled, String vaccination, String organization,String pettype, byte[] image)
     {
         this.sno = sno;
         this.name = name;
@@ -29,8 +29,13 @@ class PetInformation {
         this.spay = spay;
         this.disabled = disabled;
         this.vaccination = vaccination;
+        this.organization = organization;
         this.pettype = pettype;
         this.picture = image;
+    }
+
+    public String getOrganization() {
+        return organization;
     }
 
     public int getSno() {

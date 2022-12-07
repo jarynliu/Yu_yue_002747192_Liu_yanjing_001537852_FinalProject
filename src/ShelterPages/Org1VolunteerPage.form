@@ -66,7 +66,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" pref="1244" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -143,7 +143,7 @@
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="jlblimage3" min="-2" pref="170" max="-2" attributes="0"/>
-                                          <EmptySpace pref="30" max="32767" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -180,15 +180,15 @@
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jScrollPane4" min="-2" pref="759" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jlblsearch3" min="-2" pref="89" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jtxtsearch3" min="-2" pref="328" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="388" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jScrollPane4" min="-2" pref="823" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -199,7 +199,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jtxtname3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jlblname3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -419,7 +419,7 @@
                     <Component class="javax.swing.JTable" name="jtb_display_strayanimals3">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="9" rowCount="0">
+                          <Table columnCount="10" rowCount="0">
                             <Column editable="true" title="Sno" type="java.lang.Object"/>
                             <Column editable="true" title="Name" type="java.lang.Object"/>
                             <Column editable="true" title="Gender" type="java.lang.Object"/>
@@ -428,11 +428,17 @@
                             <Column editable="true" title="Spay" type="java.lang.Object"/>
                             <Column editable="true" title="Disabled" type="java.lang.Object"/>
                             <Column editable="true" title="Vaccination" type="java.lang.Object"/>
-                            <Column editable="true" title="Pettype" type="java.lang.Object"/>
+                            <Column editable="true" title="Organization" type="java.lang.Object"/>
+                            <Column editable="true" title="Pet Type" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
@@ -559,11 +565,9 @@
                           <Component id="jlblgender" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
                           <Component id="jlblhaveorhad" alignment="0" pref="121" max="32767" attributes="0"/>
                           <Component id="jlblnumberofpet" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jlbladdress" alignment="0" pref="102" max="32767" attributes="0"/>
-                              <Component id="jlblphone" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jlblpettypenow" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jlbladdress" alignment="0" pref="121" max="32767" attributes="0"/>
+                          <Component id="jlblphone" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jlblpettypenow" alignment="0" max="32767" attributes="0"/>
                           <Component id="jlblshelterpetname" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
@@ -613,12 +617,23 @@
                                   <Component id="jtxtshelterpetname" alignment="0" min="-2" pref="291" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                              <Component id="jlblsearch" min="-2" pref="63" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="jtxtsearch" min="-2" pref="261" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jlblsearch" min="-2" pref="63" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="jtxtsearch" min="-2" pref="261" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jlblstatus" min="-2" pref="41" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Component id="jtxtstatus" min="-2" pref="227" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                                      <Component id="jbtnstatus" min="-2" pref="78" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="302" max="32767" attributes="0"/>
+                      <EmptySpace pref="215" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -639,14 +654,26 @@
                                   <Component id="jlblid" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jtxtid" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jlblgender" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jbtnfemale" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jbtnmale" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jbtnnotsay" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jlblgender" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jbtnfemale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jbtnmale" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jbtnnotsay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jtxtstatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jlblstatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jbtnstatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jlblage" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jtxtage" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -694,7 +721,7 @@
                           <Component id="jlblsearch" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jtxtsearch" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="87" max="32767" attributes="0"/>
+                      <EmptySpace pref="83" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -710,7 +737,7 @@
                 <Component class="javax.swing.JTable" name="jtb_display_appointment">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="11" rowCount="0">
+                      <Table columnCount="13" rowCount="0">
                         <Column editable="true" title="ano" type="java.lang.Object"/>
                         <Column editable="true" title="name" type="java.lang.Object"/>
                         <Column editable="true" title="id" type="java.lang.Object"/>
@@ -722,10 +749,22 @@
                         <Column editable="true" title="phone number" type="java.lang.Object"/>
                         <Column editable="true" title="home address" type="java.lang.Object"/>
                         <Column editable="true" title="shelter pet name" type="java.lang.Object"/>
+                        <Column editable="true" title="org" type="java.lang.Object"/>
+                        <Column editable="true" title="status" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -953,6 +992,21 @@
             <Component class="javax.swing.JTextField" name="jtxtsearch">
               <Events>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtsearchKeyPressed1"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jlblstatus">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Status: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jtxtstatus">
+            </Component>
+            <Component class="javax.swing.JButton" name="jbtnstatus">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Submit"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnstatusActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

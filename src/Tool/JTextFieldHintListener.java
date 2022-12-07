@@ -15,8 +15,8 @@ import javax.swing.JTextField;
 
 public class JTextFieldHintListener implements FocusListener {
 
-    private String hintText;
-    private JTextField textField;
+    private final String hintText;
+    private final JTextField textField;
 
     public JTextFieldHintListener(JTextField jTextField, String hintText) {
         this.textField = jTextField;
