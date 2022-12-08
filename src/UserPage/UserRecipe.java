@@ -311,7 +311,7 @@ public class UserRecipe extends javax.swing.JFrame {
             }
         });
 
-        btnupdate.setText("Update");
+        btnupdate.setText("Edit");
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnupdateActionPerformed(evt);
