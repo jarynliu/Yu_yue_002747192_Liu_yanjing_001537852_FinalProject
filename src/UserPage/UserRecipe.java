@@ -197,7 +197,7 @@ public class UserRecipe extends javax.swing.JFrame {
 
         lblsup.setText("Supplement:");
 
-        cbkale.setText("Kale/Iodine");
+        cbkale.setText("Kale");
 
         cbvb.setText("Vitamin B");
 
@@ -248,7 +248,7 @@ public class UserRecipe extends javax.swing.JFrame {
                         .addComponent(cbvb)
                         .addGap(18, 18, 18)
                         .addComponent(cbzinc)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,19 +356,11 @@ public class UserRecipe extends javax.swing.JFrame {
         lblsearch.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblsearch.setText("Search:");
 
-        txtsearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtsearchKeyReleased(evt);
-            }
-        });
-
         jLabel2.setText("Org1 Comment:");
 
         txtcomment.addFocusListener(new JTextFieldHintListener(txtcomment, "Review Pending..."));
 
         jLabel3.setText("Org2 Comment:");
-
-        txtcomment2.addFocusListener(new JTextFieldHintListener(txtcomment2, "Review Pending..."));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -482,11 +474,11 @@ public class UserRecipe extends javax.swing.JFrame {
         {
             supplement+=cbkale.getText()+" ";
         }
-        if(cbvb.isSelected())
+        else if(cbvb.isSelected())
         {
             supplement+=cbvb.getText()+" ";
         }
-        if(cbzinc.isSelected())
+        else if(cbzinc.isSelected())
         {
             supplement+=cbzinc.getText()+" ";
         }
@@ -690,18 +682,55 @@ public class UserRecipe extends javax.swing.JFrame {
         txtfruit.setText(model.getValueAt(SelectIndex, 10).toString());
         
         String supplement = model.getValueAt(SelectIndex, 11).toString();
+            switch(supplement){
+                
+                case "Kale" :
+                    cbkale.setSelected(true);
+                    cbvb.setSelected(false);
+                    cbzinc.setSelected(false);
+                    break;
+                    
+                case "Vitamin B" :
+                    cbkale.setSelected(false);
+                    cbvb.setSelected(true);
+                    cbzinc.setSelected(false);
+                    break;
+                
+                case "Zinc" :
+                    cbkale.setSelected(false);
+                    cbvb.setSelected(false);
+                    cbzinc.setSelected(true);
+                    break;
+                    
+                case "Kale Vitamin B" :
+                    cbkale.setSelected(true);
+                    cbvb.setSelected(true);
+                    cbzinc.setSelected(false);
+                    break;
+                    
+                case "Kale Zinc" :
+                    cbkale.setSelected(true);
+                    cbvb.setSelected(false);
+                    cbzinc.setSelected(true);
+                    break;
+                    
+                case "Vitamin B Zinc" :
+                    cbkale.setSelected(false);
+                    cbvb.setSelected(true);
+                    cbzinc.setSelected(true);
+                    break;
+                    
+                default :
+                    cbkale.setSelected(true);
+                    cbvb.setSelected(true);
+                    cbzinc.setSelected(true);
+                    break;
+            
+            }
+        
 
         
     }//GEN-LAST:event_jTable1MouseClicked
-
-    private void txtsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsearchKeyReleased
-        // TODO add your handling code here:
-        
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        jTable1.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(txtsearch.getText()));
-    }//GEN-LAST:event_txtsearchKeyReleased
 
     /**
      * @param args the command line arguments
