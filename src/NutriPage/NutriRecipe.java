@@ -43,14 +43,14 @@ public class NutriRecipe extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(288, 288, 288)
                 .addComponent(jLabel1)
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addContainerGap(332, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addContainerGap(466, Short.MAX_VALUE))
+                .addContainerGap(484, Short.MAX_VALUE))
         );
 
         pack();
