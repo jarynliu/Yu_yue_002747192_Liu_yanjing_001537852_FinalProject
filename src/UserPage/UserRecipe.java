@@ -31,6 +31,7 @@ public class UserRecipe extends javax.swing.JFrame {
     public UserRecipe() {
         initComponents();
         Connect();
+        recipe_table ();
     }
     
     public UserRecipe(int id, String name, String role) {
@@ -77,6 +78,7 @@ public class UserRecipe extends javax.swing.JFrame {
                 for(int i = 1; i <= c; i++) 
                 
                 {
+                    v2.add(rs.getString("recipeno"));
                     v2.add(rs.getString("pname"));
                     v2.add(rs.getString("page"));
                     v2.add(rs.getString("ptype"));
@@ -306,28 +308,43 @@ public class UserRecipe extends javax.swing.JFrame {
         });
 
         btnupdate.setText("Update");
+        btnupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupdateActionPerformed(evt);
+            }
+        });
 
         btndelete.setText("Delete");
+        btndelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndeleteActionPerformed(evt);
+            }
+        });
 
         btnexit.setText("Exit");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Pet Name", "Pet Age", "Pet Type", "Muscle Meat", "Raw Bone", "Liver", "Other Organs", "Vegetables", "Seeds", "Fruit", "Supplement"
+                "Recipe No", "Pet Name", "Pet Age", "Pet Type", "Muscle Meat", "Raw Bone", "Liver", "Other Organs", "Vegetables", "Seeds", "Fruit", "Supplement"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -478,7 +495,6 @@ public class UserRecipe extends javax.swing.JFrame {
             txtliver.setText("");
             txtorgan.setText("");
             txtveg.setText("");
-            txtorgan.setText("");
             txtseed.setText("");
             txtfruit.setText("");
             cbkale.setSelected(false);
@@ -495,6 +511,166 @@ public class UserRecipe extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnaddActionPerformed
+
+    private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int SelectIndex = jTable1.getSelectedRow();
+        
+        
+        String pname = txtpname.getText();
+        int page = Integer.parseInt(txtage.getText());
+        
+        
+        if(rdbdog.isSelected())
+        {
+            ptype="Dog";
+        }
+        else if(rdbcat.isSelected())
+        {
+            ptype="Cat";
+        }
+        
+        String meat = txtmeat.getText();
+        String bone = txtbone.getText();
+        String liver = txtliver.getText();
+        String organ = txtorgan.getText();
+        String veg = txtveg.getText();
+        String seed = txtseed.getText();
+        String fruit = txtfruit.getText();
+        
+        
+        if(cbkale.isSelected())
+        {
+            supplement+=cbkale.getText()+" ";
+        }
+        if(cbvb.isSelected())
+        {
+            supplement+=cbvb.getText()+" ";
+        }
+        if(cbzinc.isSelected())
+        {
+            supplement+=cbzinc.getText()+" ";
+        }
+        
+        try {
+            pst = con.prepareStatement("update recipe set pname = ?, page = ?, ptype = ?, meat = ?, bone = ?, liver = ?, organ = ?, veg = ?, seed=?, fruit = ?, supplement = ? where recipeno= ?");
+            
+            int recipeno = Integer.parseInt(model.getValueAt(SelectIndex, 0).toString());
+            
+            pst.setString(1, pname);
+            pst.setInt(2, page);
+            pst.setString(3, ptype);
+            pst.setString(4, meat);
+            pst.setString(5, bone);
+            pst.setString(6, liver);
+            pst.setString(7, organ);
+            pst.setString(8, veg);
+            pst.setString(9, seed);
+            pst.setString(10, fruit);
+            pst.setString(11, supplement);
+            pst.setInt(12, recipeno);
+            
+            
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Recipe Updated!");
+            
+            txtpname.setText("");
+            txtage.setText("");
+            buttonGroup1.clearSelection();
+            txtmeat.setText("");
+            txtbone.setText("");
+            txtliver.setText("");
+            txtorgan.setText("");
+            txtveg.setText("");
+            txtseed.setText("");
+            txtfruit.setText("");
+            cbkale.setSelected(false);
+            cbvb.setSelected(false);
+            cbzinc.setSelected(false);            
+            txtpname.requestFocus();
+            
+            recipe_table ();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRecipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btnupdateActionPerformed
+
+    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int SelectIndex = jTable1.getSelectedRow();
+        
+        try {
+            int recipeno = Integer.parseInt(model.getValueAt(SelectIndex, 0).toString());
+            
+            pst = con.prepareStatement("delete from recipe where recipeno = ?");
+            
+            pst.setInt(1, recipeno);
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Recipe Deleted!");
+            
+            txtpname.setText("");
+            txtage.setText("");
+            buttonGroup1.clearSelection();
+            txtmeat.setText("");
+            txtbone.setText("");
+            txtliver.setText("");
+            txtorgan.setText("");
+            txtveg.setText("");
+            txtseed.setText("");
+            txtfruit.setText("");
+            cbkale.setSelected(false);
+            cbvb.setSelected(false);
+            cbzinc.setSelected(false);            
+            txtpname.requestFocus();
+            
+            recipe_table ();
+            btnadd.setEnabled(true);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRecipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btndeleteActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int SelectIndex = jTable1.getSelectedRow();
+        
+        txtpname.setText(model.getValueAt(SelectIndex, 1).toString());
+        txtage.setText(model.getValueAt(SelectIndex, 2).toString());
+        
+        String ptype = model.getValueAt(SelectIndex, 3).toString();
+        if (ptype.equals("Dog")){
+
+            rdbdog.setSelected(true);
+
+        }
+        else{
+
+            rdbcat.setSelected(true);
+
+        }
+        
+        txtmeat.setText(model.getValueAt(SelectIndex, 4).toString());
+        txtbone.setText(model.getValueAt(SelectIndex, 5).toString());
+        txtliver.setText(model.getValueAt(SelectIndex, 6).toString());
+        txtorgan.setText(model.getValueAt(SelectIndex, 7).toString());
+        txtveg.setText(model.getValueAt(SelectIndex, 8).toString());
+        txtseed.setText(model.getValueAt(SelectIndex, 9).toString());
+        txtfruit.setText(model.getValueAt(SelectIndex, 10).toString());
+        
+        String supplement = model.getValueAt(SelectIndex, 11).toString();
+
+        
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
