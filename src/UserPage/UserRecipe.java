@@ -607,7 +607,9 @@ public class UserRecipe extends javax.swing.JFrame {
             txtpname.requestFocus();
             
             recipe_table ();
+            btnadd.setEnabled(true);
             
+     
         } catch (SQLException ex) {
             Logger.getLogger(UserRecipe.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -616,7 +618,12 @@ public class UserRecipe extends javax.swing.JFrame {
 
     private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        
+        int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete it ?", "Delete",JOptionPane.YES_NO_OPTION);
+        
+        if (opt==0){
+            
+            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         int SelectIndex = jTable1.getSelectedRow();
         
         try {
@@ -650,6 +657,11 @@ public class UserRecipe extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(UserRecipe.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+        }
+        
+        
     }//GEN-LAST:event_btndeleteActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -725,8 +737,11 @@ public class UserRecipe extends javax.swing.JFrame {
                     cbvb.setSelected(true);
                     cbzinc.setSelected(true);
                     break;
+
             
             }
+            
+        btnadd.setEnabled(false);
         
 
         

@@ -185,6 +185,11 @@ public class Product extends javax.swing.JFrame {
         });
 
         btndelete.setText("Delete");
+        btndelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndeleteActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Status:");
 
@@ -300,6 +305,11 @@ public class Product extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        productTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productTableMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(productTable);
@@ -449,6 +459,8 @@ public class Product extends javax.swing.JFrame {
             
             product_table ();
             
+            btnadd.setEnabled(true);
+            
         } catch (SQLException ex) {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -456,6 +468,66 @@ public class Product extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btneditActionPerformed
+
+    private void productTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTableMouseClicked
+        // TODO add your handling code here:
+        
+        DefaultTableModel model = (DefaultTableModel)productTable.getModel();
+        int SelectIndex = productTable.getSelectedRow();
+        
+        txtproname.setText(model.getValueAt(SelectIndex, 1).toString());
+        txtdesc.setText(model.getValueAt(SelectIndex, 2).toString());
+        txtcateg.setSelectedItem(model.getValueAt(SelectIndex, 3).toString());
+        txtcost.setText(model.getValueAt(SelectIndex, 4).toString());
+        txtprice.setText(model.getValueAt(SelectIndex, 5).toString());
+        txtqty.setText(model.getValueAt(SelectIndex, 6).toString());
+        txtbarcode.setText(model.getValueAt(SelectIndex, 7).toString());
+        txtstatus.setSelectedItem(model.getValueAt(SelectIndex, 8).toString());
+        
+        btnadd.setEnabled(false);
+
+    }//GEN-LAST:event_productTableMouseClicked
+
+    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
+        // TODO add your handling code here:
+        
+        int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete it ?", "Delete",JOptionPane.YES_NO_OPTION);
+        
+        if (opt==0){
+            DefaultTableModel model = (DefaultTableModel)productTable.getModel();
+        int SelectIndex = productTable.getSelectedRow();
+        
+        try {
+            pst = con.prepareStatement("delete from product where product_id = ?");
+            
+            int product_id = Integer.parseInt(model.getValueAt(SelectIndex, 0).toString());
+            
+            pst.setInt(1, product_id);
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Product Information Deleted!");
+            
+            txtproname.setText("");
+            txtdesc.setText("");
+            txtcateg.setSelectedIndex(0);
+            txtcost.setText("");
+            txtprice.setText("");
+            txtqty.setText("");
+            txtbarcode.setText("");
+            txtstatus.setSelectedIndex(0);
+            txtproname.requestFocus();
+            
+            product_table ();
+            
+            btnadd.setEnabled(true);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
+        }
+ 
+    }//GEN-LAST:event_btndeleteActionPerformed
 
     /**
      * @param args the command line arguments
