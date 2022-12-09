@@ -45,12 +45,11 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
     String disabled;
     String vaccination;
     String filename = null;
-    byte[] strayanimals_image;
+    byte[] strayanimals_image = null;
     
     
     public Org1VolunteerPage() {
         initComponents();
-        this.strayanimals_image=null;
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
@@ -309,15 +308,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             new String [] {
                 "Sno", "Name", "Gender", "Age", "TimeArrive", "Spay", "Disabled", "Vaccination", "Organization", "Pet Type"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, true, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jtb_display_strayanimals3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtb_display_strayanimalsMouseClicked(evt);
@@ -778,7 +769,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
 
     private void jbtnimageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnimageActionPerformed
         // TODO add your handling code here:
-        
+
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
@@ -827,7 +818,9 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             catch (Exception e) {
                 JOptionPane.showMessageDialog(null,e);
             }
-            try {
+        }
+        
+        try {
             // TODO add your handling code here:
             jtxtname3.setText("");
             buttonGroup1.clearSelection();
@@ -844,8 +837,6 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         buttonGroup4.clearSelection();
         jtxtpettype3.setText("");
         jlblimage3.setIcon(null);
-        jtxtname3.requestFocus();
-        }
     }//GEN-LAST:event_jbtndeleteActionPerformed
 
     private void jbtnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnupdateActionPerformed
@@ -853,12 +844,13 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
         String time_arrive = dateformat.format(jdctimearrive3.getDate());
 
+        // TODO add your handling code here:
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
             int row = jtb_display_strayanimals3.getSelectedRow();
             String value = (jtb_display_strayanimals3.getModel().getValueAt(row, 0).toString());
-            String query = "UPDATE strayanimals2 SET name = ?,gender=?,age=?,time_arrive=?,spay=?,disabled=?,vaccination=?,pettype=? ,images = ? where sno="+value;
+            String query = "UPDATE strayanimals SET name = ?,gender=?,age=?,time_arrive=?,spay=?,disabled=?,vaccination=?,pettype=? ,images = ? where sno="+value;
             PreparedStatement pst = con.prepareStatement(query);
             pst.setString(1, jtxtname3.getText());
             if(jbtnfemale3.isSelected()){
@@ -909,7 +901,24 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);
         }
+        
+        try {
+            // TODO add your handling code here:
+            jtxtname3.setText("");
+            buttonGroup1.clearSelection();
+            jtxtage3.setText("");
 
+            String dateValue ="1900-10-10";
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
+            jdctimearrive3.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        buttonGroup2.clearSelection();
+        buttonGroup3.clearSelection();
+        buttonGroup4.clearSelection();
+        jtxtpettype3.setText("");
+        jlblimage3.setIcon(null);
     }//GEN-LAST:event_jbtnupdateActionPerformed
 
     private void jtb_display_strayanimalsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtb_display_strayanimalsMouseClicked
@@ -1005,6 +1014,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
 
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
         String time_arrive = dateformat.format(jdctimearrive3.getDate());
+        
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -1019,7 +1029,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
                 gender = "Male";
             }
             pst.setString(2, gender);
-            pst.setInt(3,Integer.parseInt(jtxtage3.getText()));  //这里的数据验证要判断integer
+             pst.setInt(3,Integer.parseInt(jtxtage3.getText()));  //这里的数据验证要判断integer
 
             pst.setString(4, time_arrive);
 
@@ -1046,6 +1056,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
                 vaccination = "No";
             }
             pst.setString(7,vaccination);
+           
 
             pst.setString(8,jtxtpettype3.getText());
 
@@ -1058,10 +1069,9 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Inserted Successfully!");
 
         }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e);
+        catch (Exception ex) {
+            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         try {
             // TODO add your handling code here:
             jtxtname3.setText("");
@@ -1079,7 +1089,6 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         buttonGroup4.clearSelection();
         jtxtpettype3.setText("");
         jlblimage3.setIcon(null);
-        jtxtname3.requestFocus();
     }//GEN-LAST:event_jbtnsaveActionPerformed
 
     private void jtxtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtnameActionPerformed
