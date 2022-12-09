@@ -356,6 +356,12 @@ public class UserRecipe extends javax.swing.JFrame {
         lblsearch.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblsearch.setText("Search:");
 
+        txtsearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtsearchKeyReleased(evt);
+            }
+        });
+
         jLabel2.setText("Org1 Comment:");
 
         txtcomment.addFocusListener(new JTextFieldHintListener(txtcomment, "Review Pending..."));
@@ -607,7 +613,9 @@ public class UserRecipe extends javax.swing.JFrame {
             txtpname.requestFocus();
             
             recipe_table ();
+            btnadd.setEnabled(true);
             
+     
         } catch (SQLException ex) {
             Logger.getLogger(UserRecipe.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -616,7 +624,12 @@ public class UserRecipe extends javax.swing.JFrame {
 
     private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        
+        int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete it ?", "Delete",JOptionPane.YES_NO_OPTION);
+        
+        if (opt==0){
+            
+            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         int SelectIndex = jTable1.getSelectedRow();
         
         try {
@@ -650,6 +663,11 @@ public class UserRecipe extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(UserRecipe.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+        }
+        
+        
     }//GEN-LAST:event_btndeleteActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -725,12 +743,25 @@ public class UserRecipe extends javax.swing.JFrame {
                     cbvb.setSelected(true);
                     cbzinc.setSelected(true);
                     break;
+
             
             }
+            
+        btnadd.setEnabled(false);
         
 
         
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void txtsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsearchKeyReleased
+        // TODO add your handling code here:
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        jTable1.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txtsearch.getText()));
+        
+    }//GEN-LAST:event_txtsearchKeyReleased
 
     /**
      * @param args the command line arguments
