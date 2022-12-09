@@ -4,6 +4,23 @@
  */
 package BusinessPage;
 
+import SignUpPage.UserSignPage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import Tool.JTextFieldHintListener;
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author iris
@@ -15,10 +32,75 @@ public class Product extends javax.swing.JFrame {
      */
     public Product() {
         initComponents();
+        Connect();
+        product_table ();
     }
     
     public Product(int id, String uname, String role) {
         initComponents();
+    }
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    
+    
+    public void Connect() 
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void product_table ()
+    {
+        try {
+            pst = con.prepareStatement("select * from product");
+            rs = pst.executeQuery();
+        
+            ResultSetMetaData Rsm = (ResultSetMetaData)rs.getMetaData();
+            int c;
+             c = Rsm.getColumnCount();
+            
+            DefaultTableModel model = (DefaultTableModel)productTable.getModel();
+            model.setRowCount(0);
+            
+            while(rs.next()) 
+            {
+                Vector v2 = new Vector();
+                
+                for(int i = 1; i <= c; i++) 
+                
+                {
+                    v2.add(rs.getString("product_id"));
+                    v2.add(rs.getString("product_name"));
+                    v2.add(rs.getString("descri"));
+                    v2.add(rs.getString("category"));
+                    v2.add(rs.getString("cost"));
+                    v2.add(rs.getDouble("price"));
+                    v2.add(rs.getString("qty"));
+                    v2.add(rs.getString("barcode"));
+                    v2.add(rs.getString("status"));
+ 
+                }
+                
+                model.addRow(v2);
+
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     }
 
     /**
@@ -51,7 +133,7 @@ public class Product extends javax.swing.JFrame {
         btnedit = new javax.swing.JButton();
         btndelete = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtstatus = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         productTable = new javax.swing.JTable();
         lblsearch = new javax.swing.JLabel();
@@ -89,14 +171,24 @@ public class Product extends javax.swing.JFrame {
         });
 
         btnadd.setText("Add");
+        btnadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaddActionPerformed(evt);
+            }
+        });
 
         btnedit.setText("Edit");
+        btnedit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditActionPerformed(evt);
+            }
+        });
 
         btndelete.setText("Delete");
 
         jLabel2.setText("Status:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+        txtstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,7 +225,7 @@ public class Product extends javax.swing.JFrame {
                                 .addComponent(txtprice)
                                 .addComponent(txtqty)
                                 .addComponent(txtbarcode, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(129, 129, 129)
@@ -180,7 +272,7 @@ public class Product extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblcost)
                     .addComponent(txtcost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
@@ -261,6 +353,110 @@ public class Product extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtbarcodeActionPerformed
 
+    private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
+        // TODO add your handling code here:
+        
+        String product_name = txtproname.getText();
+        String descri = txtdesc.getText();
+        String category = txtcateg.getSelectedItem().toString();
+        int cost = Integer.parseInt(txtcost.getText());
+        double price = Double.parseDouble(txtprice.getText());
+        int qty = Integer.parseInt(txtqty.getText());
+        String barcode = txtbarcode.getText();
+        String status = txtstatus.getSelectedItem().toString();
+        
+        
+        
+        try {
+            pst = con.prepareStatement("insert into product (product_name,descri,category,cost,price,qty,barcode,status)values(?,?,?,?,?,?,?,?)");
+            
+            pst.setString(1, product_name);
+            pst.setString(2, descri);
+            pst.setString(3, category);
+            pst.setInt(4, cost);
+            pst.setDouble(5, price);
+            pst.setInt(6, qty);
+            pst.setString(7, barcode);
+            pst.setString(8, status);
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Add Successfully!");
+            
+            txtproname.setText("");
+            txtdesc.setText("");
+            txtcateg.setSelectedIndex(0);
+            txtcost.setText("");
+            txtprice.setText("");
+            txtqty.setText("");
+            txtbarcode.setText("");
+            txtstatus.setSelectedIndex(0);
+            txtproname.requestFocus();
+            
+            product_table ();
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
+        
+        
+    }//GEN-LAST:event_btnaddActionPerformed
+
+    private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTableModel model = (DefaultTableModel)productTable.getModel();
+        int SelectIndex = productTable.getSelectedRow();
+        
+        String product_name = txtproname.getText();
+        String descri = txtdesc.getText();
+        String category = txtcateg.getSelectedItem().toString();
+        int cost = Integer.parseInt(txtcost.getText());
+        double price = Double.parseDouble(txtprice.getText());
+        int qty = Integer.parseInt(txtqty.getText());
+        String barcode = txtbarcode.getText();
+        String status = txtstatus.getSelectedItem().toString();
+        
+        try {
+            pst = con.prepareStatement("update product set product_name = ?, descri = ?, category = ?, cost = ?, price = ?, qty = ?, barcode = ?, status = ? where product_id= ?");
+            
+            int product_id = Integer.parseInt(model.getValueAt(SelectIndex, 0).toString());
+            
+            pst.setString(1, product_name);
+            pst.setString(2, descri);
+            pst.setString(3, category);
+            pst.setInt(4, cost);
+            pst.setDouble(5, price);
+            pst.setInt(6, qty);
+            pst.setString(7, barcode);
+            pst.setString(8, status);
+            pst.setInt(9, product_id);
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Product Information Edited!");
+            
+            txtproname.setText("");
+            txtdesc.setText("");
+            txtcateg.setSelectedIndex(0);
+            txtcost.setText("");
+            txtprice.setText("");
+            txtqty.setText("");
+            txtbarcode.setText("");
+            txtstatus.setSelectedIndex(0);
+            txtproname.requestFocus();
+            
+            product_table ();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
+        
+    }//GEN-LAST:event_btneditActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -300,7 +496,6 @@ public class Product extends javax.swing.JFrame {
     private javax.swing.JButton btnadd;
     private javax.swing.JButton btndelete;
     private javax.swing.JButton btnedit;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -323,5 +518,6 @@ public class Product extends javax.swing.JFrame {
     private javax.swing.JTextField txtproname;
     private javax.swing.JTextField txtqty;
     private javax.swing.JTextField txtsearch;
+    private javax.swing.JComboBox<String> txtstatus;
     // End of variables declaration//GEN-END:variables
 }
