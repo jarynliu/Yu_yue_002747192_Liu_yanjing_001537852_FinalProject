@@ -31,31 +31,146 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("Review Food Recipe");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Recipe No", "Pet Name", "Pet Age", "Pet Type", "Muscle Meat", "Raw Bone", "Liver", "Other Organs", "Vegetables", "Seeds", "Fruit", "Supplement"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 924, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(315, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(309, 309, 309))
+                .addGap(348, 348, 348))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addContainerGap(480, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(337, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int SelectIndex = jTable1.getSelectedRow();
+
+        txtpname.setText(model.getValueAt(SelectIndex, 1).toString());
+        txtage.setText(model.getValueAt(SelectIndex, 2).toString());
+
+        String ptype = model.getValueAt(SelectIndex, 3).toString();
+        if (ptype.equals("Dog")){
+
+            rdbdog.setSelected(true);
+
+        }
+        else{
+
+            rdbcat.setSelected(true);
+
+        }
+
+        txtmeat.setText(model.getValueAt(SelectIndex, 4).toString());
+        txtbone.setText(model.getValueAt(SelectIndex, 5).toString());
+        txtliver.setText(model.getValueAt(SelectIndex, 6).toString());
+        txtorgan.setText(model.getValueAt(SelectIndex, 7).toString());
+        txtveg.setText(model.getValueAt(SelectIndex, 8).toString());
+        txtseed.setText(model.getValueAt(SelectIndex, 9).toString());
+        txtfruit.setText(model.getValueAt(SelectIndex, 10).toString());
+
+        String supplement = model.getValueAt(SelectIndex, 11).toString();
+        switch(supplement){
+
+            case "Kale" :
+            cbkale.setSelected(true);
+            cbvb.setSelected(false);
+            cbzinc.setSelected(false);
+            break;
+
+            case "Vitamin B" :
+            cbkale.setSelected(false);
+            cbvb.setSelected(true);
+            cbzinc.setSelected(false);
+            break;
+
+            case "Zinc" :
+            cbkale.setSelected(false);
+            cbvb.setSelected(false);
+            cbzinc.setSelected(true);
+            break;
+
+            case "Kale Vitamin B" :
+            cbkale.setSelected(true);
+            cbvb.setSelected(true);
+            cbzinc.setSelected(false);
+            break;
+
+            case "Kale Zinc" :
+            cbkale.setSelected(true);
+            cbvb.setSelected(false);
+            cbzinc.setSelected(true);
+            break;
+
+            case "Vitamin B Zinc" :
+            cbkale.setSelected(false);
+            cbvb.setSelected(true);
+            cbzinc.setSelected(true);
+            break;
+
+            default :
+            cbkale.setSelected(true);
+            cbvb.setSelected(true);
+            cbzinc.setSelected(true);
+            break;
+
+        }
+
+        btnadd.setEnabled(false);
+
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -95,5 +210,7 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
