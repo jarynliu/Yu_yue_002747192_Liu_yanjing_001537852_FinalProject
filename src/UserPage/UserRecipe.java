@@ -449,7 +449,7 @@ public class UserRecipe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     String ptype;
-    String supplement;
+    String supplement="";
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
         // TODO add your handling code here:
@@ -699,40 +699,40 @@ public class UserRecipe extends javax.swing.JFrame {
         txtseed.setText(model.getValueAt(SelectIndex, 9).toString());
         txtfruit.setText(model.getValueAt(SelectIndex, 10).toString());
         
-        String supplement = model.getValueAt(SelectIndex, 11).toString();
-            switch(supplement){
+        String supplement1 = model.getValueAt(SelectIndex, 11).toString();
+            switch(supplement1){
                 
-                case "Kale" :
+                case "Kale " :
                     cbkale.setSelected(true);
                     cbvb.setSelected(false);
                     cbzinc.setSelected(false);
                     break;
                     
-                case "Vitamin B" :
+                case "Vitamin B " :
                     cbkale.setSelected(false);
                     cbvb.setSelected(true);
                     cbzinc.setSelected(false);
                     break;
                 
-                case "Zinc" :
+                case "Zinc " :
                     cbkale.setSelected(false);
                     cbvb.setSelected(false);
                     cbzinc.setSelected(true);
                     break;
                     
-                case "Kale Vitamin B" :
+                case "Kale Vitamin B " :
                     cbkale.setSelected(true);
                     cbvb.setSelected(true);
                     cbzinc.setSelected(false);
                     break;
                     
-                case "Kale Zinc" :
+                case "Kale Zinc " :
                     cbkale.setSelected(true);
                     cbvb.setSelected(false);
                     cbzinc.setSelected(true);
                     break;
                     
-                case "Vitamin B Zinc" :
+                case "Vitamin B Zinc " :
                     cbkale.setSelected(false);
                     cbvb.setSelected(true);
                     cbzinc.setSelected(true);
@@ -744,9 +744,9 @@ public class UserRecipe extends javax.swing.JFrame {
                     cbzinc.setSelected(true);
                     break;
 
-            
             }
             
+
         btnadd.setEnabled(false);
         
 
