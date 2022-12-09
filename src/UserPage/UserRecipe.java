@@ -92,6 +92,8 @@ public class UserRecipe extends javax.swing.JFrame {
                     v2.add(rs.getString("seed"));
                     v2.add(rs.getString("fruit"));
                     v2.add(rs.getString("supplement"));
+                    v2.add(rs.getString("org1_comment"));
+                    v2.add(rs.getString("org2_comment"));
  
                 }
                 
@@ -329,17 +331,17 @@ public class UserRecipe extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Recipe No", "Pet Name", "Pet Age", "Pet Type", "Muscle Meat", "Raw Bone", "Liver", "Other Organs", "Vegetables", "Seeds", "Fruit", "Supplement"
+                "Recipe No", "Pet Name", "Pet Age", "Pet Type", "Muscle Meat", "Raw Bone", "Liver", "Other Organs", "Vegetables", "Seeds", "Fruit", "Supplement", "Comment1", "Comment2"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -367,6 +369,8 @@ public class UserRecipe extends javax.swing.JFrame {
         txtcomment.addFocusListener(new JTextFieldHintListener(txtcomment, "Review Pending..."));
 
         jLabel3.setText("Org2 Comment:");
+
+        txtcomment2.addFocusListener(new JTextFieldHintListener(txtcomment2, "Review Pending..."));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -745,6 +749,9 @@ public class UserRecipe extends javax.swing.JFrame {
                     break;
 
             }
+            
+            txtcomment.setText(model.getValueAt(SelectIndex, 12).toString());
+            txtcomment2.setText(model.getValueAt(SelectIndex, 13).toString());
             
 
         btnadd.setEnabled(false);
