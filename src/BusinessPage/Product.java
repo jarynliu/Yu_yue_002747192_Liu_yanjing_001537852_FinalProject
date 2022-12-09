@@ -317,6 +317,12 @@ public class Product extends javax.swing.JFrame {
         lblsearch.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblsearch.setText("Search:");
 
+        txtsearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtsearchKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -528,6 +534,16 @@ public class Product extends javax.swing.JFrame {
         }
  
     }//GEN-LAST:event_btndeleteActionPerformed
+
+    private void txtsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsearchKeyReleased
+        // TODO add your handling code here:
+        
+        DefaultTableModel model = (DefaultTableModel) productTable.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        productTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txtsearch.getText()));
+        
+    }//GEN-LAST:event_txtsearchKeyReleased
 
     /**
      * @param args the command line arguments

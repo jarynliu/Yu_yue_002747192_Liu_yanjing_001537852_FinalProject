@@ -356,6 +356,12 @@ public class UserRecipe extends javax.swing.JFrame {
         lblsearch.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         lblsearch.setText("Search:");
 
+        txtsearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtsearchKeyReleased(evt);
+            }
+        });
+
         jLabel2.setText("Org1 Comment:");
 
         txtcomment.addFocusListener(new JTextFieldHintListener(txtcomment, "Review Pending..."));
@@ -746,6 +752,16 @@ public class UserRecipe extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void txtsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsearchKeyReleased
+        // TODO add your handling code here:
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        jTable1.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txtsearch.getText()));
+        
+    }//GEN-LAST:event_txtsearchKeyReleased
 
     /**
      * @param args the command line arguments
