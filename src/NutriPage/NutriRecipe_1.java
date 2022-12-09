@@ -220,6 +220,7 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
 
         txtcomment1.setColumns(20);
         txtcomment1.setRows(5);
+        txtcomment1.setEditable(false);
         jScrollPane2.setViewportView(txtcomment1);
 
         btnadd.setText("Submit");
@@ -257,14 +258,12 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(rdbcat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(255, 255, 255))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtmeat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                                    .addComponent(txtbone, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtage, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtpname, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtliver, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtmeat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                                .addComponent(txtbone, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtage, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtpname, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtliver, javax.swing.GroupLayout.Alignment.LEADING)))
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblsup)
@@ -279,11 +278,10 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
                                 .addComponent(btnadd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnback))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtorgan)
-                                .addComponent(txtveg)
-                                .addComponent(txtseed)
-                                .addComponent(txtfruit, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtorgan)
+                            .addComponent(txtveg)
+                            .addComponent(txtseed)
+                            .addComponent(txtfruit, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cbkale)
                                 .addGap(18, 18, 18)

@@ -814,6 +814,25 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);
         }
+        
+        try {
+            // TODO add your handling code here:
+            jtxtname.setText("");
+            buttonGroup1.clearSelection();
+            jtxtage.setText("");
+
+            String dateValue ="1900-10-10";
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
+            jdctimearrive.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        buttonGroup2.clearSelection();
+        buttonGroup3.clearSelection();
+        buttonGroup4.clearSelection();
+        jtxtpettype.setText("");
+        jlblimage.setIcon(null);
+        
     }//GEN-LAST:event_jbtnsaveActionPerformed
 
     private void jbtnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnresetActionPerformed
@@ -965,6 +984,23 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);
         }
+        try {
+            // TODO add your handling code here:
+            jtxtname.setText("");
+            buttonGroup1.clearSelection();
+            jtxtage.setText("");
+
+            String dateValue ="1900-10-10";
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
+            jdctimearrive.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        buttonGroup2.clearSelection();
+        buttonGroup3.clearSelection();
+        buttonGroup4.clearSelection();
+        jtxtpettype.setText("");
+        jlblimage.setIcon(null);
     }//GEN-LAST:event_jbtnupdateActionPerformed
 
     private void jbtndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtndeleteActionPerformed
@@ -987,7 +1023,25 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             catch (Exception e) {
                 JOptionPane.showMessageDialog(null,e);
             }
+            try {
+            // TODO add your handling code here:
+            jtxtname.setText("");
+            buttonGroup1.clearSelection();
+            jtxtage.setText("");
+
+            String dateValue ="1900-10-10";
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
+            jdctimearrive.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        buttonGroup2.clearSelection();
+        buttonGroup3.clearSelection();
+        buttonGroup4.clearSelection();
+        jtxtpettype.setText("");
+        jlblimage.setIcon(null);
+        }
+        
     }//GEN-LAST:event_jbtndeleteActionPerformed
 
     private void jbtnimageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnimageActionPerformed
