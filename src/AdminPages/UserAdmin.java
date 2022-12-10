@@ -8,6 +8,19 @@ package AdminPages;
  *
  * @author pkuhore
  */
+
+import SignUpPage.UserSignPage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import UserPage.UserRecipe;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 public class UserAdmin extends javax.swing.JFrame {
 
     /**
@@ -15,6 +28,26 @@ public class UserAdmin extends javax.swing.JFrame {
      */
     public UserAdmin() {
         initComponents();
+        Connect();
+    }
+    
+     Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    
+    public void Connect() 
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -27,30 +60,106 @@ public class UserAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         jlbladminlogin = new javax.swing.JLabel();
+        jlblaccount = new javax.swing.JLabel();
+        jlblpassword = new javax.swing.JLabel();
+        jtxtaccount = new javax.swing.JTextField();
+        jbtnsignin = new javax.swing.JButton();
+        jtxtpassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jlbladminlogin.setText("Admin Login");
 
+        jlblaccount.setText("Account");
+
+        jlblpassword.setText("Password");
+
+        jbtnsignin.setText("Sign In");
+        jbtnsignin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnsigninActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(289, 289, 289)
-                .addComponent(jlbladminlogin)
-                .addContainerGap(437, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jbtnsignin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(jlbladminlogin)
+                        .addGap(0, 111, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(166, 166, 166)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlblaccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlblpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtxtaccount)
+                            .addComponent(jtxtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))))
+                .addGap(326, 326, 326))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(jlbladminlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(517, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlbladminlogin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlblaccount)
+                            .addComponent(jtxtaccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(128, 128, 128)
+                        .addComponent(jlblpassword))
+                    .addComponent(jtxtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addComponent(jbtnsignin)
+                .addContainerGap(208, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsigninActionPerformed
+        // TODO add your handling code here:
+        
+       
+        
+        try {
+            pst = con.prepareStatement("select * from systemadmin where account= ? and password= ?");
+            pst.setString(1, jtxtaccount.getText());
+            pst.setString(2, jtxtpassword.getText());
+            
+            
+            rs = pst.executeQuery();
+            
+            if(rs.next())
+            {
+                SystemAdminPage sap = new SystemAdminPage();
+                sap.setVisible(true);
+            
+            }
+            
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Username and Password do not match");
+                jtxtaccount.setText("");
+                jtxtpassword.setText("");
+ 
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbtnsigninActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +197,11 @@ public class UserAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jbtnsignin;
+    private javax.swing.JLabel jlblaccount;
     private javax.swing.JLabel jlbladminlogin;
+    private javax.swing.JLabel jlblpassword;
+    private javax.swing.JTextField jtxtaccount;
+    private javax.swing.JPasswordField jtxtpassword;
     // End of variables declaration//GEN-END:variables
 }
