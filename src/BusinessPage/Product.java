@@ -371,29 +371,63 @@ public class Product extends javax.swing.JFrame {
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
         // TODO add your handling code here:
+ 
         
-        String product_name = txtproname.getText();
-        String descri = txtdesc.getText();
-        String category = txtcateg.getSelectedItem().toString();
-        int cost = Integer.parseInt(txtcost.getText());
-        double price = Double.parseDouble(txtprice.getText());
-        int qty = Integer.parseInt(txtqty.getText());
-        String barcode = txtbarcode.getText();
-        String status = txtstatus.getSelectedItem().toString();
+        if("".equals(txtproname.getText().trim())){
         
+            JOptionPane.showMessageDialog(this, "Please input the product name");
         
+        }
+        else if("".equals(txtdesc.getText().trim())){
+        
+            JOptionPane.showMessageDialog(this, "Please input the descripton of the product");
+        
+        }
+        else if("".equals(txtcateg.getSelectedItem().toString())){
+                
+                 JOptionPane.showMessageDialog(this, "Please select a category");
+                
+                }
+        else if("".equals(txtcost.getText().trim())){
+            JOptionPane.showMessageDialog(this, "Please input the cost price");
+        }
+        else if("".equals(txtprice.getText().trim())){
+                
+                 JOptionPane.showMessageDialog(this, "Please input the retail price");
+                
+                }
+        else if("".equals(txtqty.getText().trim())){
+                
+                 JOptionPane.showMessageDialog(this, "Please input the qty");
+                
+                }
+        else if("".equals(txtbarcode.getText().trim())){
+                
+                 JOptionPane.showMessageDialog(this, "Please input the barcode");
+                
+                }
+        
+        else if("".equals(txtstatus.getSelectedItem().toString().trim())){
+        
+            JOptionPane.showMessageDialog(this, "Please select the status");
+        
+        }
+        
+        else{
         
         try {
+            
+            System.out.println("结果是"+txtproname.getText());
             pst = con.prepareStatement("insert into product (product_name,descri,category,cost,price,qty,barcode,status)values(?,?,?,?,?,?,?,?)");
             
-            pst.setString(1, product_name);
-            pst.setString(2, descri);
-            pst.setString(3, category);
-            pst.setInt(4, cost);
-            pst.setDouble(5, price);
-            pst.setInt(6, qty);
-            pst.setString(7, barcode);
-            pst.setString(8, status);
+            pst.setString(1,txtproname.getText());
+            pst.setString(2, txtdesc.getText());
+            pst.setString(3, txtcateg.getSelectedItem().toString());
+            pst.setInt(4, Integer.parseInt(txtcost.getText()));
+            pst.setDouble(5, Double.parseDouble(txtprice.getText()));
+            pst.setInt(6, Integer.parseInt(txtqty.getText()));
+            pst.setString(7, txtbarcode.getText());
+            pst.setString(8, txtstatus.getSelectedItem().toString());
             pst.executeUpdate();
             
             JOptionPane.showMessageDialog(this, "Add Successfully!");
@@ -415,7 +449,7 @@ public class Product extends javax.swing.JFrame {
             Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
+        }    
         
         
     }//GEN-LAST:event_btnaddActionPerformed

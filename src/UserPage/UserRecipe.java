@@ -458,6 +458,63 @@ public class UserRecipe extends javax.swing.JFrame {
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
         // TODO add your handling code here:
         
+         if("".equals(txtpname.getText().trim())){
+        
+            JOptionPane.showMessageDialog(this, "Please input the pet name");
+        
+        }
+         else if("".equals(txtage.getText().trim())){
+                
+                 JOptionPane.showMessageDialog(this, "Please input the pet age");
+                
+                }
+        else if(rdbdog.isSelected()==false&&rdbcat.isSelected()==false){
+        
+            JOptionPane.showMessageDialog(this, "Please select the pet type");
+        
+        }
+        else if("".equals(txtmeat.getText().trim())){
+                
+                 JOptionPane.showMessageDialog(this, "Please input the muscle meat");
+                
+                }
+        else if("".equals(txtbone.getText().trim())){
+            JOptionPane.showMessageDialog(this, "Please input the raw bone");
+        }
+        else if("".equals(txtliver.getText().trim())){
+                
+                 JOptionPane.showMessageDialog(this, "Please input the liver");
+                
+                }
+        else if("".equals(txtorgan.getText().trim())){
+                
+                 JOptionPane.showMessageDialog(this, "Please input the secreting organs");
+                
+                }
+        else if("".equals(txtveg.getText().trim())){
+                
+                 JOptionPane.showMessageDialog(this, "Please input the vegtables");
+                
+                }
+        
+        else if("".equals(txtseed.getText().trim())){
+        
+            JOptionPane.showMessageDialog(this, "Please input the seeds or nuts");
+        
+        }
+         else if("".equals(txtfruit.getText().trim())){
+        
+            JOptionPane.showMessageDialog(this, "Please input the fruit");
+        
+        }
+         else if(cbkale.isSelected()==false&&cbvb.isSelected()==false&&cbzinc.isSelected()==false){
+                
+                 JOptionPane.showMessageDialog(this, "Please select the supplement");
+                
+                }
+
+         else{
+        try {
         String pname = txtpname.getText();
         int page = Integer.parseInt(txtage.getText());
         
@@ -492,8 +549,6 @@ public class UserRecipe extends javax.swing.JFrame {
         {
             supplement+=cbzinc.getText()+" ";
         }
-        
-        try {
             pst = con.prepareStatement("insert into recipe (pname,page,ptype,meat,bone,liver,organ,veg,seed,fruit,supplement)values(?,?,?,?,?,?,?,?,?,?,?)");
             
             pst.setString(1, pname);
@@ -532,7 +587,7 @@ public class UserRecipe extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(UserRecipe.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+         }    
         
     }//GEN-LAST:event_btnaddActionPerformed
 

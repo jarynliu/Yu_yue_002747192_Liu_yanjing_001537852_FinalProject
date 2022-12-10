@@ -204,6 +204,12 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
 
         lblsup.setText("Supplement:");
 
+        txtpname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtpnameMouseClicked(evt);
+            }
+        });
+
         buttonGroup1.add(rdbdog);
         rdbdog.setText("Dog");
 
@@ -498,6 +504,11 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnaddActionPerformed
+
+    private void txtpnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtpnameMouseClicked
+        // TODO add your handling code here:
+        txtpname.setEditable(false);
+    }//GEN-LAST:event_txtpnameMouseClicked
 
     /**
      * @param args the command line arguments
