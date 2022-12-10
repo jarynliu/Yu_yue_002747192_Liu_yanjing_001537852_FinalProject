@@ -210,23 +210,109 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
             }
         });
 
+        txtage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtageMouseClicked(evt);
+            }
+        });
+
         buttonGroup1.add(rdbdog);
         rdbdog.setText("Dog");
+        rdbdog.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdbdogMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rdbdogMousePressed(evt);
+            }
+        });
 
         buttonGroup1.add(rdbcat);
         rdbcat.setText("Cat");
+        rdbcat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rdbcatMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rdbcatMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                rdbcatMouseReleased(evt);
+            }
+        });
+
+        txtmeat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtmeatMouseClicked(evt);
+            }
+        });
+
+        txtbone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtboneMouseClicked(evt);
+            }
+        });
+
+        txtliver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtliverMouseClicked(evt);
+            }
+        });
+
+        txtorgan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtorganMouseClicked(evt);
+            }
+        });
+
+        txtveg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtvegMouseClicked(evt);
+            }
+        });
+
+        txtseed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtseedMouseClicked(evt);
+            }
+        });
+
+        txtfruit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtfruitMouseClicked(evt);
+            }
+        });
 
         cbkale.setText("Kale");
+        cbkale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbkaleMousePressed(evt);
+            }
+        });
 
         cbvb.setText("Vitamin B");
+        cbvb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbvbMousePressed(evt);
+            }
+        });
 
         cbzinc.setText("Zinc");
+        cbzinc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbzincMousePressed(evt);
+            }
+        });
 
         lblcomment1.setText("Write Your Comment Here:");
 
         txtcomment1.setColumns(20);
         txtcomment1.setRows(5);
-        txtcomment1.setEditable(false);
+        txtcomment1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtcomment1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(txtcomment1);
 
         btnadd.setText("Submit");
@@ -509,6 +595,88 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtpname.setEditable(false);
     }//GEN-LAST:event_txtpnameMouseClicked
+
+    private void txtcomment1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtcomment1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcomment1MouseClicked
+
+    private void txtageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtageMouseClicked
+        // TODO add your handling code here:
+        txtage.setEditable(false);
+    }//GEN-LAST:event_txtageMouseClicked
+
+    private void rdbdogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdbdogMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_rdbdogMouseClicked
+
+    private void rdbcatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdbcatMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdbcatMouseClicked
+
+    private void rdbdogMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdbdogMousePressed
+        // TODO add your handling code here:
+        rdbdog.setEnabled(false);
+    }//GEN-LAST:event_rdbdogMousePressed
+
+    private void rdbcatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdbcatMousePressed
+        // TODO add your handling code here:
+        rdbcat.setEnabled(false);
+    }//GEN-LAST:event_rdbcatMousePressed
+
+    private void rdbcatMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdbcatMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdbcatMouseReleased
+
+    private void txtmeatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtmeatMouseClicked
+        // TODO add your handling code here:
+        txtmeat.setEditable(false);
+    }//GEN-LAST:event_txtmeatMouseClicked
+
+    private void txtboneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtboneMouseClicked
+        // TODO add your handling code here:
+        txtbone.setEditable(false);
+    }//GEN-LAST:event_txtboneMouseClicked
+
+    private void txtliverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtliverMouseClicked
+        // TODO add your handling code here:
+        txtliver.setEditable(false);
+    }//GEN-LAST:event_txtliverMouseClicked
+
+    private void txtorganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtorganMouseClicked
+        // TODO add your handling code here:
+        txtorgan.setEditable(false);
+    }//GEN-LAST:event_txtorganMouseClicked
+
+    private void txtvegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtvegMouseClicked
+        // TODO add your handling code here:
+        txtveg.setEditable(false);
+    }//GEN-LAST:event_txtvegMouseClicked
+
+    private void txtseedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtseedMouseClicked
+        // TODO add your handling code here:
+        txtseed.setEditable(false);
+    }//GEN-LAST:event_txtseedMouseClicked
+
+    private void txtfruitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtfruitMouseClicked
+        // TODO add your handling code here:
+        txtfruit.setEditable(false);
+    }//GEN-LAST:event_txtfruitMouseClicked
+
+    private void cbkaleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbkaleMousePressed
+        // TODO add your handling code here:
+        cbkale.setEnabled(false);
+    }//GEN-LAST:event_cbkaleMousePressed
+
+    private void cbvbMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbvbMousePressed
+        // TODO add your handling code here:
+        cbvb.setEnabled(false);
+    }//GEN-LAST:event_cbvbMousePressed
+
+    private void cbzincMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbzincMousePressed
+        // TODO add your handling code here:
+        cbzinc.setEnabled(false);
+    }//GEN-LAST:event_cbzincMousePressed
 
     /**
      * @param args the command line arguments
