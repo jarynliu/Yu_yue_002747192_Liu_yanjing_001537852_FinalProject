@@ -845,6 +845,8 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             buttonGroup4.clearSelection();
             jtxtpettype3.setText("");
             jlblimage3.setIcon(null);
+            
+            jbtnsave3.setEnabled(true);
     }//GEN-LAST:event_jbtndeleteActionPerformed
 
     private void jbtnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnupdateActionPerformed
@@ -921,6 +923,8 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             buttonGroup4.clearSelection();
             jtxtpettype3.setText("");
             jlblimage3.setIcon(null);
+            
+            jbtnsave3.setEnabled(true);
     }//GEN-LAST:event_jbtnupdateActionPerformed
 
     private void jtb_display_strayanimalsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtb_display_strayanimalsMouseClicked
@@ -988,6 +992,8 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         byte[] img = (strayanimalsList().get(i).getPicture());
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(jlblimage3.getWidth(),jlblimage3.getHeight(),Image.SCALE_SMOOTH));
         jlblimage3.setIcon(imageIcon);
+        
+        jbtnsave3.setEnabled(false);
     }//GEN-LAST:event_jtb_display_strayanimalsMouseClicked
 
     private void jbtnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnresetActionPerformed
@@ -1002,6 +1008,8 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             buttonGroup4.clearSelection();
             jtxtpettype3.setText("");
             jlblimage3.setIcon(null);
+            
+            jbtnsave3.setEnabled(true);
 
     }//GEN-LAST:event_jbtnresetActionPerformed
 

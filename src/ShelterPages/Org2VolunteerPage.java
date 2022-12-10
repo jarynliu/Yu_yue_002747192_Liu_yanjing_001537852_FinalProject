@@ -897,6 +897,8 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         buttonGroup4.clearSelection();
         jtxtpettype.setText("");
         jlblimage.setIcon(null);
+        
+        jbtnsave.setEnabled(true);
 
     }//GEN-LAST:event_jbtnresetActionPerformed
 
@@ -964,6 +966,8 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         byte[] img = (strayanimalsList().get(i).getPicture());
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(jlblimage.getWidth(),jlblimage.getHeight(),Image.SCALE_SMOOTH));
         jlblimage.setIcon(imageIcon);
+        
+        jbtnsave.setEnabled(false);
     }//GEN-LAST:event_jtb_display_strayanimalsMouseClicked
 
     private void jbtnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnupdateActionPerformed
@@ -1037,6 +1041,8 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         buttonGroup4.clearSelection();
         jtxtpettype.setText("");
         jlblimage.setIcon(null);
+        
+        jbtnsave.setEnabled(true);
 
     }//GEN-LAST:event_jbtnupdateActionPerformed
 
@@ -1069,6 +1075,8 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         buttonGroup4.clearSelection();
         jtxtpettype.setText("");
         jlblimage.setIcon(null);
+        
+        jbtnsave.setEnabled(true);
 
         }
         
