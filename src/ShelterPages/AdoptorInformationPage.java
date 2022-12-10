@@ -92,11 +92,11 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
         jlblinfo = new javax.swing.JLabel();
         jbtnsubmit = new javax.swing.JButton();
         jlblname = new javax.swing.JLabel();
-        jtxtname = new javax.swing.JTextField();
         jlblshelterpetname = new javax.swing.JLabel();
         jtxtshelterpetname = new javax.swing.JTextField();
         jlblorg = new javax.swing.JLabel();
-        jtxtorg = new javax.swing.JTextField();
+        jcb = new javax.swing.JComboBox<>();
+        jtxtname = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,11 +145,23 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
 
         jlblphone.setText("PhoneNumber :");
 
+        jtxtphone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtxtphoneKeyPressed(evt);
+            }
+        });
+
         jlbladdress.setText("Home Adress :");
 
         jtxtaddress.addFocusListener(new JTextFieldHintListener(jtxtaddress, "There is a home interview if you adopt a pet from our shelter."));
 
         jlblage.setText("Age :");
+
+        jtxtage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtxtageKeyPressed(evt);
+            }
+        });
 
         jlbltitle.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 36)); // NOI18N
         jlbltitle.setText("Additional Information");
@@ -168,6 +180,8 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
         jlblshelterpetname.setText("Shelter Pet Name:");
 
         jlblorg.setText("Organization:");
+
+        jcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "organization1", "organization2" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -222,9 +236,9 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jbtnnot2say, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jbtnsubmit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxtname)
                             .addComponent(jtxtshelterpetname, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-                            .addComponent(jtxtorg)))
+                            .addComponent(jcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtname)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(202, 202, 202)
                         .addComponent(jlbltitle))
@@ -237,14 +251,14 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(66, 66, 66)
+                .addComponent(jlbltitle)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jlbltitle)
-                        .addGap(47, 47, 47)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jlblname)
-                            .addComponent(jtxtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
+                    .addComponent(jlblname)
+                    .addComponent(jtxtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jlblid)
                             .addComponent(jtxtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -288,12 +302,12 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
                             .addComponent(jtxtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33)
                         .addComponent(jlblshelterpetname))
-                    .addComponent(jtxtshelterpetname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxtshelterpetname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblorg)
-                    .addComponent(jtxtorg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                    .addComponent(jcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(jbtnsubmit)
                 .addGap(18, 18, 18)
                 .addComponent(jlblinfo)
@@ -321,6 +335,63 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
 
     private void jbtnsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsubmitActionPerformed
         // TODO add your handling code here:
+        System.out.println("jieguowei"+jtxtname.getText());
+        System.out.println("运行了吗");
+        if("".equals(jtxtname.getText().trim())){
+        
+            JOptionPane.showMessageDialog(this, "Please input your name");
+        
+        }
+        else if("".equals(jtxtid.getText().trim())){
+        
+            JOptionPane.showMessageDialog(this, "Please input your ID");
+        
+        }
+        else if(jbtnfemale.isSelected()==false&&jbtnmale.isSelected()==false&&jbtnnot2say.isSelected()==false){
+                
+                 JOptionPane.showMessageDialog(this, "Please select your gender");
+                
+                }
+        else if("".equals(jtxtage.getText().trim())){
+            JOptionPane.showMessageDialog(this, "Please input your age");
+        }
+        else if(jbtnhadpetsyes.isSelected()==false&&jbtnhadpetsno.isSelected()==false){
+                
+                 JOptionPane.showMessageDialog(this, "Please select if you have or had a pet");
+                
+                }
+        else if(jbthowmany0.isSelected()==false&&jbthowmany1.isSelected()==false&&jbthowmany2.isSelected()==false&&jbthowmany3.isSelected()==false){
+                
+                 JOptionPane.showMessageDialog(this, "Please select how many pets do you have");
+                
+                }
+        else if(jckbdog.isSelected()==false&&jckbcat.isSelected()==false&&jckbothers.isSelected()==false){
+                
+                 JOptionPane.showMessageDialog(this, "Please select your pet type");
+                
+                }
+        
+        else if("".equals(jtxtphone.getText().trim())){
+        
+            JOptionPane.showMessageDialog(this, "Please input the phone number");
+        
+        }
+        else if("".equals(jtxtaddress.getText().trim())){
+        
+            JOptionPane.showMessageDialog(this, "Please input the home address");
+        
+        }
+        else if("".equals(jtxtshelterpetname.getText().trim())){
+        
+            JOptionPane.showMessageDialog(this, "Please input the name of the pet in the shelter");
+        
+        }
+        else if("".equals(jcb.getSelectedItem().toString())){
+        
+            JOptionPane.showMessageDialog(this, "Please select the organizatioin");
+        
+        }
+       else{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
@@ -379,7 +450,7 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
             pst.setString(8, jtxtphone.getText());
             pst.setString(9, jtxtaddress.getText());
             pst.setString(10, jtxtshelterpetname.getText());
-            pst.setString(11, jtxtorg.getText());
+            pst.setString(11, jcb.getSelectedItem().toString());
             
             pst.executeUpdate();
             //DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
@@ -396,7 +467,28 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
         catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);
         }
+    }
+        
+        
     }//GEN-LAST:event_jbtnsubmitActionPerformed
+
+    private void jtxtageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtageKeyPressed
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c)){
+            JOptionPane.showMessageDialog(this, "Please input an integer");
+            jtxtage.setText("");
+        }
+    }//GEN-LAST:event_jtxtageKeyPressed
+
+    private void jtxtphoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtphoneKeyPressed
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c)){
+            JOptionPane.showMessageDialog(this, "You can just input numbers");
+            jtxtphone.setText("");
+        }
+    }//GEN-LAST:event_jtxtphoneKeyPressed
 
     /**
      * @param args the command line arguments
@@ -451,6 +543,7 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
     private javax.swing.JRadioButton jbtnmale;
     private javax.swing.JRadioButton jbtnnot2say;
     private javax.swing.JButton jbtnsubmit;
+    private javax.swing.JComboBox<String> jcb;
     private javax.swing.JCheckBox jckbcat;
     private javax.swing.JCheckBox jckbdog;
     private javax.swing.JCheckBox jckbothers;
@@ -471,7 +564,6 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtage;
     private javax.swing.JTextField jtxtid;
     private javax.swing.JTextField jtxtname;
-    private javax.swing.JTextField jtxtorg;
     private javax.swing.JTextField jtxtphone;
     private javax.swing.JTextField jtxtshelterpetname;
     // End of variables declaration//GEN-END:variables

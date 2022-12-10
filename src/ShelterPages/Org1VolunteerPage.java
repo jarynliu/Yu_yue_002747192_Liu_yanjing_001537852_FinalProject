@@ -259,6 +259,12 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
 
         jlblage3.setText("Estimate Age :");
 
+        jtxtage3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtxtage3KeyPressed(evt);
+            }
+        });
+
         jlbltimearrive3.setText("Time arrive Shelter :");
 
         jlblspay3.setText("Spay :");
@@ -308,7 +314,15 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             new String [] {
                 "Sno", "Name", "Gender", "Age", "TimeArrive", "Spay", "Disabled", "Vaccination", "Organization", "Pet Type"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jtb_display_strayanimals3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtb_display_strayanimalsMouseClicked(evt);
@@ -820,23 +834,17 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             }
         }
         
-        try {
-            // TODO add your handling code here:
             jtxtname3.setText("");
             buttonGroup1.clearSelection();
             jtxtage3.setText("");
 
-            String dateValue ="1900-10-10";
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-            jdctimearrive3.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        buttonGroup2.clearSelection();
-        buttonGroup3.clearSelection();
-        buttonGroup4.clearSelection();
-        jtxtpettype3.setText("");
-        jlblimage3.setIcon(null);
+            jdctimearrive3.setDate(null);
+       
+            buttonGroup2.clearSelection();
+            buttonGroup3.clearSelection();
+            buttonGroup4.clearSelection();
+            jtxtpettype3.setText("");
+            jlblimage3.setIcon(null);
     }//GEN-LAST:event_jbtndeleteActionPerformed
 
     private void jbtnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnupdateActionPerformed
@@ -902,23 +910,17 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e);
         }
         
-        try {
-            // TODO add your handling code here:
             jtxtname3.setText("");
             buttonGroup1.clearSelection();
             jtxtage3.setText("");
 
-            String dateValue ="1900-10-10";
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-            jdctimearrive3.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        buttonGroup2.clearSelection();
-        buttonGroup3.clearSelection();
-        buttonGroup4.clearSelection();
-        jtxtpettype3.setText("");
-        jlblimage3.setIcon(null);
+            jdctimearrive3.setDate(null);
+       
+            buttonGroup2.clearSelection();
+            buttonGroup3.clearSelection();
+            buttonGroup4.clearSelection();
+            jtxtpettype3.setText("");
+            jlblimage3.setIcon(null);
     }//GEN-LAST:event_jbtnupdateActionPerformed
 
     private void jtb_display_strayanimalsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtb_display_strayanimalsMouseClicked
@@ -989,33 +991,67 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jtb_display_strayanimalsMouseClicked
 
     private void jbtnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnresetActionPerformed
-        try {
-            // TODO add your handling code here:
             jtxtname3.setText("");
             buttonGroup1.clearSelection();
             jtxtage3.setText("");
 
-            String dateValue ="1900-10-10";
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-            jdctimearrive3.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        buttonGroup2.clearSelection();
-        buttonGroup3.clearSelection();
-        buttonGroup4.clearSelection();
-        jtxtpettype3.setText("");
-        jlblimage3.setIcon(null);
+            jdctimearrive3.setDate(null);
+       
+            buttonGroup2.clearSelection();
+            buttonGroup3.clearSelection();
+            buttonGroup4.clearSelection();
+            jtxtpettype3.setText("");
+            jlblimage3.setIcon(null);
 
     }//GEN-LAST:event_jbtnresetActionPerformed
 
     private void jbtnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsaveActionPerformed
-        // TODO add your handling code here:
-
-        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-        String time_arrive = dateformat.format(jdctimearrive3.getDate());
+        // **********************************************Data Validation*********************************************************
+        if(jtxtname3.getText().trim()==null){
         
+            JOptionPane.showMessageDialog(this, "Please input your name");
+        
+        }
+        else if(jbtnfemale3.isSelected()==false&&jbtnmale3.isSelected()==false){
+                
+                 JOptionPane.showMessageDialog(this, "Please select your gender");
+                
+                }
+        else if(jtxtage3.getText().trim()==null){
+            JOptionPane.showMessageDialog(this, "Please input your age");
+        }
+        else if(jdctimearrive3.getDate()==null){
+        
+            JOptionPane.showMessageDialog(this, "Please select the date");
 
+        }
+        else if(jbtnyes3.isSelected()==false&&jbtnno3.isSelected()==false){
+        
+            JOptionPane.showMessageDialog(this, "Please input spay information");
+
+        }
+        else if(jbtndyes3.isSelected()==false&&jbtndno3.isSelected()==false){
+        
+            JOptionPane.showMessageDialog(this, "Please input disabled information");
+
+        }
+        else if(jbtnvyes3.isSelected()==false&&jbtnvno3.isSelected()==false){
+        
+            JOptionPane.showMessageDialog(this, "Please input vaccination information");
+
+        }
+        else if(jtxtpettype3.getText().trim()==null){
+        
+            JOptionPane.showMessageDialog(this, "Please input the pet type");
+        
+        }
+        else if(strayanimals_image==null)
+        {
+            JOptionPane.showMessageDialog(this, "Please upload a photo");
+        }
+        
+        
+        else{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
@@ -1029,7 +1065,10 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
                 gender = "Male";
             }
             pst.setString(2, gender);
-             pst.setInt(3,Integer.parseInt(jtxtage3.getText()));  //这里的数据验证要判断integer
+            pst.setInt(3,Integer.parseInt(jtxtage3.getText()));  //这里的数据验证要判断integer
+             
+            SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+            String time_arrive = dateformat.format(jdctimearrive3.getDate());
 
             pst.setString(4, time_arrive);
 
@@ -1072,23 +1111,20 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         catch (Exception ex) {
             Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
+        }
+      
             // TODO add your handling code here:
             jtxtname3.setText("");
             buttonGroup1.clearSelection();
             jtxtage3.setText("");
 
-            String dateValue ="1900-10-10";
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-            jdctimearrive3.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        buttonGroup2.clearSelection();
-        buttonGroup3.clearSelection();
-        buttonGroup4.clearSelection();
-        jtxtpettype3.setText("");
-        jlblimage3.setIcon(null);
+            jdctimearrive3.setDate(null);
+       
+            buttonGroup2.clearSelection();
+            buttonGroup3.clearSelection();
+            buttonGroup4.clearSelection();
+            jtxtpettype3.setText("");
+            jlblimage3.setIcon(null);
     }//GEN-LAST:event_jbtnsaveActionPerformed
 
     private void jtxtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtnameActionPerformed
@@ -1235,6 +1271,15 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jbtnstatusActionPerformed
+
+    private void jtxtage3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtage3KeyPressed
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c)){
+            JOptionPane.showMessageDialog(this, "Please input an integer");
+            jtxtage3.setText("");
+        }
+    }//GEN-LAST:event_jtxtage3KeyPressed
 
     /**
      * @param args the command line arguments

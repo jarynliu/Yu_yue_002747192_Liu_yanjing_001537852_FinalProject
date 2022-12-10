@@ -111,9 +111,9 @@
                                   <Component id="jbtnnot2say" min="-2" pref="125" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jbtnsubmit" alignment="1" min="-2" pref="78" max="-2" attributes="0"/>
-                              <Component id="jtxtname" alignment="0" max="32767" attributes="0"/>
                               <Component id="jtxtshelterpetname" alignment="0" pref="398" max="32767" attributes="0"/>
-                              <Component id="jtxtorg" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jcb" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtxtname" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -133,15 +133,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                  <Component id="jlbltitle" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jlbltitle" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jlblname" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtxtname" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jlblname" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtxtname" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jlblid" min="-2" max="-2" attributes="0"/>
                               <Component id="jtxtid" min="-2" max="-2" attributes="0"/>
@@ -196,14 +196,14 @@
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="jlblshelterpetname" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jtxtshelterpetname" min="-2" max="-2" attributes="0"/>
+                      <Component id="jtxtshelterpetname" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jlblorg" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxtorg" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jcb" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="65" max="32767" attributes="0"/>
+                  <EmptySpace pref="71" max="32767" attributes="0"/>
                   <Component id="jbtnsubmit" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jlblinfo" min="-2" max="-2" attributes="0"/>
@@ -333,6 +333,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxtphone">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtphoneKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jlbladdress">
           <Properties>
@@ -351,6 +354,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtxtage">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtageKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jlbltitle">
           <Properties>
@@ -378,8 +384,6 @@
             <Property name="text" type="java.lang.String" value="Name:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtname">
-        </Component>
         <Component class="javax.swing.JLabel" name="jlblshelterpetname">
           <Properties>
             <Property name="text" type="java.lang.String" value="Shelter Pet Name:"/>
@@ -392,7 +396,20 @@
             <Property name="text" type="java.lang.String" value="Organization:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtorg">
+        <Component class="javax.swing.JComboBox" name="jcb">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="organization1"/>
+                <StringItem index="1" value="organization2"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jtxtname">
         </Component>
       </SubComponents>
     </Container>

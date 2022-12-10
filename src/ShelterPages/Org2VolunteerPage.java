@@ -252,8 +252,19 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
 
         buttonGroup1.add(jbtnmale);
         jbtnmale.setText("Male");
+        jbtnmale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnmaleActionPerformed(evt);
+            }
+        });
 
         jlblage.setText("Estimate Age :");
+
+        jtxtage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtxtageKeyPressed(evt);
+            }
+        });
 
         jlbltimearrive.setText("Time arrive Shelter :");
 
@@ -261,6 +272,11 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
 
         buttonGroup2.add(jbtnyes);
         jbtnyes.setText("Yes");
+        jbtnyes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnyesActionPerformed(evt);
+            }
+        });
 
         buttonGroup2.add(jbtnno);
         jbtnno.setText("No");
@@ -410,9 +426,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(jtxtpettype))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jlblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(jlblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(86, 86, 86)
@@ -755,10 +769,51 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
 
     private void jbtnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsaveActionPerformed
         // TODO add your handling code here:
+        if(jtxtname.getText().trim()==null){
+        
+            JOptionPane.showMessageDialog(this, "Please input your name");
+        
+        }
+        if(jbtnfemale.isSelected()==false&&jbtnmale.isSelected()==false){
+                
+                 JOptionPane.showMessageDialog(this, "Please select your gender");
+                
+                }
+        if(jtxtage.getText().trim()==null){
+            JOptionPane.showMessageDialog(this, "Please input your age");
+        }
+        if(jdctimearrive.getDate()==null){
+        
+            JOptionPane.showMessageDialog(this, "Please select the date");
 
-        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-        String time_arrive = dateformat.format(jdctimearrive.getDate());
+        }
+        if(jbtnyes.isSelected()==false&&jbtnno.isSelected()==false){
+        
+            JOptionPane.showMessageDialog(this, "Please input spay information");
 
+        }
+        if(jbtndyes.isSelected()==false&&jbtndno.isSelected()){
+        
+            JOptionPane.showMessageDialog(this, "Please input disabled information");
+
+        }
+        if(jbtnvyes.isSelected()==false&&jbtnvno.isSelected()==false){
+        
+            JOptionPane.showMessageDialog(this, "Please input vaccination information");
+
+        }
+        if(jtxtpettype.getText().trim()==null){
+        
+            JOptionPane.showMessageDialog(this, "Please input the pet type");
+        
+        }
+        if(strayanimals_image==null)
+        {
+            JOptionPane.showMessageDialog(this, "Please upload a photo");
+        }
+        
+        
+        else{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
@@ -773,6 +828,9 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             }
             pst.setString(2, gender);
             pst.setInt(3,Integer.parseInt(jtxtage.getText()));  //这里的数据验证要判断integer
+             
+            SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+            String time_arrive = dateformat.format(jdctimearrive.getDate());
 
             pst.setString(4, time_arrive);
 
@@ -799,6 +857,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
                 vaccination = "No";
             }
             pst.setString(7,vaccination);
+           
 
             pst.setString(8,jtxtpettype.getText());
 
@@ -811,22 +870,14 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Inserted Successfully!");
 
         }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e);
-        }
-        
-        try {
-            // TODO add your handling code here:
-            jtxtname.setText("");
-            buttonGroup1.clearSelection();
-            jtxtage.setText("");
-
-            String dateValue ="1900-10-10";
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-            jdctimearrive.setDate(date);
-        } catch (ParseException ex) {
+        catch (Exception ex) {
             Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
+        jtxtname.setText("");
+        buttonGroup1.clearSelection();
+        jtxtage.setText("");
+        jdctimearrive.setDate(null);
         buttonGroup2.clearSelection();
         buttonGroup3.clearSelection();
         buttonGroup4.clearSelection();
@@ -836,18 +887,11 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnsaveActionPerformed
 
     private void jbtnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnresetActionPerformed
-        try {
-            // TODO add your handling code here:
-            jtxtname.setText("");
-            buttonGroup1.clearSelection();
-            jtxtage.setText("");
-
-            String dateValue ="1900-10-10";
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-            jdctimearrive.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        jtxtname.setText("");
+        buttonGroup1.clearSelection();
+        jtxtage.setText("");
+        jdctimearrive.setDate(null);
         buttonGroup2.clearSelection();
         buttonGroup3.clearSelection();
         buttonGroup4.clearSelection();
@@ -984,23 +1028,16 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);
         }
-        try {
-            // TODO add your handling code here:
-            jtxtname.setText("");
-            buttonGroup1.clearSelection();
-            jtxtage.setText("");
-
-            String dateValue ="1900-10-10";
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-            jdctimearrive.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        jtxtname.setText("");
+        buttonGroup1.clearSelection();
+        jtxtage.setText("");
+        jdctimearrive.setDate(null);
         buttonGroup2.clearSelection();
         buttonGroup3.clearSelection();
         buttonGroup4.clearSelection();
         jtxtpettype.setText("");
         jlblimage.setIcon(null);
+
     }//GEN-LAST:event_jbtnupdateActionPerformed
 
     private void jbtndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtndeleteActionPerformed
@@ -1023,23 +1060,16 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             catch (Exception e) {
                 JOptionPane.showMessageDialog(null,e);
             }
-            try {
-            // TODO add your handling code here:
-            jtxtname.setText("");
-            buttonGroup1.clearSelection();
-            jtxtage.setText("");
-
-            String dateValue ="1900-10-10";
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-            jdctimearrive.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        jtxtname.setText("");
+        buttonGroup1.clearSelection();
+        jtxtage.setText("");
+        jdctimearrive.setDate(null);
         buttonGroup2.clearSelection();
         buttonGroup3.clearSelection();
         buttonGroup4.clearSelection();
         jtxtpettype.setText("");
         jlblimage.setIcon(null);
+
         }
         
     }//GEN-LAST:event_jbtndeleteActionPerformed
@@ -1223,6 +1253,24 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jbtnstatusActionPerformed
+
+    private void jtxtageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtageKeyPressed
+        // TODO add your handling code here:
+        
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c)){
+            JOptionPane.showMessageDialog(this, "Please input an integer");
+            jtxtage.setText("");
+        }
+    }//GEN-LAST:event_jtxtageKeyPressed
+
+    private void jbtnyesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnyesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnyesActionPerformed
+
+    private void jbtnmaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnmaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnmaleActionPerformed
 
     /**
      * @param args the command line arguments

@@ -266,8 +266,7 @@ public class UserSignPage extends javax.swing.JFrame {
         String ptype = jtxtptype.getSelectedItem().toString();
         
         
-        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-        String birthday = dateformat.format(jtxtbday.getDate());
+        
         
         String pbreed = jtxtbreed.getText();
         String password = jtxtpassword.getText();
@@ -292,10 +291,17 @@ public class UserSignPage extends javax.swing.JFrame {
                 return;
             }pst.setString(1, name);
             
-             if (birthday == null || birthday.trim().equals("")) {
-                JOptionPane.showMessageDialog(this, "Please Input Birthday.");
-                return;
-            }pst.setString(3, birthday); 
+            try{
+                SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+                String birthday = dateformat.format(jtxtbday.getDate());
+                pst.setString(3, birthday);}
+            catch(Exception e){
+                JOptionPane.showMessageDialog(this, "Please input your birthday");
+            }
+                
+            
+            
+           
             
             if (pbreed == null || pbreed.trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Please Input Pet Breed.");
