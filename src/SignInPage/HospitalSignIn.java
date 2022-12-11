@@ -5,7 +5,7 @@
 package SignInPage;
 
 import NutriPage.NutriRecipe_1;
-import SignUpPage.HospitalSignPage;
+import SignUpPage.NutriSignPage;
 import SignUpPage.UserSignPage;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -217,7 +217,7 @@ public class HospitalSignIn extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         dispose();
-        HospitalSignPage hs = new HospitalSignPage();
+        NutriSignPage hs = new NutriSignPage();
         hs.setVisible(true);
         hs.setTitle("HospitalSignIn");
         

@@ -22,12 +22,12 @@ import javax.swing.JOptionPane;
  *
  * @author pkuhore
  */
-public class HospitalSignPage extends javax.swing.JFrame {
+public class NutriSignPage extends javax.swing.JFrame {
 
     /**
      * Creates new form HospitalSignPage
      */
-    public HospitalSignPage() {
+    public NutriSignPage() {
         initComponents();
         Connect();
         Toolkit toolkit = getToolkit();
@@ -265,7 +265,7 @@ public class HospitalSignPage extends javax.swing.JFrame {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(HospitalSignPage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NutriSignPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         
@@ -298,20 +298,21 @@ public class HospitalSignPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HospitalSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NutriSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HospitalSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NutriSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HospitalSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NutriSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HospitalSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NutriSignPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HospitalSignPage().setVisible(true);
+                new NutriSignPage().setVisible(true);
             }
         });
     }
