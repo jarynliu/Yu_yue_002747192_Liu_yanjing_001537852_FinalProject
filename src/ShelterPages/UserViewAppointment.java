@@ -144,7 +144,7 @@ public class UserViewAppointment extends javax.swing.JFrame {
               jtxtarea.setText(jtxtarea.getText() + "\n"+ "PHONE: "+rs.getString("phonenumber"));
               jtxtarea.setText(jtxtarea.getText() + "\n"+ "ADDRESS: "+rs.getString("homeaddress"));
               jtxtarea.setText(jtxtarea.getText() + "\n"+ "PET NAME: "+rs.getString("shelterpetname"));
-              jtxtarea.setText(jtxtarea.getText() + "\n"+ "ORGANIZE: "+rs.getString("organize"));
+              jtxtarea.setText(jtxtarea.getText() + "\n"+ "ORGANIZATION: "+rs.getString("organization"));
               jtxtarea.setText(jtxtarea.getText() + "\n"+ "APPOINTMENT STATUS: "+rs.getString("appointmentstatus"));
               jtxtarea.setText(jtxtarea.getText() + "\n"+ "******************Welcome!!!********************");
               
