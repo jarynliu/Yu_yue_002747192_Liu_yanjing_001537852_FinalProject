@@ -4,6 +4,16 @@
  */
 package BusinessPage;
 
+import SignUpPage.UserSignPage;
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -19,7 +29,98 @@ public class Order extends javax.swing.JFrame {
      */
     public Order() {
         initComponents();
+        Connect();
+        product_table ();
+        LoadProductName();
     }
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    
+    
+    public void Connect() 
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void product_table ()
+    {
+        try {
+            pst = con.prepareStatement("select * from product");
+            rs = pst.executeQuery();
+        
+            ResultSetMetaData Rsm = (ResultSetMetaData)rs.getMetaData();
+            int c;
+             c = Rsm.getColumnCount();
+            
+            DefaultTableModel model = (DefaultTableModel)productTable.getModel();
+            model.setRowCount(0);
+            
+            while(rs.next()) 
+            {
+                Vector v2 = new Vector();
+                
+                for(int i = 1; i <= c; i++) 
+                
+                {
+                    v2.add(rs.getString("product_id"));
+                    v2.add(rs.getString("product_name"));
+                    v2.add(rs.getString("descri"));
+                    v2.add(rs.getString("category"));   
+                    v2.add(rs.getDouble("price"));
+                    v2.add(rs.getString("qty"));
+                    v2.add(rs.getString("barcode"));                    
+ 
+                }
+                
+                model.addRow(v2);
+
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+    
+
+    void LoadProductName()
+            
+        {
+            try {
+                pst = con.prepareStatement("select distinct product_name from product");
+                rs = pst.executeQuery(); 
+                txtproductname.removeAllItems();
+
+                while(rs.next()){
+
+                    txtproductname.addItem(rs.getString("product_name"));
+                    txtproductname.setSelectedItem("");
+
+
+                }
+
+
+            } catch (SQLException ex) {
+                Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+
+        }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,14 +152,14 @@ public class Order extends javax.swing.JFrame {
         txtsearch = new javax.swing.JTextField();
         lblsearch = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        lblfname = new javax.swing.JLabel();
+        lblemail = new javax.swing.JLabel();
+        lblproductname = new javax.swing.JLabel();
+        txtproductname = new javax.swing.JComboBox<>();
+        txtfname = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
+        lblorderqty = new javax.swing.JLabel();
+        txtorderqty = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -195,13 +296,13 @@ public class Order extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel2.setText("Place Your Order");
 
-        jLabel3.setText("Full Name:");
+        lblfname.setText("Full Name:");
 
-        jLabel4.setText("Email Address:");
+        lblemail.setText("Email Address:");
 
-        jLabel5.setText("Product Name:");
+        lblproductname.setText("Product Name:");
 
-        jLabel6.setText("Order Qty:");
+        lblorderqty.setText("Order Qty:");
 
         jButton1.setText("Confirm Order");
 
@@ -227,21 +328,21 @@ public class Order extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3))
+                            .addComponent(lblproductname)
+                            .addComponent(lblfname))
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtfname)
+                            .addComponent(txtproductname, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(156, 156, 156)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
+                            .addComponent(lblemail)
+                            .addComponent(lblorderqty))
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                            .addComponent(jSpinner1))))
-                .addContainerGap(93, Short.MAX_VALUE))
+                            .addComponent(txtemail, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                            .addComponent(txtorderqty))))
+                .addContainerGap(92, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,9 +354,9 @@ public class Order extends javax.swing.JFrame {
                         .addGap(419, 419, 419))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(72, 72, 72)
+                        .addGap(82, 82, 82)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(68, 68, 68))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,28 +371,29 @@ public class Order extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblfname)
+                    .addComponent(lblemail)
+                    .addComponent(txtfname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                    .addComponent(lblproductname)
+                    .addComponent(txtproductname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblorderqty)
+                    .addComponent(txtorderqty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void productTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTableMouseClicked
@@ -362,23 +464,19 @@ public class Order extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblbarcode;
     private javax.swing.JLabel lblcateg;
     private javax.swing.JLabel lbldesc;
+    private javax.swing.JLabel lblemail;
+    private javax.swing.JLabel lblfname;
+    private javax.swing.JLabel lblorderqty;
     private javax.swing.JLabel lblprice;
+    private javax.swing.JLabel lblproductname;
     private javax.swing.JLabel lblproname;
     private javax.swing.JLabel lblqty;
     private javax.swing.JLabel lblsearch;
@@ -386,7 +484,11 @@ public class Order extends javax.swing.JFrame {
     private javax.swing.JTextField txtbarcode;
     private javax.swing.JTextField txtcateg;
     private javax.swing.JTextArea txtdesc;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txtfname;
+    private javax.swing.JSpinner txtorderqty;
     private javax.swing.JTextField txtprice;
+    private javax.swing.JComboBox<String> txtproductname;
     private javax.swing.JTextField txtproname;
     private javax.swing.JTextField txtqty;
     private javax.swing.JTextField txtsearch;
