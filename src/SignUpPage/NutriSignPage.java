@@ -68,37 +68,28 @@ public class NutriSignPage extends javax.swing.JFrame {
         jlblpassword = new javax.swing.JLabel();
         jtxtusername = new javax.swing.JTextField();
         jtxtpassword = new javax.swing.JPasswordField();
-        jtxthospitalname = new javax.swing.JTextField();
         jtxthname = new javax.swing.JComboBox<>();
-        jtxtrole = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
         jbtnsignin = new javax.swing.JButton();
         jbtnsignup = new javax.swing.JButton();
         jbthomepage = new javax.swing.JButton();
         jlblsignin = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HospitalPage");
         setBackground(new java.awt.Color(204, 204, 255));
 
-        jlbltitle.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jlbltitle.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jlbltitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbltitle.setText("Sign Up Your Account");
 
-        jlblusername.setText("User Name :");
+        jlblusername.setText("User Name:");
 
-        jlblpassword.setText("Password :");
+        jlblpassword.setText("Password:");
 
-        jtxthospitalname.setText("Hospital Name :");
-        jtxthospitalname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxthospitalnameActionPerformed(evt);
-            }
-        });
-
-        jtxthname.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hos1", "Hos2", "Hos3" }));
-
-        jtxtrole.setText("Role:");
+        jtxthname.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nutrition1", "Nutrition2" }));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Nutritionist" }));
 
@@ -125,6 +116,10 @@ public class NutriSignPage extends javax.swing.JFrame {
 
         jlblsignin.setText("Already have an account? Please sign in here!");
 
+        jLabel1.setText("Nutrition Agency:");
+
+        jLabel2.setText("Role:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,23 +131,24 @@ public class NutriSignPage extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jbthomepage))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(151, 151, 151)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jbtnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jlblusername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jlblpassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jtxthospitalname)
-                                            .addComponent(jtxtrole))
-                                        .addGap(108, 108, 108)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jtxthname, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jtxtpassword, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jtxtusername, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jComboBox2, 0, 206, Short.MAX_VALUE))))))
-                        .addGap(0, 54, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(188, 188, 188)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jlblpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jlblusername, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2))
+                                    .addGap(89, 89, 89)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jtxthname, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jtxtpassword, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jtxtusername, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jComboBox2, 0, 206, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(173, 173, 173)
+                                    .addComponent(jbtnsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 36, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,36 +169,32 @@ public class NutriSignPage extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jlbltitle)
                 .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblusername)
-                    .addComponent(jtxtusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jtxtusername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlblusername))
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblpassword)
                     .addComponent(jtxtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtxthospitalname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxthname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxthname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtxtrole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(36, 36, 36)
                 .addComponent(jbtnsignup)
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnsignin)
                     .addComponent(jlblsignin))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jtxthospitalnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxthospitalnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtxthospitalnameActionPerformed
 
     private void jbtnsigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsigninActionPerformed
         // TODO add your handling code here:
@@ -319,6 +311,8 @@ public class NutriSignPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jbthomepage;
     private javax.swing.JButton jbtnsignin;
     private javax.swing.JButton jbtnsignup;
@@ -327,9 +321,7 @@ public class NutriSignPage extends javax.swing.JFrame {
     private javax.swing.JLabel jlbltitle;
     private javax.swing.JLabel jlblusername;
     private javax.swing.JComboBox<String> jtxthname;
-    private javax.swing.JTextField jtxthospitalname;
     private javax.swing.JPasswordField jtxtpassword;
-    private javax.swing.JTextField jtxtrole;
     private javax.swing.JTextField jtxtusername;
     // End of variables declaration//GEN-END:variables
 }
