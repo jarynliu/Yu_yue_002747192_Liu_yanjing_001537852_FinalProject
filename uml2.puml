@@ -1,0 +1,57 @@
+@startuml
+annotation java.lang.SuppressWarnings
+class BusinessPage.Product
+class BusinessPage.SendEmail
+class SignUpPage.UserSignPage
+class Tool.JTextFieldHintListener
+class com.mysql.cj.jdbc.result.ResultSetMetaData
+class java.sql.Connection
+class java.sql.DriverManager
+class java.sql.PreparedStatement
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.util.ArrayList
+class java.util.Properties
+class java.util.Vector
+class java.util.logging.Level
+class java.util.logging.Logger
+class javax.mail.Message
+class javax.mail.PasswordAuthentication
+class javax.mail.Session
+class javax.mail.Transport
+class javax.mail.internet.InternetAddress
+class javax.mail.internet.MimeMessage
+class javax.swing.JFrame
+class javax.swing.JOptionPane
+class javax.swing.RowFilter
+class javax.swing.table.DefaultTableModel
+class javax.swing.table.TableRowSorter
+BusinessPage.Product ..> java.lang.SuppressWarnings
+BusinessPage.Product ..> SignUpPage.UserSignPage
+BusinessPage.Product ..> Tool.JTextFieldHintListener
+BusinessPage.Product ..> com.mysql.cj.jdbc.result.ResultSetMetaData
+BusinessPage.Product ..> java.sql.Connection
+BusinessPage.Product ..> java.sql.DriverManager
+BusinessPage.Product ..> java.sql.PreparedStatement
+BusinessPage.Product ..> java.sql.ResultSet
+BusinessPage.Product ..> java.sql.SQLException
+BusinessPage.Product ..> java.util.ArrayList
+BusinessPage.Product ..> java.util.Vector
+BusinessPage.Product ..> java.util.logging.Level
+BusinessPage.Product ..> java.util.logging.Logger
+BusinessPage.Product --|> javax.swing.JFrame
+BusinessPage.Product ..> javax.swing.JOptionPane
+BusinessPage.Product ..> javax.swing.RowFilter
+BusinessPage.Product ..> javax.swing.table.DefaultTableModel
+BusinessPage.Product ..> javax.swing.table.TableRowSorter
+BusinessPage.SendEmail ..> java.lang.SuppressWarnings
+BusinessPage.SendEmail ..> java.util.Properties
+BusinessPage.SendEmail ..> javax.mail.Message
+BusinessPage.SendEmail ..> javax.mail.PasswordAuthentication
+BusinessPage.SendEmail ..> javax.mail.Session
+BusinessPage.SendEmail ..> javax.mail.Transport
+BusinessPage.SendEmail ..> javax.mail.internet.InternetAddress
+BusinessPage.SendEmail ..> javax.mail.internet.MimeMessage
+BusinessPage.SendEmail --|> javax.swing.JFrame
+BusinessPage.SendEmail ..> javax.swing.JOptionPane
+@enduml

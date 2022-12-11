@@ -1,0 +1,49 @@
+@startuml
+annotation java.lang.SuppressWarnings
+class NutriPage.NutriRecipe_1
+class NutriPage.NutriRecipe_2
+class SignUpPage.UserSignPage
+class UserPage.UserRecipe
+class com.mysql.cj.jdbc.result.ResultSetMetaData
+class java.sql.Connection
+class java.sql.DriverManager
+class java.sql.PreparedStatement
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.util.Vector
+class java.util.logging.Level
+class java.util.logging.Logger
+class javax.swing.JFrame
+class javax.swing.JOptionPane
+class javax.swing.table.DefaultTableModel
+NutriPage.NutriRecipe_1 ..> java.lang.SuppressWarnings
+NutriPage.NutriRecipe_1 ..> SignUpPage.UserSignPage
+NutriPage.NutriRecipe_1 ..> UserPage.UserRecipe
+NutriPage.NutriRecipe_1 ..> com.mysql.cj.jdbc.result.ResultSetMetaData
+NutriPage.NutriRecipe_1 ..> java.sql.Connection
+NutriPage.NutriRecipe_1 ..> java.sql.DriverManager
+NutriPage.NutriRecipe_1 ..> java.sql.PreparedStatement
+NutriPage.NutriRecipe_1 ..> java.sql.ResultSet
+NutriPage.NutriRecipe_1 ..> java.sql.SQLException
+NutriPage.NutriRecipe_1 ..> java.util.Vector
+NutriPage.NutriRecipe_1 ..> java.util.logging.Level
+NutriPage.NutriRecipe_1 ..> java.util.logging.Logger
+NutriPage.NutriRecipe_1 --|> javax.swing.JFrame
+NutriPage.NutriRecipe_1 ..> javax.swing.JOptionPane
+NutriPage.NutriRecipe_1 ..> javax.swing.table.DefaultTableModel
+NutriPage.NutriRecipe_2 ..> java.lang.SuppressWarnings
+NutriPage.NutriRecipe_2 ..> SignUpPage.UserSignPage
+NutriPage.NutriRecipe_2 ..> UserPage.UserRecipe
+NutriPage.NutriRecipe_2 ..> com.mysql.cj.jdbc.result.ResultSetMetaData
+NutriPage.NutriRecipe_2 ..> java.sql.Connection
+NutriPage.NutriRecipe_2 ..> java.sql.DriverManager
+NutriPage.NutriRecipe_2 ..> java.sql.PreparedStatement
+NutriPage.NutriRecipe_2 ..> java.sql.ResultSet
+NutriPage.NutriRecipe_2 ..> java.sql.SQLException
+NutriPage.NutriRecipe_2 ..> java.util.Vector
+NutriPage.NutriRecipe_2 ..> java.util.logging.Level
+NutriPage.NutriRecipe_2 ..> java.util.logging.Logger
+NutriPage.NutriRecipe_2 --|> javax.swing.JFrame
+NutriPage.NutriRecipe_2 ..> javax.swing.JOptionPane
+NutriPage.NutriRecipe_2 ..> javax.swing.table.DefaultTableModel
+@enduml

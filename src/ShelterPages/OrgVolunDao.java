@@ -275,6 +275,30 @@ public class OrgVolunDao extends BaseDao{
         
         return strayanimalsList;
     }
+     public ArrayList<Appointment> selectbyappointmentid(String id){
+        
+        ArrayList<Appointment> appointmentList = new ArrayList<>();
+        String sql = "select * from appointment where id = ?";
+        
+        try{
+            conn =getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setObject(1,id);
+            rs = ps.executeQuery();
+            Appointment appointment;
+            while(rs.next()){
+            
+               appointment = new Appointment(rs.getInt("ano"),rs.getString("name"),rs.getString("id"),rs.getString("gender"),rs.getInt("age"),rs.getString("haveorhadpet"),rs.getString("numberofpet"),rs.getString("pettypenow"),rs.getString("phonenumber"),rs.getString("homeaddress"),rs.getString("shelterpetname"),rs.getString("organization"),rs.getString("appointmentstatus"));
+               appointmentList.add(appointment);
+            }
+            close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // cath 里面的异常不一样会影响结果，之后看一看这个
+        
+        return appointmentList;
+    }
      
      public int statusupdate(AppointmentStatus appointmentstatus,int id){
         int result = 0;

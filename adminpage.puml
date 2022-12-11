@@ -1,0 +1,64 @@
+@startuml
+annotation java.lang.Override
+annotation java.lang.SuppressWarnings
+class AdminPages.Admininsert
+class AdminPages.SystemAdminPage
+class AdminPages.UserAdmin
+class SQLDao.AdminDao
+class SignUpPage.UserSignPage
+class UserPage.UserRecipe
+class finalproject.entity.Admin
+class java.awt.Dimension
+class java.awt.Toolkit
+class java.awt.event.ActionEvent
+class java.awt.event.ActionListener
+class java.sql.Connection
+class java.sql.DriverManager
+class java.sql.PreparedStatement
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.util.Vector
+class java.util.logging.Level
+class java.util.logging.Logger
+class javax.swing.JButton
+class javax.swing.JFrame
+class javax.swing.JLabel
+class javax.swing.JOptionPane
+class javax.swing.JScrollPane
+class javax.swing.JTable
+class javax.swing.JTextField
+class javax.swing.table.DefaultTableModel
+AdminPages.Admininsert ..> java.lang.SuppressWarnings
+AdminPages.Admininsert ..> SQLDao.AdminDao
+AdminPages.Admininsert ..> finalproject.entity.Admin
+AdminPages.Admininsert --|> javax.swing.JFrame
+AdminPages.Admininsert ..> javax.swing.JOptionPane
+AdminPages.SystemAdminPage ..> java.lang.Override
+AdminPages.SystemAdminPage ..> SQLDao.AdminDao
+AdminPages.SystemAdminPage ..> finalproject.entity.Admin
+AdminPages.SystemAdminPage ..> java.awt.event.ActionEvent
+AdminPages.SystemAdminPage ..> java.awt.event.ActionListener
+AdminPages.SystemAdminPage ..> java.util.Vector
+AdminPages.SystemAdminPage ..> javax.swing.JButton
+AdminPages.SystemAdminPage --|> javax.swing.JFrame
+AdminPages.SystemAdminPage ..> javax.swing.JLabel
+AdminPages.SystemAdminPage ..> javax.swing.JOptionPane
+AdminPages.SystemAdminPage ..> javax.swing.JScrollPane
+AdminPages.SystemAdminPage ..> javax.swing.JTable
+AdminPages.SystemAdminPage ..> javax.swing.JTextField
+AdminPages.SystemAdminPage ..> javax.swing.table.DefaultTableModel
+AdminPages.UserAdmin ..> java.lang.SuppressWarnings
+AdminPages.UserAdmin ..> SignUpPage.UserSignPage
+AdminPages.UserAdmin ..> UserPage.UserRecipe
+AdminPages.UserAdmin ..> java.awt.Dimension
+AdminPages.UserAdmin ..> java.awt.Toolkit
+AdminPages.UserAdmin ..> java.sql.Connection
+AdminPages.UserAdmin ..> java.sql.DriverManager
+AdminPages.UserAdmin ..> java.sql.PreparedStatement
+AdminPages.UserAdmin ..> java.sql.ResultSet
+AdminPages.UserAdmin ..> java.sql.SQLException
+AdminPages.UserAdmin ..> java.util.logging.Level
+AdminPages.UserAdmin ..> java.util.logging.Logger
+AdminPages.UserAdmin --|> javax.swing.JFrame
+AdminPages.UserAdmin ..> javax.swing.JOptionPane
+@enduml
