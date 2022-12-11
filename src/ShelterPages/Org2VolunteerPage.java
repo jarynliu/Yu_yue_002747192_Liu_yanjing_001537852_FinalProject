@@ -39,6 +39,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
      * Creates new form Org2VolunteerPage
      */
     
+    OrgVolunDao ovdao = new OrgVolunDao();
     String gender;
     String spay;
     String disabled;
@@ -56,55 +57,16 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
     }
     
     public ArrayList<StrayAnimals> strayanimalsList(){
-        ArrayList<StrayAnimals> strayanimalsList = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-            String query1 = "SELECT * FROM strayanimals2";
-            Statement st = con.createStatement();
-            ResultSet rs =st.executeQuery(query1);
-            
-            StrayAnimals strayanimals;
-            
-            while(rs.next()){
-            
-                strayanimals = new StrayAnimals(rs.getInt("sno"),rs.getString("name"),rs.getString("gender"),rs.getInt("age"),rs.getDate("time_arrive"),rs.getString("spay"),rs.getString("disabled"),rs.getString("vaccination"),rs.getString("organization"),rs.getString("pettype"),rs.getBytes("images"));
-                strayanimalsList.add(strayanimals);
-            
-            }
-            
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e);
-        }
-        
-        return strayanimalsList;
+        String account = jtxtsearch.getText();
+        ArrayList<StrayAnimals> strayanimalsList = ovdao.selectbyname2(account);
+        return strayanimalsList;    
         
     }
     
     public ArrayList<Appointment> appointmentList(){
-        ArrayList<Appointment> appointmentList = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-            String query1 = "SELECT * FROM appointment";
-            Statement st = con.createStatement();
-            ResultSet rs =st.executeQuery(query1);
-            
-            Appointment appointment;
-            
-            while(rs.next()){
-            
-                appointment = new Appointment(rs.getInt("ano"),rs.getString("name"),rs.getString("id"),rs.getString("gender"),rs.getInt("age"),rs.getString("haveorhadpet"),rs.getString("numberofpet"),rs.getString("pettypenow"),rs.getString("phonenumber"),rs.getString("homeaddress"),rs.getString("shelterpetname"),rs.getString("organization"),rs.getString("appointmentstatus"));
-                appointmentList.add(appointment);
-            
-            }
-            
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e);
-        }
-        
+        String onlyid = jtxtsearch.getText();
+        ArrayList<Appointment> appointmentList = ovdao.selectbyid(onlyid);
         return appointmentList;
-        
     }
     
     public void show_strayanimals(){
@@ -203,7 +165,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         jlblimage = new javax.swing.JLabel();
         jbtnimage = new javax.swing.JButton();
         jtxtsearch = new javax.swing.JTextField();
-        jlblsearch = new javax.swing.JLabel();
+        jbtnsearch = new javax.swing.JButton();
         jpappointments = new javax.swing.JPanel();
         jlblname1 = new javax.swing.JLabel();
         jlblid1 = new javax.swing.JLabel();
@@ -357,7 +319,12 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             }
         });
 
-        jlblsearch.setText("Search Here :");
+        jbtnsearch.setText("Search");
+        jbtnsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnsearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -428,15 +395,13 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE))
                             .addComponent(jlblimage, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jlblsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jtxtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(319, 319, 319))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(91, 91, 91)
+                        .addComponent(jbtnsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jtxtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,7 +413,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
                         .addGap(58, 58, 58)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtxtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblsearch)))
+                            .addComponent(jbtnsearch)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jbtnreset)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -503,7 +468,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
                                     .addComponent(jbtnsave)
                                     .addComponent(jbtnupdate))
                                 .addComponent(jbtndelete, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jppetinfoLayout = new javax.swing.GroupLayout(jppetinfo);
@@ -792,7 +757,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please input spay information");
 
         }
-        if(jbtndyes.isSelected()==false&&jbtndno.isSelected()){
+        if(jbtndyes.isSelected()==false&&jbtndno.isSelected()==false){
         
             JOptionPane.showMessageDialog(this, "Please input disabled information");
 
@@ -814,25 +779,19 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         
         
         else{
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-            String query = "insert into strayanimals2(name,gender,age,time_arrive,spay,disabled,vaccination,pettype,images)values(?,?,?,?,?,?,?,?,?)";
-            PreparedStatement pst = con.prepareStatement(query);
-            pst.setString(1, jtxtname.getText());
+            String name = jtxtname.getText();
             if(jbtnfemale.isSelected()){
                 gender = "Female";
             }
             if(jbtnmale.isSelected()){
                 gender = "Male";
             }
-            pst.setString(2, gender);
-            pst.setInt(3,Integer.parseInt(jtxtage.getText()));  //这里的数据验证要判断integer
+            int age =Integer.parseInt(jtxtage.getText());  //这里的数据验证要判断integer
              
             SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
             String time_arrive = dateformat.format(jdctimearrive.getDate());
 
-            pst.setString(4, time_arrive);
+            
 
             if(jbtnyes.isSelected()){
                 spay = "Yes";
@@ -840,7 +799,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             if(jbtnno.isSelected()){
                 spay = "No";
             }
-            pst.setString(5, spay);
+            
 
             if(jbtndyes.isSelected()){
                 disabled = "Yes";
@@ -848,32 +807,30 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             if(jbtndno.isSelected()){
                 disabled = "No";
             }
-            pst.setString(6, disabled);
-
+           
             if(jbtnvyes.isSelected()){
                 vaccination = "Yes";
             }
             if(jbtnvno.isSelected()){
                 vaccination = "No";
             }
-            pst.setString(7,vaccination);
+            
            
 
-            pst.setString(8,jtxtpettype.getText());
+            String pettype = jtxtpettype.getText();
 
-            pst.setBytes(9,strayanimals_image);
+            byte[] image = strayanimals_image;
 
-            pst.executeUpdate();
-            DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
-            model.setRowCount(0);
-            show_strayanimals();
-            JOptionPane.showMessageDialog(null, "Inserted Successfully!");
-
-        }
-        catch (Exception ex) {
-            Logger.getLogger(Org1VolunteerPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }
+            StrayAnimals stayanimals = new StrayAnimals(0,name,gender,age,time_arrive,spay,disabled,vaccination,"organization1",pettype,image);
+             
+            
+            
+                ovdao.insert2(stayanimals);
+                JOptionPane.showMessageDialog(null, "Successfully inserted");
+            
+                DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
+                model.setRowCount(0);
+                show_strayanimals();
         jtxtname.setText("");
         buttonGroup1.clearSelection();
         jtxtage.setText("");
@@ -883,7 +840,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         buttonGroup4.clearSelection();
         jtxtpettype.setText("");
         jlblimage.setIcon(null);
-        
+        } 
     }//GEN-LAST:event_jbtnsaveActionPerformed
 
     private void jbtnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnresetActionPerformed
@@ -972,28 +929,20 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
 
     private void jbtnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnupdateActionPerformed
 
-        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-        String time_arrive = dateformat.format(jdctimearrive.getDate());
-
-        // TODO add your handling code here:
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-            int row = jtb_display_strayanimals.getSelectedRow();
-            String value = (jtb_display_strayanimals.getModel().getValueAt(row, 0).toString());
-            String query = "UPDATE strayanimals2 SET name = ?,gender=?,age=?,time_arrive=?,spay=?,disabled=?,vaccination=?,pettype=? ,images = ? where sno="+value;
-            PreparedStatement pst = con.prepareStatement(query);
-            pst.setString(1, jtxtname.getText());
+       
+            String name = jtxtname.getText();
             if(jbtnfemale.isSelected()){
                 gender = "Female";
             }
             if(jbtnmale.isSelected()){
                 gender = "Male";
             }
-            pst.setString(2, gender);
-            pst.setInt(3,Integer.parseInt(jtxtage.getText()));  //这里的数据验证要判断integer
+            int age =Integer.parseInt(jtxtage.getText());  //这里的数据验证要判断integer
+             
+            SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+            String time_arrive = dateformat.format(jdctimearrive.getDate());
 
-            pst.setString(4, time_arrive);
+            
 
             if(jbtnyes.isSelected()){
                 spay = "Yes";
@@ -1001,7 +950,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             if(jbtnno.isSelected()){
                 spay = "No";
             }
-            pst.setString(5, spay);
+            
 
             if(jbtndyes.isSelected()){
                 disabled = "Yes";
@@ -1009,29 +958,33 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
             if(jbtndno.isSelected()){
                 disabled = "No";
             }
-            pst.setString(6, disabled);
-
+           
             if(jbtnvyes.isSelected()){
                 vaccination = "Yes";
             }
             if(jbtnvno.isSelected()){
                 vaccination = "No";
             }
-            pst.setString(7,vaccination);
+            
+           
 
-            pst.setString(8,jtxtpettype.getText());
+            String pettype = jtxtpettype.getText();
 
-            pst.setBytes(9,strayanimals_image);
+            byte[] image = strayanimals_image;
 
-            pst.executeUpdate();
+            
+            int row = jtb_display_strayanimals.getSelectedRow();
+                String value = (jtb_display_strayanimals.getModel().getValueAt(row, 0).toString());
+                int id = Integer.parseInt(value);
+                StrayAnimals stayanimals = new StrayAnimals(id,name,gender,age,time_arrive,spay,disabled,vaccination,"organization1",pettype,image);
+            
+                ovdao.update2(stayanimals,id);
+                JOptionPane.showMessageDialog(null, "Successfully updated");
+            
             DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
             model.setRowCount(0);
             show_strayanimals();
-            JOptionPane.showMessageDialog(null, "Updated Successfully!");
-        }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e);
-        }
+       
         jtxtname.setText("");
         buttonGroup1.clearSelection();
         jtxtage.setText("");
@@ -1050,22 +1003,20 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete it ?", "Delete",JOptionPane.YES_NO_OPTION);
         if(opt==0){
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-                int row = jtb_display_strayanimals.getSelectedRow();
+            
+             int row = jtb_display_strayanimals.getSelectedRow();
                 String value = (jtb_display_strayanimals.getModel().getValueAt(row, 0).toString());
-                String query = "DELETE FROM strayanimals2 where sno="+value;
-                PreparedStatement pst = con.prepareStatement(query);
-                pst.executeUpdate();
+                int id = Integer.parseInt(value);
+                
+                if(ovdao.delete2(id)>0){
+                       
+                           JOptionPane.showMessageDialog(null, "Successfully deleted");
+                       }
                 DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
                 model.setRowCount(0);
                 show_strayanimals();
-                JOptionPane.showMessageDialog(null, "Deleted Successfully!");
-            }
-            catch (Exception e) {
-                JOptionPane.showMessageDialog(null,e);
-            }
+        
+
         jtxtname.setText("");
         buttonGroup1.clearSelection();
         jtxtage.setText("");
@@ -1241,24 +1192,18 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
     private void jbtnstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnstatusActionPerformed
         // TODO add your handling code here:
         
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-            int row = jtb_display_appointment.getSelectedRow();
-            String value = (jtb_display_appointment.getModel().getValueAt(row, 0).toString());
-            String query = "UPDATE appointment SET appointmentstatus=? where ano="+value;
-            PreparedStatement pst = con.prepareStatement(query);
-            pst.setString(1, jtxtstatus.getText());
-
-            pst.executeUpdate();
-            DefaultTableModel model = (DefaultTableModel)jtb_display_appointment.getModel();
-            model.setRowCount(0);
-            show_appointment();
-            JOptionPane.showMessageDialog(null, "Status Changed");
-        }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e);
-        }
+         String status = jtxtstatus.getText();
+                int row = jtb_display_appointment.getSelectedRow();
+                String value = (jtb_display_appointment.getModel().getValueAt(row, 0).toString());
+                int id = Integer.parseInt(value);
+                AppointmentStatus appointmentstatus = new AppointmentStatus(status);
+            
+                ovdao.statusupdate(appointmentstatus,id);
+                JOptionPane.showMessageDialog(null, "Status Changed");
+            
+                DefaultTableModel model = (DefaultTableModel)jtb_display_appointment.getModel();
+                model.setRowCount(0);
+                show_appointment();
         
     }//GEN-LAST:event_jbtnstatusActionPerformed
 
@@ -1279,6 +1224,17 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
     private void jbtnmaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnmaleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnmaleActionPerformed
+
+    private void jbtnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsearchActionPerformed
+        // TODO add your handling code here:
+        
+        String account = jtxtsearch.getText();
+        ArrayList<StrayAnimals> strayanimalsList = ovdao.selectbyname2(account);
+   
+            DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals.getModel();
+            model.setRowCount(0);
+            show_strayanimals();
+    }//GEN-LAST:event_jbtnsearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1344,6 +1300,7 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
     private javax.swing.JRadioButton jbtnnotsay;
     private javax.swing.JButton jbtnreset;
     private javax.swing.JButton jbtnsave;
+    private javax.swing.JButton jbtnsearch;
     private javax.swing.JButton jbtnstatus;
     private javax.swing.JButton jbtnupdate;
     private javax.swing.JRadioButton jbtnvno;
@@ -1369,7 +1326,6 @@ public class Org2VolunteerPage extends javax.swing.JFrame {
     private javax.swing.JLabel jlblpettype;
     private javax.swing.JLabel jlblpettypenow;
     private javax.swing.JLabel jlblphone;
-    private javax.swing.JLabel jlblsearch;
     private javax.swing.JLabel jlblsearch1;
     private javax.swing.JLabel jlblshelterpetname;
     private javax.swing.JLabel jlblspay;

@@ -86,7 +86,7 @@ public class PetInformationPage extends javax.swing.JFrame {
             
             while(rs.next()){
             
-                strayanimals = new StrayAnimals(rs.getInt("sno"),rs.getString("name"),rs.getString("gender"),rs.getInt("age"),rs.getDate("time_arrive"),rs.getString("spay"),rs.getString("disabled"),rs.getString("vaccination"),rs.getString("organization"),rs.getString("pettype"),rs.getBytes("images"));
+                strayanimals = new StrayAnimals(rs.getInt("sno"),rs.getString("name"),rs.getString("gender"),rs.getInt("age"),rs.getString("time_arrive"),rs.getString("spay"),rs.getString("disabled"),rs.getString("vaccination"),rs.getString("organization"),rs.getString("pettype"),rs.getBytes("images"));
                 strayanimalsList.add(strayanimals);
             
             }
@@ -293,6 +293,11 @@ public class PetInformationPage extends javax.swing.JFrame {
         });
 
         jbtnviewappointment.setText("View my Appointment");
+        jbtnviewappointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnviewappointmentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -652,6 +657,12 @@ public class PetInformationPage extends javax.swing.JFrame {
         jtb_display_petinformation2.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(jtxtsearch2.getText().trim()));
     }//GEN-LAST:event_jtxtsearch2jtxtsearchKeyPressed
+
+    private void jbtnviewappointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnviewappointmentActionPerformed
+        // TODO add your handling code here:
+        UserViewAppointment uva = new UserViewAppointment();
+        uva.setVisible(true);
+    }//GEN-LAST:event_jbtnviewappointmentActionPerformed
 
     /**
      * @param args the command line arguments

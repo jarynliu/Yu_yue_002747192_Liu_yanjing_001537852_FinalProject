@@ -74,7 +74,7 @@ public class AdminDao extends BaseDao{
     //insert
     public int insert(Admin ad){
         int result = 0;
-        String sql = "insert tb_admin values(null,?,?,?)";
+        String sql = "insert into tb_admin values(null,?,?,?)";
         try{
         conn=getConn();
         ps = conn.prepareStatement(sql);

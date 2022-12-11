@@ -13,12 +13,13 @@ import javax.swing.JOptionPane;
  * @author pkuhore
  */
 public class Admininsert extends javax.swing.JFrame {
-    
+    AdminDao addinsert = new AdminDao();
     /**
      * Creates new form Admininsert
      */
     public Admininsert() {
         initComponents();
+        
     }
 
     /**
@@ -104,12 +105,12 @@ public class Admininsert extends javax.swing.JFrame {
 
     private void jbtsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtsaveActionPerformed
         // TODO add your handling code here:
-        Admin ad = new Admin(0,jtxtaccount.getText(),jtxtpassword.getText(),jcbrole.getSelectedItem().toString());
-        AdminDao add = new AdminDao();
-        add.insert(ad);
-            if(add.insert(ad)>0){
-                JOptionPane.showMessageDialog(null, "Successfully inserted");
-            }
+        Admin adinsertget = new Admin(0,jtxtaccount.getText(),jtxtpassword.getText(),jcbrole.getSelectedItem().toString());
+        addinsert.insert(adinsertget);
+            
+        JOptionPane.showMessageDialog(null, "Successfully inserted");
+            
+        
 
     }//GEN-LAST:event_jbtsaveActionPerformed
 
