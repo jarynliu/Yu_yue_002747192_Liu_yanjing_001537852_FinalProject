@@ -18,6 +18,8 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -437,7 +439,19 @@ public class Order extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if("".equals(txtfname.getText().trim())){
         
+            JOptionPane.showMessageDialog(this, "Please input the Full name");
+        
+        }
+        
+        
+
+        
+        
+        
+        
+        else{
         String fullname = txtfname.getText();
         String email = txtemail.getText();
         String productname = txtproductname.getSelectedItem().toString();
@@ -445,11 +459,39 @@ public class Order extends javax.swing.JFrame {
         
         try {
             pst = con.prepareStatement("insert into orderproduct(fullname, email, productname, orderqty)values(?, ?, ?, ?)");
+            if("".equals(fullname.trim())){
+        
+            JOptionPane.showMessageDialog(this, "Please input the Full name");
+        
+            }
+            else {pst.setString(1, fullname);}
             
-            pst.setString(1, fullname);
+            if (email == null || email.trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Please Input Email.");
+            return;
+            }
+            boolean flag;
+        try {
+            String check = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+            Pattern regex = Pattern.compile(check);
+            Matcher matcher = regex.matcher(email);
+            flag = matcher.matches();
+        } catch (Exception e) {
+            flag = false;
+        }
+        if (!flag) {
+            JOptionPane.showMessageDialog(this, "Please Input Right Email.");
+            return;
+        }
             pst.setString(2, email);
+            if(productname =="")
+            {JOptionPane.showMessageDialog(this, "Please select a product name.");}
             pst.setString(3, productname);
-            pst.setString(4, orderqty);
+            
+            if("0".equals(orderqty)){
+                JOptionPane.showMessageDialog(this, "Please select the orderqty.");
+            }
+            else{pst.setString(4, orderqty);
             pst.executeUpdate();
             
             JOptionPane.showMessageDialog(this, "Order Placed!");
@@ -458,10 +500,11 @@ public class Order extends javax.swing.JFrame {
             txtemail.setText("");
             txtproductname.setSelectedIndex(-1);
             txtorderqty.setValue(0);
-            txtfname.requestFocus();
+            txtfname.requestFocus();}
             
         } catch (SQLException ex) {
             Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
 
         
