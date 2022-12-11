@@ -4,6 +4,22 @@
  */
 package AdminPages;
 
+import SignUpPage.BusinessSignPage;
+import SignUpPage.UserSignPage;
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author iris
@@ -15,6 +31,62 @@ public class BusinessAdmin extends javax.swing.JFrame {
      */
     public BusinessAdmin() {
         initComponents();
+        Connect();
+        businessaccount_table();
+    }
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    PreparedStatement unameList;
+    
+    public void Connect() 
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }       
+    }
+    
+    public void businessaccount_table()
+    {
+        try {
+            pst = con.prepareStatement("select * from business");
+            rs = pst.executeQuery();
+        
+            ResultSetMetaData Rsm = (ResultSetMetaData)rs.getMetaData();
+            int c;
+             c = Rsm.getColumnCount();
+            
+            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+            model.setRowCount(0);
+            
+            while(rs.next()) 
+            {
+                Vector v2 = new Vector();
+                
+                for(int i = 1; i <= c; i++) {
+                    v2.add(rs.getString("id"));
+                    v2.add(rs.getString("uname"));
+                    v2.add(rs.getString("password"));
+                    v2.add(rs.getString("storename"));
+                    v2.add(rs.getString("role"));
+                }
+                
+                model.addRow(v2);
+            
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BusinessAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     }
 
     /**
@@ -66,6 +138,11 @@ public class BusinessAdmin extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
@@ -74,13 +151,39 @@ public class BusinessAdmin extends javax.swing.JFrame {
         lblsearch.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         lblsearch.setText("Search:");
 
+        txtsearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtsearchKeyReleased(evt);
+            }
+        });
+
         btncreate.setText("Create");
+        btncreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncreateActionPerformed(evt);
+            }
+        });
 
         btnedit.setText("Edit");
+        btnedit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditActionPerformed(evt);
+            }
+        });
 
         btndelete.setText("Delete");
+        btndelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndeleteActionPerformed(evt);
+            }
+        });
 
         btnreset.setText("Reset");
+        btnreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnresetActionPerformed(evt);
+            }
+        });
 
         btnback.setText("Back");
 
@@ -183,6 +286,180 @@ public class BusinessAdmin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btncreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncreateActionPerformed
+        // TODO add your handling code here:
+        
+        String uname = jtxtusername.getText();
+        String password = jtxtpassword.getText();
+        String storename = jtxtstorename.getSelectedItem().toString();
+        String role = jComboBox2.getSelectedItem().toString();
+        
+        try {
+            pst = con.prepareStatement("insert into business(uname,password,storename,role)value(?,?,?,?)");
+            
+/////////////////////////////////////////////////////////////DataValidation/////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            String sql = "select * from business where uname = ?";
+            unameList = con.prepareStatement(sql);
+            unameList.setString(1, uname);
+            ResultSet rs = unameList.executeQuery();
+                        
+            if (uname == null || uname.trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Please Input Name.");
+                return;}
+            else if (!rs.next()){
+            } else {
+                JOptionPane.showMessageDialog(this, "The Name is Occupied.Please Change one.");
+                return;
+            }pst.setString(1, uname);
+            
+            if (password == null || password.trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Please Input Password.");
+                return;
+            }pst.setString(2, password);
+            
+ ///////////////////////////////////////////////////////////DataValidation//////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            pst.setString(3, storename);
+            pst.setString(4, role);
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Successfully Created!");
+            
+            jtxtusername.setText("");
+            jtxtpassword.setText("");
+            jtxtstorename.setSelectedIndex(0);
+            jComboBox2.setSelectedIndex(0);
+            jtxtusername.requestFocus();
+            
+            businessaccount_table();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BusinessSignPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btncreateActionPerformed
+
+    private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int SelectIndex = jTable1.getSelectedRow();
+        
+        String uname = jtxtusername.getText();
+        String password = jtxtpassword.getText();               
+        String storename = jtxtstorename.getSelectedItem().toString();
+        String role = jComboBox2.getSelectedItem().toString();
+        
+        try {
+            pst = con.prepareStatement("update business set uname = ?, password = ?, storename = ?, role = ? where id= ?");
+            
+            int id = Integer.parseInt(model.getValueAt(SelectIndex, 0).toString());
+            
+            pst.setString(1, uname);
+            pst.setString(2, password);
+            pst.setString(3, storename);
+            pst.setString(4, role);
+            pst.setInt(5, id);
+            
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Business Account Information Edited!");
+            
+            jtxtusername.setText("");
+            jtxtpassword.setText("");
+            jtxtstorename.setSelectedIndex(0);
+            jComboBox2.setSelectedIndex(0);
+            jtxtusername.requestFocus();
+            
+            businessaccount_table();
+            
+            btncreate.setEnabled(true);
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(BusinessAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btneditActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        int SelectIndex = jTable1.getSelectedRow();
+        
+        jtxtusername.setText(model.getValueAt(SelectIndex, 1).toString());
+        jtxtpassword.setText(model.getValueAt(SelectIndex, 2).toString());
+        jtxtstorename.setSelectedItem(model.getValueAt(SelectIndex, 3).toString());
+        jComboBox2.setSelectedItem(model.getValueAt(SelectIndex, 4).toString());
+        
+        btncreate.setEnabled(false);
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
+        // TODO add your handling code here:
+        
+        int opt = JOptionPane.showConfirmDialog(null, "Are you sure to delete it ?", "Delete",JOptionPane.YES_NO_OPTION);
+        
+        if (opt==0){
+            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+            int SelectIndex = jTable1.getSelectedRow();
+            
+            try {
+                pst = con.prepareStatement("delete from business where id = ?");
+                
+                int id = Integer.parseInt(model.getValueAt(SelectIndex, 0).toString());
+            
+                pst.setInt(1, id);
+                pst.executeUpdate();
+                
+                JOptionPane.showMessageDialog(this, "Business Account Information Deleted!");
+                
+                jtxtusername.setText("");
+                jtxtpassword.setText("");
+                jtxtstorename.setSelectedIndex(0);
+                jComboBox2.setSelectedIndex(0);
+                jtxtusername.requestFocus();
+
+                businessaccount_table();
+
+                btncreate.setEnabled(true);
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ShelterAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
+    }//GEN-LAST:event_btndeleteActionPerformed
+
+    private void btnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresetActionPerformed
+        // TODO add your handling code here:
+        
+        jtxtusername.setText("");
+        jtxtpassword.setText("");
+        jtxtstorename.setSelectedIndex(0);
+        jComboBox2.setSelectedIndex(0);
+        jtxtusername.requestFocus();
+
+        businessaccount_table();
+
+        btncreate.setEnabled(true);
+        
+    }//GEN-LAST:event_btnresetActionPerformed
+
+    private void txtsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsearchKeyReleased
+        // TODO add your handling code here:
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        jTable1.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(txtsearch.getText()));
+        
+    }//GEN-LAST:event_txtsearchKeyReleased
 
     /**
      * @param args the command line arguments

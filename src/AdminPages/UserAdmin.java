@@ -413,7 +413,7 @@ public class UserAdmin extends javax.swing.JFrame {
             pst.setString(7, role);
             pst.executeUpdate();
             
-            JOptionPane.showMessageDialog(this, "Successfully Sign Up!");
+            JOptionPane.showMessageDialog(this, "Successfully Created!");
             
             jtxtname.setText("");
             jtxtptype.setSelectedIndex(0);

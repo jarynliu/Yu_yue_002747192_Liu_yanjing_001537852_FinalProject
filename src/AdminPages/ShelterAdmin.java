@@ -329,7 +329,7 @@ public class ShelterAdmin extends javax.swing.JFrame {
             pst.setString(4, role);
             pst.executeUpdate();
             
-            JOptionPane.showMessageDialog(this, "Successfully Sign Up!");
+            JOptionPane.showMessageDialog(this, "Successfully Created!");
             
             jtxtusername.setText("");
             jtxtpassword.setText("");
