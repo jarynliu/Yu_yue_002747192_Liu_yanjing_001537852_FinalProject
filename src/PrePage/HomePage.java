@@ -5,7 +5,7 @@
 package PrePage;
 
 import SignUpPage.BusinessSignPage;
-import SignUpPage.HospitalSignPage;
+import SignUpPage.NutriSignPage;
 import SignUpPage.UserSignPage;
 import SignUpPage.AnimalShelterSignPage;
 import java.awt.Dimension;
@@ -130,7 +130,7 @@ public class HomePage extends javax.swing.JFrame {
     private void jlblhospitalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlblhospitalMouseClicked
         // TODO add your handling code here:
         dispose();
-        HospitalSignPage hospitalsignpage = new HospitalSignPage();
+        NutriSignPage hospitalsignpage = new NutriSignPage();
         hospitalsignpage.setTitle("Hospital Signup");
         hospitalsignpage.setVisible(true);
     }//GEN-LAST:event_jlblhospitalMouseClicked

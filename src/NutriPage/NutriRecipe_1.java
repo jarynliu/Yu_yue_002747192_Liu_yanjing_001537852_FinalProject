@@ -209,6 +209,11 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
                 txtpnameMouseClicked(evt);
             }
         });
+        txtpname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpnameActionPerformed(evt);
+            }
+        });
 
         txtage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -677,6 +682,10 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         cbzinc.setEnabled(false);
     }//GEN-LAST:event_cbzincMousePressed
+
+    private void txtpnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpnameActionPerformed
 
     /**
      * @param args the command line arguments
