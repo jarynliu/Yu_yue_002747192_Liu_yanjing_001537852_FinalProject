@@ -780,7 +780,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
                 DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
                 model.setRowCount(0);
                 show_strayanimals();
-            ;
+            
             
         }
         
@@ -1061,10 +1061,12 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
                 ovdao.insert(stayanimals);
                 JOptionPane.showMessageDialog(null, "Successfully inserted");
             
-            show_strayanimals();
+                DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
+                model.setRowCount(0);
+                show_strayanimals();
             
         
-        }
+        
       
             // TODO add your handling code here:
             jtxtname3.setText("");
@@ -1077,7 +1079,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             buttonGroup3.clearSelection();
             buttonGroup4.clearSelection();
             jtxtpettype3.setText("");
-            jlblimage3.setIcon(null);
+            jlblimage3.setIcon(null);}
     }//GEN-LAST:event_jbtnsaveActionPerformed
 
     private void jtxtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtnameActionPerformed
@@ -1219,24 +1221,52 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
                 int age= Integer.parseInt(jtxtage.getText());
                 String haveorhad;
                 if(jbtnyes.isSelected()){
-                gender = "Yes";
+                haveorhad = "Yes";
                 }
                 if(jbtnno.isSelected()){
-                gender = "No";
+                haveorhad = "No";
                 }
+                String howmany;
+                if(jbtn0.isSelected()){
+                howmany = "0";
+            }
+            if(jbtn1.isSelected()){
+                howmany = "1";
+            }
+            if(jbtn2.isSelected()){
+                howmany = "2";
+            }
+            if(jbtn3.isSelected()){
+                howmany = "More than 2";
+            }
+            String pettype="";
+            if(jcbdog.isSelected()){
+               pettype+=jcbdog.getText()+" ";
+            }
+            if(jcbcat.isSelected()){
+                pettype+=jcbcat.getText()+" ";
+            }
+             if(jcbothers.isSelected()){
+                pettype+=jcbothers.getText()+" ";
+            }
+           String phonenumber=jtxtphone.getText();
+           String homeaddress = jtxtaddress.getText();
+           String shelterpetname = jtxtshelterpetname.getText();
+
+           
                 
                 String status = jtxtstatus.getText();
                 int row = jtb_display_appointment.getSelectedRow();
                 String value = (jtb_display_appointment.getModel().getValueAt(row, 0).toString());
                 int id = Integer.parseInt(value);
-                Appointment appointment = new Appointment(id,null,null,null,0,null,null,null,null,null,null,"organization1",status);
+                AppointmentStatus appointmentstatus = new AppointmentStatus(status);
             
-                ovdao.statusupdate(appointment,id);
+                ovdao.statusupdate(appointmentstatus,id);
                 JOptionPane.showMessageDialog(null, "Status Changed");
             
-            DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
-            model.setRowCount(0);
-            show_appointment();
+                DefaultTableModel model = (DefaultTableModel)jtb_display_appointment.getModel();
+                model.setRowCount(0);
+                show_appointment();
             
 
 
