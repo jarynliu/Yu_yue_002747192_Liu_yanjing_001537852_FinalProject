@@ -334,6 +334,7 @@ public class UserAdmin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcbxroleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbxroleActionPerformed
