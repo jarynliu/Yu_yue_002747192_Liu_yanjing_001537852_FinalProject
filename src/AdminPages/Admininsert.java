@@ -107,9 +107,9 @@ public class Admininsert extends javax.swing.JFrame {
         // TODO add your handling code here:
         Admin adinsertget = new Admin(0,jtxtaccount.getText(),jtxtpassword.getText(),jcbrole.getSelectedItem().toString());
         addinsert.insert(adinsertget);
-            if(addinsert.insert(adinsertget)>0){
-                JOptionPane.showMessageDialog(null, "Successfully inserted");
-            }
+            
+        JOptionPane.showMessageDialog(null, "Successfully inserted");
+            
         
 
     }//GEN-LAST:event_jbtsaveActionPerformed

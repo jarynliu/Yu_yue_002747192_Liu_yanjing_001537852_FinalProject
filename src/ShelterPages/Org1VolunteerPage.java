@@ -59,33 +59,14 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
     }
     
     public ArrayList<StrayAnimals> strayanimalsList(){
-
-        ArrayList<StrayAnimals> strayanimalsList = ovdao.selectAll();
+        String account = jtxtsearch3.getText();
+        ArrayList<StrayAnimals> strayanimalsList = ovdao.selectbyname(account);
         return strayanimalsList;     
     }
     
      public ArrayList<Appointment> appointmentList(){
-        ArrayList<Appointment> appointmentList = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-            String query1 = "SELECT * FROM appointment";
-            Statement st = con.createStatement();
-            ResultSet rs =st.executeQuery(query1);
-            
-            Appointment appointment;
-            
-            while(rs.next()){
-            
-                appointment = new Appointment(rs.getInt("ano"),rs.getString("name"),rs.getString("id"),rs.getString("gender"),rs.getInt("age"),rs.getString("haveorhadpet"),rs.getString("numberofpet"),rs.getString("pettypenow"),rs.getString("phonenumber"),rs.getString("homeaddress"),rs.getString("shelterpetname"),rs.getString("organization"),rs.getString("appointmentstatus"));
-                appointmentList.add(appointment);
-            
-            }
-            
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e);
-        }
-        
+        String onlyid = jtxtsearch.getText();
+        ArrayList<Appointment> appointmentList = ovdao.selectbyid(onlyid);
         return appointmentList;
         
     }
@@ -799,7 +780,7 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
                 DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
                 model.setRowCount(0);
                 show_strayanimals();
-                JOptionPane.showMessageDialog(null, "Deleted Successfully!");
+            ;
             
         }
         
@@ -867,12 +848,15 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
 
             byte[] image = strayanimals_image;
 
-            StrayAnimals stayanimals = new StrayAnimals(0,name,gender,age,time_arrive,spay,disabled,vaccination,"organization1",pettype,image);
-            OrgVolunDao ovdao = new OrgVolunDao(); 
-            ovdao.update(stayanimals);
-            if(ovdao.update(stayanimals)>0){
+            
+            int row = jtb_display_strayanimals3.getSelectedRow();
+                String value = (jtb_display_strayanimals3.getModel().getValueAt(row, 0).toString());
+                int id = Integer.parseInt(value);
+                StrayAnimals stayanimals = new StrayAnimals(id,name,gender,age,time_arrive,spay,disabled,vaccination,"organization1",pettype,image);
+            
+                ovdao.update(stayanimals,id);
                 JOptionPane.showMessageDialog(null, "Successfully updated");
-            }
+            
             DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
             model.setRowCount(0);
             show_strayanimals();
@@ -1072,12 +1056,11 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
 
             StrayAnimals stayanimals = new StrayAnimals(0,name,gender,age,time_arrive,spay,disabled,vaccination,"organization1",pettype,image);
              
-            ovdao.insert(stayanimals);
-            if(ovdao.insert(stayanimals)>0){
+            
+            
+                ovdao.insert(stayanimals);
                 JOptionPane.showMessageDialog(null, "Successfully inserted");
-            }
-            DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
-            model.setRowCount(0);
+            
             show_strayanimals();
             
         
@@ -1220,25 +1203,46 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
 
     private void jbtnstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnstatusActionPerformed
         // TODO add your handling code here:
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");
-            int row = jtb_display_appointment.getSelectedRow();
-            String value = (jtb_display_appointment.getModel().getValueAt(row, 0).toString());
-            String query = "UPDATE appointment SET appointmentstatus=? where ano="+value;
-            PreparedStatement pst = con.prepareStatement(query);
-            pst.setString(1, jtxtstatus.getText());
-
-            pst.executeUpdate();
-            DefaultTableModel model = (DefaultTableModel)jtb_display_appointment.getModel();
+                
+                String name = jtxtname.getText();
+                String onlyid = jtxtid.getText();
+                String gender;
+                if(jbtnfemale.isSelected()){
+                gender = "Female";
+                }
+                if(jbtnmale.isSelected()){
+                gender = "Male";
+                }
+                if(jbtnnotsay.isSelected()){
+                gender = "Prefer not to say";
+                }
+                int age= Integer.parseInt(jtxtage.getText());
+                String haveorhad;
+                if(jbtnyes.isSelected()){
+                gender = "Yes";
+                }
+                if(jbtnno.isSelected()){
+                gender = "No";
+                }
+                
+                String status = jtxtstatus.getText();
+                int row = jtb_display_appointment.getSelectedRow();
+                String value = (jtb_display_appointment.getModel().getValueAt(row, 0).toString());
+                int id = Integer.parseInt(value);
+                Appointment appointment = new Appointment(id,null,null,null,0,null,null,null,null,null,null,"organization1",status);
+            
+                ovdao.statusupdate(appointment,id);
+                JOptionPane.showMessageDialog(null, "Status Changed");
+            
+            DefaultTableModel model = (DefaultTableModel)jtb_display_strayanimals3.getModel();
             model.setRowCount(0);
             show_appointment();
-            JOptionPane.showMessageDialog(null, "Status Changed");
-        }
-        catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e);
-        }
+            
+
+
+       
+           
+        
 
     }//GEN-LAST:event_jbtnstatusActionPerformed
 
