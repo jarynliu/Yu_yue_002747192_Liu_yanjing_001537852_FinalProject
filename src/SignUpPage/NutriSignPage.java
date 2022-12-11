@@ -260,9 +260,6 @@ public class NutriSignPage extends javax.swing.JFrame {
             Logger.getLogger(NutriSignPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
-        
-        
     }//GEN-LAST:event_jbtnsignupActionPerformed
 
     private void jbthomepageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbthomepageActionPerformed
