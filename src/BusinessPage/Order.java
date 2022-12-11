@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -108,17 +109,12 @@ public class Order extends javax.swing.JFrame {
 
                     txtproductname.addItem(rs.getString("product_name"));
                     txtproductname.setSelectedItem("");
-
-
                 }
 
 
             } catch (SQLException ex) {
                 Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-
-
         }
     
 
@@ -305,6 +301,11 @@ public class Order extends javax.swing.JFrame {
         lblorderqty.setText("Order Qty:");
 
         jButton1.setText("Confirm Order");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Exit");
 
@@ -424,6 +425,38 @@ public class Order extends javax.swing.JFrame {
         tr.setRowFilter(RowFilter.regexFilter(txtsearch.getText()));
 
     }//GEN-LAST:event_txtsearchKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        String fullname = txtfname.getText();
+        String email = txtemail.getText();
+        String productname = txtproductname.getSelectedItem().toString();
+        String orderqty = txtorderqty.getValue().toString();
+        
+        try {
+            pst = con.prepareStatement("insert into orderproduct(fullname, email, productname, orderqty)values(?, ?, ?, ?)");
+            
+            pst.setString(1, fullname);
+            pst.setString(2, email);
+            pst.setString(3, productname);
+            pst.setString(4, orderqty);
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Order Placed!");
+            
+            txtfname.setText("");
+            txtemail.setText("");
+            txtproductname.setSelectedIndex(-1);
+            txtorderqty.setValue(0);
+            txtfname.requestFocus();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Order.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
