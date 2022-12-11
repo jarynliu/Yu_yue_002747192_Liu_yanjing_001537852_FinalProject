@@ -69,7 +69,7 @@ public class OrgVolunDao extends BaseDao{
         return result;
     }
      
-     public int update(StrayAnimals strayanimals){
+     public int update(StrayAnimals strayanimals,int id){
         int result = 0;
         String sql = "UPDATE strayanimals SET name = ?,gender=?,age=?,time_arrive=?,spay=?,disabled=?,vaccination=?,pettype=? ,images = ? where sno= ?";
         try{
@@ -84,6 +84,7 @@ public class OrgVolunDao extends BaseDao{
         ps.setString(7,strayanimals.getVaccination());
         ps.setString(8,strayanimals.getPettype());
         ps.setBytes(9,strayanimals.getPicture());
+        ps.setInt(10,id);
         result = ps.executeUpdate();
         }catch(SQLException e){
         
@@ -158,5 +159,46 @@ public class OrgVolunDao extends BaseDao{
         // cath 里面的异常不一样会影响结果，之后看一看这个
         
         return strayanimalsList;
+    }
+     public int statusupdate(Appointment appointment,int id){
+        int result = 0;
+        String sql = "UPDATE appointment SET appointmentstatus=? where ano= ?";
+        try{
+        conn=getConn();
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, appointment.getAppointmentstatus());
+        ps.setInt(2,id);
+        result = ps.executeUpdate();
+        }catch(SQLException e){
+        
+            e.printStackTrace();
+        } 
+        close();
+        return result;
+    }
+     
+     public ArrayList<Appointment> selectbyid(String id){
+        
+        ArrayList<Appointment> appointmentList = new ArrayList<>();
+        String sql ="SELECT * FROM appointment WHERE id like ?";
+        
+        try{
+            conn =getConn();
+            ps = conn.prepareStatement(sql);
+           ps.setObject(1,"%"+id+"%");
+            rs = ps.executeQuery();
+            Appointment appointment;
+            while(rs.next()){
+            
+                appointment = new Appointment(rs.getInt("ano"),rs.getString("name"),rs.getString("id"),rs.getString("gender"),rs.getInt("age"),rs.getString("haveorhadpet"),rs.getString("numberofpet"),rs.getString("pettypenow"),rs.getString("phonenumber"),rs.getString("homeaddress"),rs.getString("shelterpetname"),rs.getString("organization"),rs.getString("appointmentstatus"));
+                appointmentList.add(appointment);
+            }
+            close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // cath 里面的异常不一样会影响结果，之后看一看这个
+        
+        return appointmentList;
     }
 }
