@@ -70,6 +70,31 @@ public class OrgVolunDao extends BaseDao{
         return result;
     }
      
+     public int insertadoptorinfo(StrayAnimals strayanimals) {
+        int result = 0;
+        String sql = "insert into appointment(name,id,gender,age,haveorhadpet,numberofpet,pettypenow,phonenumber,homeaddress,shelterpetname,organization)values(?,?,?,?,?,?,?,?,?,?,?)";
+        try{
+        conn=getConn();
+        ps = conn.prepareStatement(sql);
+        ps.setString(1,strayanimals.getName());
+        ps.setString(2,strayanimals.getGender());
+        ps.setInt(3,strayanimals.getAge());
+        ps.setString(4, strayanimals.getTime_Arrive());
+        ps.setString(5,strayanimals.getSpay());
+        ps.setString(6,strayanimals.getDisabled());
+        ps.setString(7,strayanimals.getVaccination());
+        ps.setString(8,strayanimals.getPettype());
+        ps.setBytes(9,strayanimals.getPicture());
+       
+        result = ps.executeUpdate();
+        }catch(SQLException e){
+        
+            e.printStackTrace();
+        } 
+        close();
+        return result;
+    }
+     
      public int update(StrayAnimals strayanimals,int id){
         int result = 0;
         String sql = "UPDATE strayanimals SET name = ?,gender=?,age=?,time_arrive=?,spay=?,disabled=?,vaccination=?,pettype=? ,images = ? where sno= ?";

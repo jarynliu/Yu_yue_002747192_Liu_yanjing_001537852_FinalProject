@@ -576,6 +576,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="View my Appointment"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnviewappointmentActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
