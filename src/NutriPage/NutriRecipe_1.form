@@ -373,6 +373,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtage">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtageMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rdbdog">
       <Properties>
@@ -381,6 +384,10 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Dog"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rdbdogMouseClicked"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rdbdogMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rdbcat">
       <Properties>
@@ -389,35 +396,70 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cat"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rdbcatMouseClicked"/>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rdbcatMousePressed"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rdbcatMouseReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtmeat">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtmeatMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtbone">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtboneMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtliver">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtliverMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtorgan">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtorganMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtveg">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtvegMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtseed">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtseedMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtfruit">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtfruitMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="cbkale">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kale"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbkaleMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="cbvb">
       <Properties>
         <Property name="text" type="java.lang.String" value="Vitamin B"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbvbMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="cbzinc">
       <Properties>
         <Property name="text" type="java.lang.String" value="Zinc"/>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbzincMousePressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblcomment1">
       <Properties>
@@ -436,9 +478,9 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="txtcomment1.setEditable(false);"/>
-          </AuxValues>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtcomment1MouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
