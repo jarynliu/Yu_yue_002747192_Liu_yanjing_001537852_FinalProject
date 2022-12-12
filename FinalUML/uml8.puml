@@ -1,0 +1,39 @@
+@startuml
+annotation java.lang.SuppressWarnings
+class SignUpPage.UserSignPage
+class Tool.JTextFieldHintListener
+class UserPage.UserRecipe
+class com.mysql.cj.jdbc.result.ResultSetMetaData
+class java.sql.Connection
+class java.sql.DriverManager
+class java.sql.PreparedStatement
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.util.ArrayList
+class java.util.Vector
+class java.util.logging.Level
+class java.util.logging.Logger
+class javax.swing.JFrame
+class javax.swing.JOptionPane
+class javax.swing.RowFilter
+class javax.swing.table.DefaultTableModel
+class javax.swing.table.TableRowSorter
+UserPage.UserRecipe ..> java.lang.SuppressWarnings
+UserPage.UserRecipe ..> SignUpPage.UserSignPage
+UserPage.UserRecipe ..> Tool.JTextFieldHintListener
+UserPage.UserRecipe ..> com.mysql.cj.jdbc.result.ResultSetMetaData
+UserPage.UserRecipe ..> java.sql.Connection
+UserPage.UserRecipe ..> java.sql.DriverManager
+UserPage.UserRecipe ..> java.sql.PreparedStatement
+UserPage.UserRecipe ..> java.sql.ResultSet
+UserPage.UserRecipe ..> java.sql.SQLException
+UserPage.UserRecipe ..> java.util.ArrayList
+UserPage.UserRecipe ..> java.util.Vector
+UserPage.UserRecipe ..> java.util.logging.Level
+UserPage.UserRecipe ..> java.util.logging.Logger
+UserPage.UserRecipe --|> javax.swing.JFrame
+UserPage.UserRecipe ..> javax.swing.JOptionPane
+UserPage.UserRecipe ..> javax.swing.RowFilter
+UserPage.UserRecipe ..> javax.swing.table.DefaultTableModel
+UserPage.UserRecipe ..> javax.swing.table.TableRowSorter
+@enduml

@@ -1,0 +1,94 @@
+@startuml
+annotation java.lang.SuppressWarnings
+class PrePage.HomePage
+class SignInPage.BusinessSignIn
+class SignInPage.HospitalSignIn
+class SignInPage.ShelterSignIn
+class SignInPage.UserSignIn
+class SignUpPage.AnimalShelterSignPage
+class SignUpPage.BusinessSignPage
+class SignUpPage.HospitalSignPage
+class SignUpPage.UserSignPage
+class com.mysql.cj.protocol.Resultset
+class java.awt.Dimension
+class java.awt.Toolkit
+class java.sql.Connection
+class java.sql.DriverManager
+class java.sql.PreparedStatement
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.text.ParseException
+class java.text.SimpleDateFormat
+class java.util.Date
+class java.util.logging.Level
+class java.util.logging.Logger
+class java.util.regex.Matcher
+class java.util.regex.Pattern
+class javax.swing.JFrame
+class javax.swing.JOptionPane
+SignUpPage.AnimalShelterSignPage ..> java.lang.SuppressWarnings
+SignUpPage.AnimalShelterSignPage ..> PrePage.HomePage
+SignUpPage.AnimalShelterSignPage ..> SignInPage.ShelterSignIn
+SignUpPage.AnimalShelterSignPage ..> com.mysql.cj.protocol.Resultset
+SignUpPage.AnimalShelterSignPage ..> java.awt.Dimension
+SignUpPage.AnimalShelterSignPage ..> java.awt.Toolkit
+SignUpPage.AnimalShelterSignPage ..> java.sql.Connection
+SignUpPage.AnimalShelterSignPage ..> java.sql.DriverManager
+SignUpPage.AnimalShelterSignPage ..> java.sql.PreparedStatement
+SignUpPage.AnimalShelterSignPage ..> java.sql.ResultSet
+SignUpPage.AnimalShelterSignPage ..> java.sql.SQLException
+SignUpPage.AnimalShelterSignPage ..> java.util.logging.Level
+SignUpPage.AnimalShelterSignPage ..> java.util.logging.Logger
+SignUpPage.AnimalShelterSignPage --|> javax.swing.JFrame
+SignUpPage.AnimalShelterSignPage ..> javax.swing.JOptionPane
+SignUpPage.BusinessSignPage ..> java.lang.SuppressWarnings
+SignUpPage.BusinessSignPage ..> PrePage.HomePage
+SignUpPage.BusinessSignPage ..> SignInPage.BusinessSignIn
+SignUpPage.BusinessSignPage ..> com.mysql.cj.protocol.Resultset
+SignUpPage.BusinessSignPage ..> java.awt.Dimension
+SignUpPage.BusinessSignPage ..> java.awt.Toolkit
+SignUpPage.BusinessSignPage ..> java.sql.Connection
+SignUpPage.BusinessSignPage ..> java.sql.DriverManager
+SignUpPage.BusinessSignPage ..> java.sql.PreparedStatement
+SignUpPage.BusinessSignPage ..> java.sql.ResultSet
+SignUpPage.BusinessSignPage ..> java.sql.SQLException
+SignUpPage.BusinessSignPage ..> java.util.logging.Level
+SignUpPage.BusinessSignPage ..> java.util.logging.Logger
+SignUpPage.BusinessSignPage --|> javax.swing.JFrame
+SignUpPage.BusinessSignPage ..> javax.swing.JOptionPane
+SignUpPage.HospitalSignPage ..> java.lang.SuppressWarnings
+SignUpPage.HospitalSignPage ..> PrePage.HomePage
+SignUpPage.HospitalSignPage ..> SignInPage.HospitalSignIn
+SignUpPage.HospitalSignPage ..> com.mysql.cj.protocol.Resultset
+SignUpPage.HospitalSignPage ..> java.awt.Dimension
+SignUpPage.HospitalSignPage ..> java.awt.Toolkit
+SignUpPage.HospitalSignPage ..> java.sql.Connection
+SignUpPage.HospitalSignPage ..> java.sql.DriverManager
+SignUpPage.HospitalSignPage ..> java.sql.PreparedStatement
+SignUpPage.HospitalSignPage ..> java.sql.ResultSet
+SignUpPage.HospitalSignPage ..> java.sql.SQLException
+SignUpPage.HospitalSignPage ..> java.util.logging.Level
+SignUpPage.HospitalSignPage ..> java.util.logging.Logger
+SignUpPage.HospitalSignPage --|> javax.swing.JFrame
+SignUpPage.HospitalSignPage ..> javax.swing.JOptionPane
+SignUpPage.UserSignPage ..> java.lang.SuppressWarnings
+SignUpPage.UserSignPage ..> PrePage.HomePage
+SignUpPage.UserSignPage ..> SignInPage.UserSignIn
+SignUpPage.UserSignPage ..> com.mysql.cj.protocol.Resultset
+SignUpPage.UserSignPage ..> java.awt.Dimension
+SignUpPage.UserSignPage ..> java.awt.Toolkit
+SignUpPage.UserSignPage ..> java.sql.Connection
+SignUpPage.UserSignPage ..> java.sql.DriverManager
+SignUpPage.UserSignPage ..> java.sql.PreparedStatement
+SignUpPage.UserSignPage ..> java.sql.ResultSet
+SignUpPage.UserSignPage ..> java.sql.SQLException
+SignUpPage.UserSignPage ..> java.text.ParseException
+SignUpPage.UserSignPage ..> java.text.SimpleDateFormat
+SignUpPage.UserSignPage ..> java.util.Date
+SignUpPage.UserSignPage ..> java.util.logging.Level
+SignUpPage.UserSignPage ..> java.util.logging.Logger
+SignUpPage.UserSignPage ..> java.util.regex.Matcher
+SignUpPage.UserSignPage ..> java.util.regex.Pattern
+SignUpPage.UserSignPage --|> javax.swing.JFrame
+SignUpPage.UserSignPage ..> javax.swing.JOptionPane
+@enduml
