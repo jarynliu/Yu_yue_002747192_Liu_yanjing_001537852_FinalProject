@@ -6,6 +6,8 @@ package AdminPages;
 
 import SQLDao.AdminDao;
 import finalproject.entity.Admin;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +21,9 @@ public class Admininsert extends javax.swing.JFrame {
      */
     public Admininsert() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         
     }
 

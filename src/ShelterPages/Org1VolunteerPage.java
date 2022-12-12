@@ -522,15 +522,49 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
 
         jlblshelterpetname.setText("Shelter Pet Name :");
 
+        jtxtid.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtxtidMouseClicked(evt);
+            }
+        });
+
+        jtxtname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtxtnameMouseClicked(evt);
+            }
+        });
         jtxtname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxtnameActionPerformed(evt);
             }
         });
 
+        jtxtage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtxtageMouseClicked(evt);
+            }
+        });
         jtxtage.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtxtageKeyPressed(evt);
+            }
+        });
+
+        jtxtphone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtxtphoneMouseClicked(evt);
+            }
+        });
+
+        jtxtaddress.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtxtaddressMouseClicked(evt);
+            }
+        });
+
+        jtxtshelterpetname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtxtshelterpetnameMouseClicked(evt);
             }
         });
 
@@ -1314,6 +1348,36 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             jtxtage.setText("");
         }
     }//GEN-LAST:event_jtxtageKeyPressed
+
+    private void jtxtnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtxtnameMouseClicked
+        // TODO add your handling code here:
+        jtxtname.setEditable(false);
+    }//GEN-LAST:event_jtxtnameMouseClicked
+
+    private void jtxtidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtxtidMouseClicked
+        // TODO add your handling code here:
+        jtxtid.setEditable(false);
+    }//GEN-LAST:event_jtxtidMouseClicked
+
+    private void jtxtphoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtxtphoneMouseClicked
+        // TODO add your handling code here:
+        jtxtphone.setEditable(false);
+    }//GEN-LAST:event_jtxtphoneMouseClicked
+
+    private void jtxtaddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtxtaddressMouseClicked
+        // TODO add your handling code here:
+        jtxtaddress.setEditable(false);
+    }//GEN-LAST:event_jtxtaddressMouseClicked
+
+    private void jtxtshelterpetnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtxtshelterpetnameMouseClicked
+        // TODO add your handling code here:
+        jtxtshelterpetname.setEditable(false);
+    }//GEN-LAST:event_jtxtshelterpetnameMouseClicked
+
+    private void jtxtageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtxtageMouseClicked
+        // TODO add your handling code here:
+        jtxtage.setEditable(false);
+    }//GEN-LAST:event_jtxtageMouseClicked
 
     /**
      * @param args the command line arguments
