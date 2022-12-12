@@ -8,8 +8,9 @@ The nutrition is the agency to give comment of the users' receipes.
 The shelter page means that, you can adopt a pet here. To give the stray animals a haome.
 
 # Enterprises, Organizations, Roles
-4 Enterprises: User, Nutrition, Bussiness, Shelter
-6 Organizations: Nutrition1, Nutrition2, Shelter1, Shelter2, Shop1, Shop2, etc.\
+4 Enterprises: User, Nutrition, Bussiness, Shelter  
+
+6 Organizations: Nutrition1, Nutrition2, Shelter1, Shelter2, Shop1, Shop2, etc.  
 
 8 Roles: user,bussinessman, systemadmin,sheltervolunteer, adoptor,nutritionist,shelteradmin,businessadmin,useradmin,nutritionadmin
 
