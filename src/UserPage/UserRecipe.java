@@ -4,6 +4,7 @@
  */
 package UserPage;
 
+import BusinessPage.Order;
 import SignUpPage.UserSignPage;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -36,9 +37,6 @@ public class UserRecipe extends javax.swing.JFrame {
         recipe_table ();
     }
     
-    public UserRecipe(int id, String name, String role) {
-        initComponents();
-    }
     
     Connection con;
     PreparedStatement pst;
@@ -111,11 +109,6 @@ public class UserRecipe extends javax.swing.JFrame {
     
     }
     
-    
-    
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -166,6 +159,7 @@ public class UserRecipe extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtcomment2 = new javax.swing.JTextField();
         lblreset = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -335,6 +329,11 @@ public class UserRecipe extends javax.swing.JFrame {
         });
 
         btnexit.setText("Exit");
+        btnexit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnexitActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -391,6 +390,13 @@ public class UserRecipe extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Click Here to Shop");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -432,7 +438,9 @@ public class UserRecipe extends javax.swing.JFrame {
                 .addComponent(lblreset)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnexit)
-                .addGap(449, 449, 449))
+                .addGap(339, 339, 339)
+                .addComponent(jButton1)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,7 +456,8 @@ public class UserRecipe extends javax.swing.JFrame {
                             .addComponent(btnupdate)
                             .addComponent(btndelete)
                             .addComponent(btnexit)
-                            .addComponent(lblreset))
+                            .addComponent(lblreset)
+                            .addComponent(jButton1))
                         .addGap(24, 24, 24))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -883,6 +892,20 @@ public class UserRecipe extends javax.swing.JFrame {
         txtcomment.setEditable(false);
     }//GEN-LAST:event_txtcommentMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        dispose();
+        Order od = new Order();
+        od.setVisible(true);
+        od.setTitle("Shop");
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnexitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -928,6 +951,7 @@ public class UserRecipe extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbkale;
     private javax.swing.JCheckBox cbvb;
     private javax.swing.JCheckBox cbzinc;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

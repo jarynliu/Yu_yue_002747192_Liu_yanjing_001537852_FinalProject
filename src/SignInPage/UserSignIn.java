@@ -176,7 +176,8 @@ public class UserSignIn extends javax.swing.JFrame {
             {
                 int userid = rs.getInt("id");
                 this.setVisible(false);
-                new UserRecipe(userid, name, role).setVisible(true);
+                UserRecipe ur = new UserRecipe();
+                ur.setVisible(true);
             
             }
             

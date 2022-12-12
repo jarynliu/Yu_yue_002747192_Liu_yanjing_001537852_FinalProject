@@ -85,7 +85,7 @@
                           <Component id="ADMIN" min="-2" pref="78" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -108,9 +108,9 @@
                       <Component id="jlblbusiness" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -136,7 +136,7 @@
         <Component class="javax.swing.JLabel" name="jlblhospital">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\Documents\NetBeansProjects\Final Project\images\nutrition.png"/>
+              <Image iconType="3" name="/images/Nutrition.png"/>
             </Property>
           </Properties>
           <Events>
@@ -146,7 +146,7 @@
         <Component class="javax.swing.JLabel" name="jlblbusiness">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\Documents\NetBeansProjects\Final Project\images\business.png"/>
+              <Image iconType="3" name="/images/business.png"/>
             </Property>
           </Properties>
           <Events>

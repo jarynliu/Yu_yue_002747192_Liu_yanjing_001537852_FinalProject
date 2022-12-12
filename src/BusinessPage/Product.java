@@ -35,10 +35,7 @@ public class Product extends javax.swing.JFrame {
         Connect();
         product_table ();
     }
-    
-    public Product(int id, String uname, String role) {
-        initComponents();
-    }
+
     
     Connection con;
     PreparedStatement pst;
@@ -139,6 +136,7 @@ public class Product extends javax.swing.JFrame {
         productTable = new javax.swing.JTable();
         lblsearch = new javax.swing.JLabel();
         txtsearch = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -333,6 +331,13 @@ public class Product extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Send Email");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -340,7 +345,9 @@ public class Product extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(390, 390, 390))
+                .addGap(286, 286, 286)
+                .addComponent(jButton1)
+                .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -359,7 +366,9 @@ public class Product extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -608,6 +617,16 @@ public class Product extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnresetActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        dispose();
+        Ordershow os = new Ordershow();
+        os.setVisible(true);
+        os.setTitle("Email");
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -648,6 +667,7 @@ public class Product extends javax.swing.JFrame {
     private javax.swing.JButton btndelete;
     private javax.swing.JButton btnedit;
     private javax.swing.JButton btnreset;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

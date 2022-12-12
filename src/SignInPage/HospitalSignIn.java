@@ -5,6 +5,7 @@
 package SignInPage;
 
 import NutriPage.NutriRecipe_1;
+import NutriPage.NutriRecipe_2;
 import SignUpPage.NutriSignPage;
 import SignUpPage.UserSignPage;
 import java.awt.Dimension;
@@ -189,7 +190,14 @@ public class HospitalSignIn extends javax.swing.JFrame {
             {
                 int nid = rs.getInt("id");
                 this.setVisible(false);
-                new NutriRecipe_1(nid, uname, role).setVisible(true);
+                if("Hos1".equals(hname)&&"nutritionist".equals(role)){
+                NutriRecipe_1 n1 = new NutriRecipe_1();
+                n1.setVisible(true);
+                }
+                else if("Hos2".equals(hname)&&"nutritionist".equals(role)){
+                NutriRecipe_2 n2 = new NutriRecipe_2();
+                n2.setVisible(true);
+                }
             
             }
             

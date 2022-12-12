@@ -34,10 +34,6 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
         recipe_table ();
     }
     
-    public NutriRecipe_1(int id, String uname, String role) {
-        initComponents();
-    }
-    
     
     
     Connection con;
@@ -328,6 +324,11 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
         });
 
         btnback.setText("Exit");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -686,6 +687,10 @@ public class NutriRecipe_1 extends javax.swing.JFrame {
     private void txtpnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtpnameActionPerformed
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnbackActionPerformed
 
     /**
      * @param args the command line arguments

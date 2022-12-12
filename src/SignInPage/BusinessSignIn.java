@@ -189,7 +189,8 @@ public class BusinessSignIn extends javax.swing.JFrame {
             {
                 int busid = rs.getInt("id");
                 this.setVisible(false);
-                new Product(busid, uname, role).setVisible(true);
+                Product p = new Product();
+                p.setVisible(true);
             
             }
             

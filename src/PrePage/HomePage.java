@@ -60,14 +60,14 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jlblhospital.setIcon(new javax.swing.ImageIcon("D:\\Documents\\NetBeansProjects\\Final Project\\images\\nutrition.png")); // NOI18N
+        jlblhospital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Nutrition.png"))); // NOI18N
         jlblhospital.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlblhospitalMouseClicked(evt);
             }
         });
 
-        jlblbusiness.setIcon(new javax.swing.ImageIcon("D:\\Documents\\NetBeansProjects\\Final Project\\images\\business.png")); // NOI18N
+        jlblbusiness.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/business.png"))); // NOI18N
         jlblbusiness.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlblbusinessMouseClicked(evt);
@@ -133,7 +133,7 @@ public class HomePage extends javax.swing.JFrame {
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
                         .addComponent(ADMIN, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +151,7 @@ public class HomePage extends javax.swing.JFrame {
                     .addComponent(jlblanimalshelter, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlblbusiness, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
