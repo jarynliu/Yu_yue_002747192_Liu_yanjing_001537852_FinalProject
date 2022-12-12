@@ -5,7 +5,7 @@
 Yue yu always make receipes for her dog and cat. So we suppose that if their is an application that can help to correct the receipe will do conveninent. 
 Also there have a shop in which we can buy the things that pets need.
 The nutrition is the agency to give comment of the users' receipes.
-The shelter page means that, you can adopt a pet here. To give the stray animals a haome.
+The shelter page means that, you can adopt a pet here. To give the stray animals a home.
 
 # Enterprises, Organizations, Roles
 4 Enterprises: User, Nutrition, Bussiness, Shelter  
