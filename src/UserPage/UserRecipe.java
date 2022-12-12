@@ -165,6 +165,7 @@ public class UserRecipe extends javax.swing.JFrame {
         txtcomment = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtcomment2 = new javax.swing.JTextField();
+        lblreset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -372,6 +373,13 @@ public class UserRecipe extends javax.swing.JFrame {
 
         txtcomment2.addFocusListener(new JTextFieldHintListener(txtcomment2, "Review Pending..."));
 
+        lblreset.setText("Reset");
+        lblreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblresetActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -399,20 +407,21 @@ public class UserRecipe extends javax.swing.JFrame {
                             .addComponent(txtcomment2))))
                 .addGap(16, 16, 16))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(btnadd)
-                        .addGap(44, 44, 44)
-                        .addComponent(btnupdate)
-                        .addGap(47, 47, 47)
-                        .addComponent(btndelete)
-                        .addGap(41, 41, 41)
-                        .addComponent(btnexit))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(477, 477, 477)
-                        .addComponent(jLabel1)))
+                .addGap(477, 477, 477)
+                .addComponent(jLabel1)
                 .addContainerGap(746, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(btnadd)
+                .addGap(44, 44, 44)
+                .addComponent(btnupdate)
+                .addGap(47, 47, 47)
+                .addComponent(btndelete)
+                .addGap(46, 46, 46)
+                .addComponent(lblreset)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnexit)
+                .addGap(449, 449, 449))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,7 +436,8 @@ public class UserRecipe extends javax.swing.JFrame {
                             .addComponent(btnadd)
                             .addComponent(btnupdate)
                             .addComponent(btndelete)
-                            .addComponent(btnexit))
+                            .addComponent(btnexit)
+                            .addComponent(lblreset))
                         .addGap(24, 24, 24))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -825,6 +835,29 @@ public class UserRecipe extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtsearchKeyReleased
 
+    private void lblresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblresetActionPerformed
+        // TODO add your handling code here:
+        
+        txtpname.setText("");
+            txtage.setText("");
+            buttonGroup1.clearSelection();
+            txtmeat.setText("");
+            txtbone.setText("");
+            txtliver.setText("");
+            txtorgan.setText("");
+            txtveg.setText("");
+            txtseed.setText("");
+            txtfruit.setText("");
+            cbkale.setSelected(false);
+            cbvb.setSelected(false);
+            cbzinc.setSelected(false);            
+            txtpname.requestFocus();
+            
+            recipe_table ();
+            btnadd.setEnabled(true);
+        
+    }//GEN-LAST:event_lblresetActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -884,6 +917,7 @@ public class UserRecipe extends javax.swing.JFrame {
     private javax.swing.JLabel lblorgan;
     private javax.swing.JLabel lblpname;
     private javax.swing.JLabel lblptype;
+    private javax.swing.JButton lblreset;
     private javax.swing.JLabel lblsearch;
     private javax.swing.JLabel lblseed;
     private javax.swing.JLabel lblsup;

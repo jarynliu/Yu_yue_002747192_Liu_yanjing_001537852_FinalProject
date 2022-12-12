@@ -4,6 +4,18 @@
  */
 package AdminPages;
 
+
+
+import AdminPages.UserAdmin;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author iris
@@ -15,7 +27,48 @@ public class AdminSignIn extends javax.swing.JFrame {
      */
     public AdminSignIn() {
         initComponents();
+        Connect();
+        LoadRole();
     }
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    
+    public void Connect() 
+    {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/petcommunity", "root", "");           
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminSignIn.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminSignIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    void LoadRole()
+            
+        {
+            try {
+                pst = con.prepareStatement("select distinct role from tb_admin");
+                rs = pst.executeQuery(); 
+                txtrole.removeAllItems();
+
+                while(rs.next()){
+
+                    txtrole.addItem(rs.getString("role"));
+                    txtrole.setSelectedItem("");
+                }
+
+
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminSignIn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,6 +101,11 @@ public class AdminSignIn extends javax.swing.JFrame {
         lblrole.setText("Role:");
 
         jButton1.setText("Sign In");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Exit");
 
@@ -106,6 +164,66 @@ public class AdminSignIn extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        String account = txtaccount.getText();
+        String password = txtpassword.getText();
+        String role = txtrole.getSelectedItem().toString();
+        
+        
+        try {
+            pst = con.prepareStatement("select * from tb_admin where account= ? and password= ? and role= ?");
+            
+            pst.setString(1, account);
+            pst.setString(2, password);
+            pst.setString(3, role);
+            
+            rs = pst.executeQuery();
+            
+            
+            if(rs.next())
+            {
+                int adid = rs.getInt("adid");
+                this.setVisible(false);
+                if ("useradmin".equals(role)) {
+                    UserAdmin ua = new UserAdmin();
+                    ua.setVisible(true);
+                }
+                
+                else if ("bussadmin".equals(role)) {
+                    BusinessAdmin ba = new BusinessAdmin();
+                    ba.setVisible(true);
+                }
+                
+                else if ("shelteradmin".equals(role)) {
+                    ShelterAdmin sa = new ShelterAdmin();
+                    sa.setVisible(true);
+                }
+                
+                else if ("nutriadmin".equals(role)) {
+                    NutriAdmin na = new NutriAdmin();
+                    na.setVisible(true);
+                }
+                
+            }
+            
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Username and Password do not match");
+                txtaccount.setText("");
+                txtpassword.setText("");
+                txtrole.setSelectedIndex(-1);
+                txtaccount.requestFocus();
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminSignIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
