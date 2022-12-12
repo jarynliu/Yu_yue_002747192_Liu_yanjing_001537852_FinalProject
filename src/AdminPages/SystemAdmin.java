@@ -28,6 +28,9 @@ public class SystemAdmin extends javax.swing.JFrame {
      */
     public SystemAdmin() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2-getWidth()/2,size.height/2-getHeight()/2);
         Connect();
     }
     
