@@ -9,7 +9,8 @@ The shelter page means that, you can adopt a pet here. To give the stray animals
 
 # Enterprises, Organizations, Roles
 4 Enterprises: User, Nutrition, Bussiness, Shelter
-6 Organizations: Nutrition1, Nutrition2, Shelter1, Shelter2, Shop1, Shop2, etc./n
+6 Organizations: Nutrition1, Nutrition2, Shelter1, Shelter2, Shop1, Shop2, etc.
+/n
 8 Roles: user,bussinessman, systemadmin,sheltervolunteer, adoptor,nutritionist,shelteradmin,businessadmin,useradmin,nutritionadmin
 
 # About commit record
