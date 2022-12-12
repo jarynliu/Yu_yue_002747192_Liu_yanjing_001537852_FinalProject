@@ -202,7 +202,7 @@ public class NutriSignPage extends javax.swing.JFrame {
         dispose();
         HospitalSignIn hs = new HospitalSignIn();
         hs.setVisible(true);
-        hs.setTitle("HospitalSignIn");
+        hs.setTitle("NutritionSignIn");
 
         
     }//GEN-LAST:event_jbtnsigninActionPerformed
