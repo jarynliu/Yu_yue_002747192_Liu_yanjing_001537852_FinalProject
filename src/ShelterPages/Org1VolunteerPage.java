@@ -528,6 +528,12 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
             }
         });
 
+        jtxtage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtxtageKeyPressed(evt);
+            }
+        });
+
         buttonGroup5.add(jbtnfemale);
         jbtnfemale.setText("Female");
 
@@ -1299,6 +1305,15 @@ public class Org1VolunteerPage extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jbtnsearchActionPerformed
+
+    private void jtxtageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtageKeyPressed
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c)){
+            JOptionPane.showMessageDialog(this, "Please input an integer");
+            jtxtage.setText("");
+        }
+    }//GEN-LAST:event_jtxtageKeyPressed
 
     /**
      * @param args the command line arguments

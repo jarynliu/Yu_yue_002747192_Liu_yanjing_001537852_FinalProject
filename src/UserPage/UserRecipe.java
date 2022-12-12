@@ -192,6 +192,12 @@ public class UserRecipe extends javax.swing.JFrame {
 
         lblfruit.setText("Fruit:");
 
+        txtage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtageKeyPressed(evt);
+            }
+        });
+
         buttonGroup1.add(rdbdog);
         rdbdog.setText("Dog");
 
@@ -368,6 +374,11 @@ public class UserRecipe extends javax.swing.JFrame {
         jLabel2.setText("Org1 Comment:");
 
         txtcomment.addFocusListener(new JTextFieldHintListener(txtcomment, "Review Pending..."));
+        txtcomment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtcommentMouseClicked(evt);
+            }
+        });
 
         jLabel3.setText("Org2 Comment:");
 
@@ -857,6 +868,20 @@ public class UserRecipe extends javax.swing.JFrame {
             btnadd.setEnabled(true);
         
     }//GEN-LAST:event_lblresetActionPerformed
+
+    private void txtageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtageKeyPressed
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c)){
+            JOptionPane.showMessageDialog(this, "Please input an integer");
+            txtage.setText("");
+        }
+    }//GEN-LAST:event_txtageKeyPressed
+
+    private void txtcommentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtcommentMouseClicked
+        // TODO add your handling code here:
+        txtcomment.setEditable(false);
+    }//GEN-LAST:event_txtcommentMouseClicked
 
     /**
      * @param args the command line arguments

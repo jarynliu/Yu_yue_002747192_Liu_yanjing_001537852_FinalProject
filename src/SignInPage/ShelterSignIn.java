@@ -5,6 +5,8 @@
 package SignInPage;
 
 
+import ShelterPages.Org1VolunteerPage;
+import ShelterPages.Org2VolunteerPage;
 import ShelterPages.PetInformationPage;
 import SignUpPage.AnimalShelterSignPage;
 import SignUpPage.UserSignPage;
@@ -94,11 +96,16 @@ public class ShelterSignIn extends javax.swing.JFrame {
 
         jLabel2.setText("Choose Your Role:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "shelter user", "admin", "volunteer" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "user", "volunteer" }));
 
         jlblsname.setText("Shelter Name:");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "org1", "org2" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jbtnback.setText("Back");
         jbtnback.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +197,21 @@ public class ShelterSignIn extends javax.swing.JFrame {
             {
                 int shelterid = rs.getInt("id");
                 this.setVisible(false);
-                new PetInformationPage(shelterid, uname, role).setVisible(true);
+                if("org1".equals(sheltername)&&"volunteer".equals(role)){
+                Org1VolunteerPage o1vp = new Org1VolunteerPage();
+                o1vp.setVisible(true);
+                }
+                else if("org2".equals(sheltername)&&"volunteer".equals(role)){
+                Org2VolunteerPage o2vp = new Org2VolunteerPage();
+                o2vp.setVisible(true);
+                }
+                else if("user".equals(role)){
+                PetInformationPage pigp = new PetInformationPage();
+                pigp.setVisible(true);
+                }
+                else{
+                JOptionPane.showMessageDialog(this, "Pleace choose a correct role");
+                }
             
             }
             
@@ -199,8 +220,8 @@ public class ShelterSignIn extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Username and Password do not match");
                 jtxtuname.setText("");
                 jtxtpassword.setText("");
-                jComboBox2.setSelectedIndex(-1);
-                jComboBox1.setSelectedIndex(-1);
+                jComboBox2.setSelectedIndex(0);
+                jComboBox1.setSelectedIndex(0);
                 jtxtuname.requestFocus();
  
             }
@@ -222,6 +243,10 @@ public class ShelterSignIn extends javax.swing.JFrame {
         as.setTitle("ShelterSignIn");
         
     }//GEN-LAST:event_jbtnbackActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments

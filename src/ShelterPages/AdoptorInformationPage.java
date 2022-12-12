@@ -462,7 +462,7 @@ public class AdoptorInformationPage extends javax.swing.JFrame {
 //            PetInformationPage petinfo = new PetInformationPage();
 //            petinfo.setVisible(true);
 //            petinfo.toFront();
-            new PetInformationPage().setVisible(true);
+           
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null,e);
